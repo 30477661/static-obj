@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>区域管理</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/jsw-logo.ico">
+    <link href="lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="main" id="main">
+    <header class="container">
+        <ul class="clearfix">
+            <li class="pull-left">&nbsp;您好，欢迎来到本网站！</li>
+            <li class="pull-right"><span ng-click="loginDialog = true">立即登录</span></li>
+            <li class="pull-right"><span>加入收藏</span></li>
+            <li class="pull-right"><span>设为首页</span></li>
+            <li class="pull-right"><span>联系我们</span></li>
+        </ul>
+        <div>
+            <img src="img/text-login.png" alt="">
+        </div>
+    </header>
+    <nav class="container">
+        <ul class="clearfix" ng-init="navTab = 1">
+            <li ng-click="navTab = 0"><a>首页</a></li>
+            <li ng-click="navTab = 1"><a>新闻活动</a></li>
+            <li ng-click="navTab = 2"><a>规章制度</a></li>
+            <li ng-click="navTab = 3"><a>业务学习</a></li>
+            <li ng-click="navTab = 4"><a>优秀读者</a></li>
+            <li ng-click="navTab = 5"><a>热门图书</a></li>
+            <li ng-click="navTab = 6"><a>优秀图书馆</a></li>
+            <li ng-click="navTab = 7"><a>数字资源</a></li>
+            <li ng-click="navTab = 8"><a>业务交流</a></li>
+        </ul>
+    </nav>
+    <div class="container carousel" ng-if="navTab == 0">
+        <img src="img/carousel-1.jpg" alt="">
+    </div>
+    <div class="container all-cont">
+        <div class="latest-news"><a>最新新闻：本道图书管理系统</a> <i><img src="img/new-icon.png" alt=""></i></div>
+        <div ng-if="navTab == 0" ng-include="'index.html'" class="clearfix"></div>
+        <div ng-if="navTab == 1" ng-include="'news-activity.html'" class="clearfix"></div>
+        <div ng-if="navTab == 1.1" ng-include="'news-activity-child.html'" class="clearfix"></div>
+        <div ng-if="navTab == 2" ng-include="'system.html'" class="clearfix"></div>
+        <div ng-if="navTab == 2.1" ng-include="'system-child.html'" class="clearfix"></div>
+        <div ng-if="navTab == 3" ng-include="'learn.html'" class="clearfix"></div>
+        <div ng-if="navTab == 4" ng-include="'good-reader.html'" class="clearfix"></div>
+        <div ng-if="navTab == 5" ng-include="'hot-book.html'" class="clearfix"></div>
+        <div ng-if="navTab == 6" ng-include="'good-booklib.html'" class="clearfix"></div>
+        <div ng-if="navTab == 7." ng-include="'number-resource.html'" class="clearfix"></div>
+        <div ng-if="navTab == 7.1" ng-include="'number-resource-child.html'" class="clearfix"></div>
+        <div ng-if="navTab == 8" ng-include="'work-exchange.html'" class="clearfix"></div>
+        <div ng-if="navTab == 8.1" ng-include="'work-exchange-child.html'" class="clearfix"></div>
+        <div ng-if="navTab == 100" ng-include="'contact-we.html'" class="clearfix"></div>
+        <div ng-if="navTab == 101" ng-include="'school-book.html'" class="clearfix"></div>
+
+    </div>
+    <div class="links">
+        <ul class="clearfix">
+            <li style="background-color: #d4e8ff;">友情链接</li>
+            <li><a>中国国家图书馆</a><span>|</span></li>
+            <li><a>数字图书馆</a><span>|</span></li>
+            <li><a>中国国家图书馆</a><span>|</span></li>
+            <li><a>数字图书馆</a><span>|</span></li>
+            <li><a>数字图书馆</a><span>|</span></li>
+        </ul>
+    </div>
+    <footer class="container">
+        <div class="help-link">
+            <a>返回首页</a>|<a>热门图书</a>|<a href="">新闻活动</a>|<a href="">优秀图书馆</a>|<a ng-click="navTab = 101">学校图书馆</a>|<a ng-click="navTab = 100">联系我们</a>
+        </div>
+        <p>Copyright (c) 20010-2017 jswkj.com. All Rights Reserved .</p>
+    </footer>
+    <form class="login-dialog" ng-show="loginDialog">
+        <span ng-click="loginDialog=false">x</span>
+        <div class="center login-top">用户登录</div>
+        <div class="center"><img src="img/login-dialog-line.png" alt=""></div>
+        <table>
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" class="username"></td>
+            </tr>
+            <tr>
+                <td>密&nbsp;&nbsp;&nbsp;码</td>
+                <td><input type="password" class="password"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="font-size: 12px; padding-top: 10px;">
+                    <input type="radio" ng-model="a" name="user-manage" id="areaManage" value="1">
+                    <label for="areaManage">区域管理员</label>
+                    <input type="radio" ng-model="a" name="user-manage" value="2" id="schoolManage">
+                    <label for="schoolManage">学校管理员</label>
+                    <input type="radio" ng-model="a" id="reader" value="3" name="user-manage">
+                    <label for="reader">读者</label>
+                </td>
+            </tr>
+            <tr ng-show="a==2">
+                <td>学&nbsp;&nbsp;&nbsp;校</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">合阳中学</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="padding-top:40px;">
+                    <button type="submit" class="btn btn-warning">登录</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="reset" class="btn btn-primary">重置</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-lazy.js"></script>
+    <script src="lib/jquery-1.10.2.js"></script>
+    <script src="lib/layui/layui.js"></script>
+    <script>
+        angular.module('app', ['ngLoadScript']).controller('main', ['$scope', function($scope) {
+
+        }]);
+    </script>
+</body>
+
+</html>

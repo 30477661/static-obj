@@ -1,0 +1,66 @@
+<section class="system">
+    <ul class="clearfix">
+        <li style="width: 750px; height: 380px; margin-right: 10px;"><img src="img/banner.jpg" alt=""></li>
+        <li class="min-module" style="width: 360px; height: 380px;">
+            <div class="module-top" style="border-color: #0793ec;border-bottom-width: 2px;">新闻活动<a class="pull-right">更多 >></a></div>
+            <ul class="module-trunk">
+                <li>
+                    <a id="systemLink" class=""><img src="img/module-icon-2.png" alt=""> 本科生所占的比例较小，可见华为对于技术的要求还是较高的</a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 本道图书管理系统</a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="min-module" style="width: 850px; height: 400px; margin: 10px 10px 0 0;">
+            <div class="module-top">首页 >
+                <font style="color: #348cee;">新闻活动</font>
+            </div>
+            <ul class="module-trunk">
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 本科生所占的比例较小，可见华为对于技术的要求还是较高...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="min-module" style="width: 260px; height: 400px; margin-top: 10px;">
+            <div class="module-top" style="border-color: #0793ec;border-bottom-width: 2px;">热门图书<a class="pull-right">更多 >></a></div>
+            <ul class="module-trunk">
+                <li>
+                    <a>1、Delphi使用指南</a>
+                    <p style="font-size: 14px;">石油工业出版社</p>
+                </li>
+                <li>
+                    <a>1、Delphi使用指南</a>
+                    <p style="font-size: 14px;">石油工业出版社</p>
+                </li>
+                <li>
+                    <a>1、Delphi使用指南</a>
+                    <p style="font-size: 14px;">石油工业出版社</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<script type="text/javascript">
+    var controllerElem = document.getElementById("main");
+    var aElem = document.getElementById("systemLink");
+    var $scope = angular.element(controllerElem).scope();
+    aElem.onclick = function() {
+        $scope.$apply(function() {
+            $scope.navTab = 1.1;
+        });
+    };
+</script>

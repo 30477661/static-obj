@@ -1,0 +1,71 @@
+<section class="system">
+    <ul class="clearfix">
+        <li style="width: 750px; height: 380px; margin-right: 10px;"><img src="img/banner.jpg" alt=""></li>
+        <li class="min-module" style="width: 360px; height: 380px;">
+            <div class="module-top" style="border-color: #0793ec;border-bottom-width: 2px;">规章制度<a class="pull-right">更多 >></a></div>
+            <ul class="module-trunk">
+                <li>
+                    <a id="systemLink"><img src="img/module-icon-2.png" alt=""> 业务学习</a>
+                    <p style="font-size: 14px;"> 点评：因为考研在外租房的学生确实也很多，大多数都是因为宿舍人...</p>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 图书借阅管理制度</a>
+                    <p style="font-size: 14px;">1、师生凭本人借书证或一卡通借阅图书资料。 2、图书借阅应按要...</p>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 图书借阅管理制度</a>
+                    <p style="font-size: 14px;">1、师生凭本人借书证或一卡通借阅图书资料。 2、图书借阅应按要...</p>
+                </li>
+            </ul>
+        </li>
+        <li class="min-module" style="width: 850px; height: 400px; margin: 10px 10px 0 0;">
+            <div class="module-top">首页 >
+                <font style="color: #348cee;">业务学习</font>
+            </div>
+            <ul class="module-trunk">
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+                <li>
+                    <a><img src="img/module-icon-2.png" alt=""> 学生小赵（考研房）：计划大四要考研了，学校宿舍学习...<i></i><span>2016-10-14</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="min-module" style="width: 260px; height: 400px; margin-top: 10px;">
+            <div class="module-top" style="border-color: #0793ec;border-bottom-width: 2px;">热门图书<a class="pull-right">更多 >></a></div>
+            <ul class="module-trunk">
+                <li>
+                    <a>1、Delphi使用指南</a>
+                    <p style="font-size: 14px;">石油工业出版社</p>
+                </li>
+                <li>
+                    <a>1、Delphi使用指南</a>
+                    <p style="font-size: 14px;">石油工业出版社</p>
+                </li>
+                <li>
+                    <a>1、Delphi使用指南</a>
+                    <p style="font-size: 14px;">石油工业出版社</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<script type="text/javascript">
+    var controllerElem = document.getElementById("main");
+    var aElem = document.getElementById("systemLink");
+    var $scope = angular.element(controllerElem).scope();
+    aElem.onclick = function() {
+        $scope.$apply(function() {
+            $scope.navTab = 2.1;
+        });
+    };
+</script>

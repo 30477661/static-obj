@@ -1,0 +1,67 @@
+<section class="work-exchange">
+    <div style="height: 700px;">
+        <h2 style="text-align: center; font-size: 16px; color: #333;">查看资源</h2>
+        <div style="border-top: 2px solid #0793ec;"></div>
+        <form class="check-resource">
+            <div class="search-input">
+                论坛版块
+                <select name="searchSort" id="" class="search-sort">
+                    <option value="">看帖</option>
+                </select>
+                <button id="post" type="button" class="btn btn-primary pull-right">发帖</button>
+            </div>
+            <table class="layui-tab-newbook" lay-filter="tableData">
+            </table>
+        </form>
+    </div>
+</section>
+<script type="text/javascript">
+    layui.use(['element', 'table', 'laypage'], function() {
+        var element = layui.element;
+        var table = layui.table;
+        var laypage = layui.laypage;
+        table.render({
+            elem: '.layui-tab-newbook',
+            url: 'lib/layui/layui-data.json',
+            page: true,
+            cols: [
+                [{
+                    type: 'numbers',
+                    title: '名次',
+                    width: '10%',
+                    style: 'text-align: center; text-indent: 0;'
+
+                }, {
+                    field: 'id',
+                    title: '索引号',
+                    width: '20%',
+                }, {
+                    field: 'username',
+                    title: '书名(可点击)',
+                    width: '50%',
+                    event: 'setSign'
+
+                }, {
+                    field: 'classify',
+                    title: '作者',
+                    width: '20%',
+                }]
+            ]
+        });
+        table.on("tool(tableData)", function(obj) {
+            console.log(obj);
+            if (obj.event === 'setSign') {
+                alert("点击了:" + obj.data.username);
+            }
+        })
+
+    });
+    var controllerElem = document.getElementById("main");
+    var aElem = document.getElementById("post");
+    var $scope = angular.element(controllerElem).scope();
+    aElem.onclick = function() {
+        $scope.$apply(function() {
+            $scope.navTab = 8.1;
+        });
+    };
+</script>

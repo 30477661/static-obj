@@ -1,0 +1,88 @@
+<div class="index-one">
+    <div class="login-form" style="height: 80px;" action="">
+        <div class="reader-text">
+            资源管理
+        </div>
+        <ul class="link-ul">
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">上传资源</a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="login-form" style="height: 215px; margin-top: 10px;">
+        <div class="reader-text">
+            资源类别
+        </div>
+
+    </div>
+    <div class="login-form links-link" style="margin-top: 10px; top: 330px;">
+        <div class="reader-text">
+            下载专区
+        </div>
+        <ul class="link-ul">
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">暴风影音</a>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">adobe pdf</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="tab-menu lib-descrip-two">
+    <div class="layui-tab layui-tab-card" style="height: 100%;">
+        <ul class="layui-tab-title">
+            <li class="layui-this" id="libTabOne">电子资源</li>
+        </ul>
+        <div class="layui-tab-content" style="padding: 15px 40px 0 40px;">
+            <div class="layui-tab-item layui-show">
+                <div class="table-search-box">
+                    <span>查询条件</span>
+                    <select name="select" id="select">
+                        <option value="tm" selected="selected">题名</option>
+                        <option value="zrz">责任者</option>
+                        <option value="gjc">关键词</option>
+                    </select>
+                    <input name="seach2" type="text" id="seach2" value="" size="40">
+                    <button class="btn-primary" type="button">查询</button>
+                </div>
+                <div class="layui-tab-newbook"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use(['element', 'table', 'laypage'], function() {
+        var element = layui.element;
+        var table = layui.table;
+        var laypage = layui.laypage;
+        table.render({
+            elem: '.layui-tab-newbook',
+            url: 'lib/layui/layui-data.json',
+            cols: [
+                [{
+                    type: 'numbers',
+                    title: '名次',
+                    width: '10%',
+                    style: 'text-align: center; text-indent: 0;'
+
+                }, {
+                    field: 'id',
+                    title: '索引号',
+                    width: '20%',
+                }, {
+                    field: 'username',
+                    title: '书名',
+                    width: '50%',
+                }, {
+                    field: 'classify',
+                    title: '作者',
+                    width: '20%',
+                }]
+            ]
+        });
+
+    });
+</script>

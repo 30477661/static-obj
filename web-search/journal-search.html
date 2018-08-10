@@ -1,0 +1,90 @@
+<div class="tab-menu book-search-one">
+    <div class="layui-tab layui-tab-card" style="height: 100%; overflow: hidden;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">中国法</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div id="layui-tab-book">
+                    <ul class="ztree treeBook"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-menu book-search-two">
+    <div class="layui-tab layui-tab-card" style="height: 100%;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">期刊合订检索</li>
+            <li>期刊现刊检索</li>
+            <li>期刊主题检索</li>
+        </ul>
+        <div class="layui-tab-content" style="padding: 15px 40px 34px 40px;">
+            <div class="layui-tab-item layui-show">
+                <form class="search-input">
+                    <table>
+                        <tr>
+                            <th>1.选择一个查找途径：</th>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 刊名</td>
+                            <td>（如：‘电脑’表示刊名以‘电脑’开头）</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 副刊名</td>
+                            <td>（如：‘司马前’）</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> ISSN</td>
+                            <td>（如：‘计算机网络’）</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 统一刊号</td>
+                            <td>（如：‘A41’（根据中国图书馆图书分类法））</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 邮发代号</td>
+                            <td>（如：7-01-000922-8）</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 索刊号</td>
+                            <td>（如：‘A41/1:1’）</td>
+                        </tr>
+                        <tr>
+                            <th>2.在一下方框输入要查找的内容</th>
+                        </tr>
+                        <tr>
+                            <td><i></i><input class="search-input-content" type="text" value=""> </td>
+                        </tr>
+                        <tr>
+                            <th style="padding: 10px 0;">3.每页浏览条数：
+                                <select name="">
+                                        <option value="1">10条</option>
+                                        <option value="2">20条</option>
+                                        <option value="1">30条</option>
+                                        <option value="1">40条</option>
+                                        <option value="1">50条</option>
+                                    </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>4.检索方式：<input type="radio" name="searchType"> <span style="color: #0090e3;">前方一致</span><i></i><input type="radio" name="searchType"> <span style="color: #0090e3;">模糊检索</span></th>
+                        </tr>
+                    </table>
+                    <div style="text-align: center; padding: 40px 0;">
+                        <button class="btn-primary" type="submit">开始查询</button>
+                        <i></i>
+                        <button class="btn-primary" type="reset">重填检索</button>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item">2</div>
+            <div class="layui-tab-item">3</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setTimeout(function() {
+        $.fn.zTree.init($(".treeBook"), setting, zNodes);
+    }, 300)
+</script>

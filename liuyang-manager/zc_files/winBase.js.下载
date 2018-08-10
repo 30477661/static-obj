@@ -1,0 +1,87 @@
+//获得坐标
+        function getPosition() {
+            var top = document.documentElement.scrollTop;
+            var left = document.documentElement.scrollLeft;
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+            //top=500;
+            left = 200;
+            //height=0;
+            width = 500;
+			height=300;
+			top=150;
+            return { top: top, left: left, height: height, width: width };
+        }
+        //屏蔽输入，显示蒙板
+        function showMask(id,inid,inname) {
+            var obj = document.getElementById(id);
+            obj.style.width = document.body.clientWidth;
+            obj.style.height = document.body.clientHeight;
+            obj.style.display = "block";
+			
+			//alert(inname);
+			
+		  $.ajax({
+	        type:'post',
+            url:'inc/mytree/basictreeBase.php?inid='+inid+'&inname='+inname,  //后台处理程序
+             //数据发送方式
+            dataType:'html', //接受数据格式
+            data:null,   //要传递的数据
+            success:function(data) { //回传函数实体，参数为XMLhttpRequest.responseText
+			
+			        // alert(data);
+                 //   $('#mytree').html('');
+				 	$('#tcc').append(data);
+                  }
+            }); 
+			
+			
+			
+			
+        }
+        //隐藏蒙板
+        function hideMask(id) {
+            document.getElementById(id).style.display = "none";
+			
+			
+			
+        }
+        //显示登录
+        function showPop(id,inid,inname) {
+		    showMask('mask',inid,inname);
+            var width = 380;  //弹出框的宽度
+            var height = 550;  //弹出框的高度
+            var obj = document.getElementById(id);
+            obj.style.display = "block";
+            obj.style.position = "absolute";
+            obj.style.zindex = "10";
+            obj.style.overflow = "hidden";
+            obj.style.width = width + "px";
+            obj.style.height = height + "px";
+            var Position = getPosition();
+            leftadd = (Position.width - width) / 2;
+            topadd = (Position.height - height) / 2;
+            obj.style.top = (Position.top + topadd) + "px";
+            obj.style.left = (Position.left + leftadd) + "px";
+            window.onscroll = function() {
+                var Position = getPosition();
+                obj.style.top = (Position.top + topadd) + "px";
+                obj.style.left = (Position.left + leftadd) + "px";
+            };
+			
+        }
+        //隐含
+        function hidePop(id) {
+		hideMask('mask');
+            document.getElementById(id).style.display = "none";
+			document.getElementById(id).innerHTML=''; 
+        } 
+		
+		
+		
+		$(document).ready(function(){
+		
+		 $("body").append("<div id='mask' style='filter: Alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; background-color: #000; width: 100%; height: 100%; z-index: 5px;position: absolute; left: 0; top: 0; display: none; overflow: hidden;'> </div><div id='tcc' name='tcc' style='display:none;background-color:#FFFFFF;'> </div>");
+		
+		
+		});

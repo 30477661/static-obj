@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/cssreste.css">
+    <style>
+        div {
+            width: 20px;
+            height: 100%;
+            background-color: #cecece;
+        }
+        
+        .left-switch {
+            background-color: rgb(228, 234, 247);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -22px;
+            width: 15px;
+            height: 44px;
+            line-height: 44px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .left-switch img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="left-switch" id="leftSwitch"><img id="switchImg" src="img/switch-icon.png" alt=""></span>
+    </div>
+    <script>
+        document.getElementById("leftSwitch").onclick = function() {
+            //要在服务器中打开
+            if (window.parent.document.getElementById("frame").cols == "200,20,*") {
+                window.parent.document.getElementById("frame").cols = "0,20,*";
+                document.getElementById("switchImg").src = "img/switch-icon-rg.png";
+
+            } else {
+                window.parent.document.getElementById("frame").cols = "200,20,*";
+                document.getElementById("switchImg").src = "img/switch-icon.png";
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0067)http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <title>MyTree</title>
+
+    <link href="../css/manage.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        <!-- * a,
+        table,
+        div {
+            font-size: 12px;
+        }
+        
+        img {
+            border: none;
+            vertical-align: middle;
+            margin: 0px 3px 0px 3px;
+            vertical-align: middle;
+        }
+        
+        -->
+    </style>
+    <script src="./jquery-1.2.6.js.下载" type="text/javascript"></script>
+    <script type="text/javascript">
+        ////分类法选中样式操作///////////////////////////////////////////////////////
+        function myflhdiv() {
+            //alert('1');
+            var mform = $('#mytree');
+            mform.find('.divcss').each(function() {
+                var _self = $(this);
+                _self.click(function() {
+                    //$('id[=z%]').html('');
+                    //$('div[id*=z]').html('');
+                    $('.divcss').css({
+                        background: "White"
+                    });
+                    $(this).css({
+                        background: "#00ccdd"
+                    });
+                    //$(this).hide();
+
+
+                });
+            });
+
+        }
+        ////分类法选中样式操作///////////////////////////////////////////////////////
+        $(document).ready(function() {
+            myflhdiv();
+        });
+        //分类法获取
+        //树请求AJAX函数;
+        function DoPostBack(pclass, pname) {
+            //  alert(pclass+pname);
+            if ($('#z' + pname).html()) {
+                $('#z' + pname).html('');
+                $('#' + pname + 'a').show();
+                $('#' + pname + 'b').hide();
+            } else {
+                // alert('./edu.php?pclass='+pclass+'&pname='+pname);
+                $.ajax({
+                    type: 'post',
+                    url: './edu.php?pclass=' + pclass + '&pname=' + pname, //后台处理程序
+                    //数据发送方式
+                    dataType: 'html', //接受数据格式
+                    data: null, //要传递的数据
+                    success: function(data) { //回传函数实体，参数为XMLhttpRequest.responseText
+                        //  alert(data);
+                        $('#z' + pname).html(data);
+                    }
+                });
+                $('#' + pname + 'a').hide();
+                $('#' + pname + 'b').show();
+
+            }
+        }
+
+        //获取分类法函数
+        function DoPostFlf(namein, id) {
+            // alert(id);
+            if ($('#z' + id).html() == '') {
+                DoPostBack(namein + 1, id);
+            }
+            window.open('../../EDUSuppliers.php?expeid=' + id, 'dtreedata');
+
+        }
+
+        function OpenEdit(namein, id) {
+
+            window.open('../../EDUSuplliersEdit.php?uid=' + id, 'dtreedata');
+        }
+    </script>
+</head>
+
+
+
+<body marginwidth="0" marginheight="0">
+    <table cellspacing="1" width="350" cellpadding="3" align="center" border="0">
+        <tbody>
+            <tr>
+                <th class="tableHeaderText" colspan="2" height="25">
+                    <div align="left">供货商目录</div>
+                </th>
+            </tr>
+            <tr>
+                <td height="600" colspan="2" valign="top" class="forumRow">
+                    <div id="mytree" style="width:500;height:800;　　overflow :yes;  ">
+                        <div id="1a1" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="10" onclick="DoPostBack(&#39;1&#39;,&#39;1&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;1&#39;);">  省主管</a>
+                        </div>
+                        <div id="z1"></div>
+                        <div id="5a5" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="50" onclick="DoPostBack(&#39;1&#39;,&#39;5&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;5&#39;);">  市主管</a>
+                        </div>
+                        <div id="z5"></div>
+                        <div id="10a10" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="100" onclick="DoPostBack(&#39;1&#39;,&#39;10&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;10&#39;);">  浏阳市教育局仪器电教站</a>
+                        </div>
+                        <div id="z10"></div>
+                        <div id="20a20" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="200" onclick="DoPostBack(&#39;1&#39;,&#39;20&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;20&#39;);">  湖南省</a>
+                        </div>
+                        <div id="z20"></div>
+                        <div id="21a21" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="210" onclick="DoPostBack(&#39;1&#39;,&#39;21&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;21&#39;);">  直属</a>
+                        </div>
+                        <div id="z21"></div>
+                        <div id="22a22" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="220" onclick="DoPostBack(&#39;1&#39;,&#39;22&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;22&#39;);">  浙江省</a>
+                        </div>
+                        <div id="z22"></div>
+                        <div id="23a23" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="230" onclick="DoPostBack(&#39;1&#39;,&#39;23&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;23&#39;);">  江苏省</a>
+                        </div>
+                        <div id="z23"></div>
+                        <div id="24a24" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="240" onclick="DoPostBack(&#39;1&#39;,&#39;24&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;24&#39;);">  上海市</a>
+                        </div>
+                        <div id="z24"></div>
+                        <div id="25a25" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="250" onclick="DoPostBack(&#39;1&#39;,&#39;25&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;25&#39;);">  天津市</a>
+                        </div>
+                        <div id="z25"></div>
+                        <div id="26a26" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="260" onclick="DoPostBack(&#39;1&#39;,&#39;26&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;26&#39;);">  北京市</a>
+                        </div>
+                        <div id="z26"></div>
+                        <div id="27a27" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="270" onclick="DoPostBack(&#39;1&#39;,&#39;27&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;27&#39;);">  山东省</a>
+                        </div>
+                        <div id="z27"></div>
+                        <div id="28a28" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="280" onclick="DoPostBack(&#39;1&#39;,&#39;28&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;28&#39;);">  湖北省</a>
+                        </div>
+                        <div id="z28"></div>
+                        <div id="29a29" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="290" onclick="DoPostBack(&#39;1&#39;,&#39;29&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;29&#39;);">  江西省</a>
+                        </div>
+                        <div id="z29"></div>
+                        <div id="30a30" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="300" onclick="DoPostBack(&#39;1&#39;,&#39;30&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;30&#39;);">  河南省</a>
+                        </div>
+                        <div id="z30"></div>
+                        <div id="31a31" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="310" onclick="DoPostBack(&#39;1&#39;,&#39;31&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;31&#39;);">  福建省</a>
+                        </div>
+                        <div id="z31"></div>
+                        <div id="32a32" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="320" onclick="DoPostBack(&#39;1&#39;,&#39;32&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;32&#39;);">  安徽省</a>
+                        </div>
+                        <div id="z32"></div>
+                        <div id="33a33" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="330" onclick="DoPostBack(&#39;1&#39;,&#39;33&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;33&#39;);">  吉林省</a>
+                        </div>
+                        <div id="z33"></div>
+                        <div id="34a34" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="340" onclick="DoPostBack(&#39;1&#39;,&#39;34&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;34&#39;);">  辽宁省</a>
+                        </div>
+                        <div id="z34"></div>
+                        <div id="35a35" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="350" onclick="DoPostBack(&#39;1&#39;,&#39;35&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;35&#39;);">  四川省</a>
+                        </div>
+                        <div id="z35"></div>
+                        <div id="36a36" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="360" onclick="DoPostBack(&#39;1&#39;,&#39;36&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;36&#39;);">  广东省汕头市教仪厂</a>
+                        </div>
+                        <div id="z36"></div>
+                        <div id="37a37" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="370" onclick="DoPostBack(&#39;1&#39;,&#39;37&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;37&#39;);">  甘肃省</a>
+                        </div>
+                        <div id="z37"></div>
+                        <div id="38a38" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="380" onclick="DoPostBack(&#39;1&#39;,&#39;38&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;38&#39;);">  新疆自治区</a>
+                        </div>
+                        <div id="z38"></div>
+                        <div id="39a39" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="390" onclick="DoPostBack(&#39;1&#39;,&#39;39&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;39&#39;);">  河北省</a>
+                        </div>
+                        <div id="z39"></div>
+                        <div id="90a90" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="900" onclick="DoPostBack(&#39;1&#39;,&#39;90&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;90&#39;);">  单位自购入库</a>
+                        </div>
+                        <div id="z90"></div>
+                        <div id="20a20" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="200" onclick="DoPostBack(&#39;1&#39;,&#39;20&#39;);">
+                            <a href="http://192.168.5.52/admin/inc/mytree/edusupplierstree.php?action=sq#" onclick="javascript:DoPostFlf(&#39;&#39;,&#39;20&#39;);">  湖南创云智联科技有限公司</a>
+                        </div>
+                        <div id="z20"></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        //分类法获取展开
+        /*
+DoPostBack('1','02');
+DoPostBack('2','0201');
+DoPostBack('2','0202');
+DoPostBack('2','0203');
+
+eval(DoPostBack('1','02'));
+eval(DoPostBack('2','0201'));
+eval(DoPostBack('2','0202'));
+eval(DoPostBack('2','0203'));
+*/
+    </script>
+
+
+</body>
+
+</html>

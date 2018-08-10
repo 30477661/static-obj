@@ -1,0 +1,237 @@
+
+<!-- saved from url=(0037)http://192.168.5.2/zhengding/tsys.php -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="Author" content="jswkj.com">
+<meta name="WebSite" content="www.jswkj.com">
+<meta name="Version" content="ver 2.0">  
+<title>金梦想图书馆管理系统</title>
+<link href="./main_files/skin.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="./main_files/style.css" type="text/css"><script src="./main_files/jquery-1.3.2.min.js.下载" type="text/javascript"></script><script src="./main_files/base.js.下载" type="text/javascript"></script><script src="./main_files/jquery.checkform.js.下载" type="text/javascript"></script><link href="./main_files/mask.css" rel="stylesheet" type="text/css"><script language="JavaScript" src="./main_files/jquery.mask.js.下载"></script><script language="JavaScript" src="./main_files/jqDnR.js.下载"></script><script language="javascript">
+var imgDir = "../js/calendar/";
+</script><script language="javascript" src="./main_files/calendar.js.下载"></script><link rel="import" href="chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/assets/tpl/resize-tooltip.html"></head>
+
+
+ 
+
+
+
+
+
+
+<body><div onclick="bShow=true" id="calendar" style="z-index:+999;position:absolute;visibility:hidden;"><table width="220" style="font-family:arial;font-size:11px;border-width:1;border-style:solid;border-color:#a0a0a0;font-family:arial; font-size:11px}" bgcolor="#ffffff"><tbody><tr bgcolor="#0000aa"><td><table width="218"><tbody><tr><td style="padding:2px;font-family:arial; font-size:11px;"><font color="#ffffff"><b><span id="caption"><span id="spanLeft" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeLeft&quot;,&quot;left2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to scroll to previous month. Hold mouse button to scroll automatically.&quot;" onclick="javascript:decMonth()" onmouseout="clearInterval(intervalID1);swapImage(&quot;changeLeft&quot;,&quot;left1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onmousedown="clearTimeout(timeoutID1);timeoutID1=setTimeout(&quot;StartDecMonth()&quot;,500)" onmouseup="clearTimeout(timeoutID1);clearInterval(intervalID1)">&nbsp;<img id="changeLeft" src="./main_files/left1.gif" width="10" height="11" border="0">&nbsp;</span>&nbsp;<span id="spanRight" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeRight&quot;,&quot;right2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to scroll to next month. Hold mouse button to scroll automatically.&quot;" onmouseout="clearInterval(intervalID1);swapImage(&quot;changeRight&quot;,&quot;right1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onclick="incMonth()" onmousedown="clearTimeout(timeoutID1);timeoutID1=setTimeout(&quot;StartIncMonth()&quot;,500)" onmouseup="clearTimeout(timeoutID1);clearInterval(intervalID1)">&nbsp;<img id="changeRight" src="./main_files/right1.gif" width="10" height="11" border="0">&nbsp;</span>&nbsp;<span id="spanMonth" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeMonth&quot;,&quot;drop2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to select a month.&quot;" onmouseout="swapImage(&quot;changeMonth&quot;,&quot;drop1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onclick="popUpMonth()"></span>&nbsp;<span id="spanYear" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeYear&quot;,&quot;drop2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to select a year.&quot;" onmouseout="swapImage(&quot;changeYear&quot;,&quot;drop1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onclick="popUpYear()"></span>&nbsp;</span></b></font></td><td align="right"><a href="javascript:hideCalendar()"><img src="./main_files/close.gif" width="15" height="13" border="0" alt="Close the Calendar"></a></td></tr></tbody></table></td></tr><tr><td style="padding:5px" bgcolor="#ffffff"><span id="contents"></span></td></tr></tbody></table></div><div id="selectMonth" style="z-index:+999;position:absolute;visibility:hidden;"></div><div id="selectYear" style="z-index:+999;position:absolute;visibility:hidden;"></div>
+
+<script>
+ 
+
+$(function(){
+	$('#seach').change(function(){
+		var seach_name =$('#seach').val();
+			if(seach_name=='Ysrq'){
+				 $('#search_where').html("起始：<input name='str' type='text' class='smallinput' id='str' value='2018-04-24'  isEmpty='true' msg='查询内容不能为空!' notice='请输入查询内容!' onclick="+"popUpCalendar(this,document.getElementById('str'),'yyyy-mm-dd');"+">结束：<input name='str1' type='text' class='smallinput' id='str1' value='2018-06-23'  isEmpty='true' msg='查询内容不能为空!' notice='请输入查询内容!' onclick="+"popUpCalendar(this,document.getElementById('str1'),'yyyy-mm-dd');"+"><input type='submit' name='Submit42' value='查询'>");
+			}
+		if(seach_name!='Ysrq'){
+			
+	   $('#search_where').html("<input name='str' type='text' class='smallinput' id='str' value=''  isEmpty='true' msg='查询内容不能为空!' notice='请输入查询内容!'>&nbsp;<input type='submit' name='Submit42' value='查询'>");	
+	   $('#str').val('');	
+		}
+		});
+	$('#seach1').checkform({'fun':'selectchange()'});
+});
+
+function selectchange(){
+var 	val= $('#zd').val();
+var url='tsys.php?action=tsys&zd='+val+'&'+$('#seach1').serialize();
+  
+var pdata = 'tsys.php?'+$('#seach1').serialize();
+//alert(url);
+window.open(url,'_self')
+}
+
+
+
+function ShowTszdList(){
+	 $.win({
+	       title:'图书验收',
+		   url:'tsyslist.php?nowurl=%2Fzhengding%2Ftsys.php%3Fpage%3D1',
+          //html:'123',
+		   width:820,
+		   height:450
+		   }); 
+}
+
+//ajax 提交采购数据
+function UpTsysData(){ 
+          // var params=$('#ajax_post').serialize();
+        //  alert('tsys_data.php?action=UpTsysData&zd='+$('#zd').val());
+	        $.ajax({
+		        type:'post',
+				url:'tsys_data.php?action=UpTsysData&zd='+$('#zd').val(),
+				data:null, 
+				dataType: 'json', 
+				success: function (a)
+				{	 	 
+				 // alert(a);
+				 if(a.action=='ture'){
+					 
+                        $.success('操作成功!');
+					  }
+				  if(a.action=='false'){ 
+				      $.error('操作失败!');
+                  }
+				}
+		  });	 
+}
+
+//ajax 查询
+function selectchangeys(val){
+       var url='tsys.php?action=tsys&zd='+val;
+	  // alert(url);
+	  window.open(url,"_self");
+	  // $('#ajaxlist').load(url);  
+} 
+</script>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td width="17" valign="top" background="./main_files/mail_leftbg.gif"><img src="./main_files/left-top-right.gif" width="17" height="29"></td>
+    <td valign="top" background="./main_files/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tbody><tr>
+        <td height="31"><div class="titlebt">统一验收</div>
+          <div class="titlebtno"><a href="http://192.168.5.2/zhengding/lxys.php">自主验收</a></div> </td>
+      </tr>
+    </tbody></table></td>
+    <td width="16" valign="top" background="./main_files/mail_rightbg.gif"><img src="./main_files/nav-right-bg.gif" width="16" height="29"></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="./main_files/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+
+<!--主框架开始-->	
+<div id="main">
+<div id="slip">
+
+<!--选项卡开始-->
+<div id="slipmenu">
+<a href="http://192.168.5.2/zhengding/tsys.php#" onclick="return ShowTszdList();">图书验收</a>
+<a href="http://192.168.5.2/zhengding/tsys.php#" id="t0" style="background: url(&quot;../images/menusel.png&quot;);">查询</a> 
+<a href="http://192.168.5.2/report/report.php?key=%E5%9B%BE%E4%B9%A6%E7%BB%9F%E4%B8%80%E9%AA%8C%E6%94%B6" target="_blank">打印</a>
+
+<a href="http://192.168.5.2/zhengding/tsys.php#" onclick="return UpTsysData();">未到上报</a>
+
+
+</div>
+<!--选项卡结束-->
+
+<div id="b0" style="">
+<div id="listall">
+ <form id="seach1" mtype="seach"> 
+<table width="480" cellspacing="1" class="tablesorter" id="table1">
+        <tbody>
+			<tr>
+				<td width="68">申购计划</td>
+				<td width="112">
+				  <select name="zd" id="zd" onchange="selectchangeys(this.value)">
+				    				    <option value="5" selected="selected">
+				      3333				      </option>
+				    				    </select>
+				  
+				  </td>
+				<td width="182"><select name="seach" id="seach">
+				  <option value="isbn">ISBN</option>
+				  <option value="ztm">主题名</option>
+				  <option value="Name">验收人</option>
+				  <option value="Ysrq">验收时间</option>
+				  <option value="area_plan.Name">申购批次</option>
+				  </select></td>
+				<td width="700" id="search_where">                      <input name="str" type="text" class="smallinput" id="str" value="" isempty="true" msg="查询内容不能为空!" notice="请输入查询内容!"><div id="msg" style="position: absolute; text-align: left; top: 56px; left: 919px; border: 0px; background-color: rgb(243, 250, 255); color: rgb(70, 181, 1); width: 0px;"></div>  <input type="submit" name="Submit42" value="查询">
+                     </td>
+				</tr>
+ </tbody>
+	</table>
+
+ </form>
+ 
+<!---分页内容开始--> 
+ 
+ 
+<table id="table1" cellspacing="1" class="tablesorter">
+		<thead>
+			<tr>
+			    <th width="45">序号</th>
+			    <th width="158">ISBN</th>
+				<th width="387">主题名</th>
+				<th width="83">作者</th>
+				<th width="80">征订价格</th>
+				<th width="76">征订数量</th>
+				<th width="77">验收价格</th>
+				<th width="146">验收数量</th>
+			</tr>
+		</thead>
+		<tbody>
+	 	
+        	 		     <tr> 
+           <td height="18" colspan="8" class="forumRow">没有记录!</td>
+      </tr>
+    		</tbody>
+	</table>
+
+ 
+<!--显示分页-->
+<div class="k_pagelist">
+    <div align="center">
+      <span class=""><span style="border:1px solid #004b7e;color:Black">首页</span></span> <span class=""><span style="border:1px solid #004b7e;color:Black">上页</span></span>  <span class=""><span style="border:1px solid #004b7e;color:Black">下页</span></span> <span class=""><span style="border:1px solid #004b7e;color:Black">尾页</span></span> 
+    </div>
+</div>
+<!---分页内容结束-->
+
+</div>
+</div>
+</div>
+
+</div>
+
+	  
+ 
+
+    </td>
+    <td background="./main_files/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="./main_files/mail_leftbg.gif"><img src="./main_files/buttom_left2.gif" width="17" height="17"></td>
+    <td background="./main_files/buttom_bgs.gif"><img src="./main_files/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="./main_files/mail_rightbg.gif"><img src="./main_files/buttom_right2.gif" width="16" height="17"></td>
+  </tr>
+</tbody></table>
+
+<style>
+* {
+	margin:0px;
+	padding:0;
+	font-family:Verdana;
+	font-size:14px;
+}
+.left_txt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 25px;
+	color: #666666;
+}
+</style>
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td height="5"><table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+        <tbody><tr>
+          <td></td>
+        </tr>
+      </tbody></table></td>
+  </tr>
+  <tr>
+    <td class="left_txt"><div align="center">金梦想图书馆管理系统, Copyright (c) 2001-2016jswkj.com. All Rights Reserved .</div></td>
+  </tr>
+</tbody></table>
+<script language="javascript1.5" type="text/javascript">
+j=0;slip(0); 
+</script>
+
+<div id="window_resizer_tooltip_wrapper" data-pos-y="bottom" data-pos-x="right"></div></body></html>

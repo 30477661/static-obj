@@ -1,0 +1,824 @@
+body {
+  font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+}
+
+body,
+html {
+  -webkit-text-size-adjust: none;
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  text-decoration: none;
+  list-style: none;
+}
+
+img {
+  border: none;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  outline-style: none;
+  /*FF*/
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+input,
+button {
+  outline: none;
+  border: none;
+  transition: all .5s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: " ";
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+body {
+  position: relative;
+  background-image: url(../img/index-bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body > .content {
+  position: absolute;
+  width: 860px;
+  height: 640px;
+  top: 50%;
+  left: 50%;
+  margin-top: -320px;
+  margin-left: -430px;
+}
+body > .content nav {
+  width: 840px;
+  height: 80px;
+  background-color: #1a82dc;
+  background-image: linear-gradient(90deg, #0068c1 0%, #3ca5ff 98%);
+  background-image: -webkit-linear-gradient(90deg, #0068c1 0%, #3ca5ff 98%);
+  background-image: -ms-linear-gradient(90deg, #0068c1 0%, #3ca5ff 98%);
+  background-image: -moz-linear-gradient(90deg, #0068c1 0%, #3ca5ff 98%);
+  padding-left: 20px;
+}
+body > .content nav ul > li {
+  float: left;
+  height: 75px;
+  margin-right: 20px;
+  background-size: 100% 100%;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+body > .content nav ul > li div {
+  text-align: center;
+}
+body > .content nav ul > li img {
+  height: 40px;
+}
+body > .content nav ul > li span {
+  font-size: 14px;
+  color: #fff;
+}
+body > .content nav ul > li:hover {
+  background-image: url(../img/option-bg.png);
+}
+body > .content nav a {
+  display: inline-block;
+}
+body > .content nav a:hover {
+  text-decoration-line: none;
+}
+body > .content nav ul > li.active {
+  background-image: url(../img/option-bg.png);
+}
+
+section#main {
+  background-color: #e9ecf0;
+}
+section#main > .top {
+  height: 44px;
+  line-height: 44px;
+  background-color: #ffffff;
+  font-size: 14px;
+  padding-left: 40px;
+  color: #333;
+}
+section#main > .top a {
+  color: #0088ff;
+  font-weight: 400;
+}
+section#main > ul {
+  padding: 20px 20px 36px 20px;
+}
+section#main > ul .li-con-bottom {
+  margin-bottom: 20px;
+}
+section#main > ul > li {
+  width: 400px;
+  height: 220px;
+}
+section#main > ul > li .title-con {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+  background-color: #45a9ff;
+  font-size: 14px;
+  color: #fff;
+}
+section#main > ul > li .title-con img {
+  vertical-align: middle;
+}
+section#main > ul > li .middle-con {
+  height: 180px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+section#main > ul > li .middle-con1 {
+  padding: 10px 5px 0 40px;
+}
+section#main > ul > li .middle-con1 li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+section#main > ul > li .middle-con1 a {
+  color: #666666;
+  font-size: 12px;
+}
+section#main > ul > li .middle-con2 {
+  padding: 10px 20px 0 40px;
+}
+section#main > ul > li .middle-con2 li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+section#main > ul > li .middle-con2 span {
+  color: #666666;
+  font-size: 12px;
+}
+section#main > ul > li .middle-con2 a {
+  float: right;
+  color: #45a9ff;
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+}
+section#main > ul > li .middle-con3 {
+  padding: 20px 40px 0;
+}
+section#main > ul > li .middle-con3 li {
+  float: left;
+  width: 33%;
+  height: 52px;
+  position: relative;
+  margin-bottom: 10px;
+}
+section#main > ul > li .middle-con3 li > a {
+  position: absolute;
+  left: 50%;
+  margin-left: -26px;
+  width: 52px;
+  height: 52px;
+  text-align: center;
+  border: 2px solid #269bff;
+  border-radius: 50%;
+  color: #0089fe;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 8px 5px;
+  line-height: 16px;
+  transition: all .5s ease;
+}
+section#main > ul > li .middle-con3 li > a.active {
+  background-color: #269bff;
+  color: #fefefe;
+  text-decoration: none;
+}
+section#main > ul > li .middle-con3 li > a:hover {
+  background-color: #269bff;
+  color: #fefefe;
+}
+section#main > ul > li .middle-con4 {
+  padding: 10px 30px 0 20px;
+}
+section#main > ul > li .middle-con4 ul {
+  float: left;
+  width: 220px;
+  padding-top: 20px;
+}
+section#main > ul > li .middle-con4 ul li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: #333333;
+  height: 24px;
+}
+section#main > ul > li .middle-con4 ul li img {
+  vertical-align: middle;
+}
+section#main > ul > li .middle-con4 .sweep-wechat {
+  float: right;
+  width: 106px;
+}
+section#main > ul > li .middle-con4 .sweep-wechat p {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+section#commonQuery {
+  padding: 60px 90px;
+  box-sizing: border-box;
+  background-color: #e9ecf0;
+  height: 560px;
+  width: 860px;
+}
+section#commonQuery > ul > li {
+  width: 200px;
+  height: 200px;
+  float: left;
+}
+section#commonQuery > ul > li .edu-sum {
+  height: 120px;
+  box-sizing: border-box;
+  padding-top: 20px;
+}
+section#commonQuery > ul > li .edu-sum span {
+  display: inline-block;
+  width: 79px;
+  height: 79px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  margin-left: 60px;
+  text-align: center;
+  line-height: 79px;
+}
+section#commonQuery > ul > li .edu-sum span img {
+  vertical-align: middle;
+}
+section#commonQuery > ul > li .common-text {
+  padding: 10px 0 0 10px;
+  background-color: #fff;
+  height: 80px;
+  box-sizing: border-box;
+}
+section#commonQuery > ul > li .common-text p {
+  color: #999;
+  font-size: 12px;
+}
+section#commonQuery > ul > li .common-text p a {
+  font-size: 14px;
+  color: #333333;
+}
+
+section#firstUser {
+  box-sizing: border-box;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 560px;
+  width: 860px;
+  position: relative;
+}
+section#firstUser .first-user-bg {
+  background-image: url(../img/first-use-bg.png);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 424px;
+  height: 260px;
+  margin-left: -212px;
+  margin-top: -130px;
+}
+section#firstUser .first-user-bg > li {
+  position: absolute;
+  height: 44px;
+  width: 108px;
+  line-height: 34px;
+  border-radius: 15px;
+  border: 5px solid #cccccc;
+  background-color: #0e9678;
+  font-size: 14px;
+  color: #ffffff;
+  box-sizing: border-box;
+  text-align: center;
+}
+section#firstUser .first-user-bg > li span {
+  color: #333333;
+  font-size: 12px;
+  vertical-align: top;
+  line-height: 25px;
+}
+section#firstUser .first-user-bg > li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+}
+section#firstUser .first-user-bg > li:hover {
+  background-color: #58a164;
+  transition: all .5s ease;
+}
+section#firstUser .first-user-bg > li.first-user1 {
+  left: -98px;
+  top: -17px;
+}
+section#firstUser .first-user-bg > li.first-user2 {
+  left: -98px;
+  top: 60px;
+}
+section#firstUser .first-user-bg > li.first-user3 {
+  left: -98px;
+  bottom: 60px;
+}
+section#firstUser .first-user-bg > li.first-user4 {
+  left: -98px;
+  bottom: -17px;
+}
+section#firstUser .first-user-bg > li.first-user5 {
+  left: 50px;
+  top: 106px;
+}
+section#firstUser .first-user-bg > li.first-user6 {
+  right: 80px;
+  top: 106px;
+}
+section#firstUser .first-user-bg > li.first-user7 {
+  right: -108px;
+  top: 106px;
+}
+
+section#wealthManage {
+  box-sizing: border-box;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 560px;
+  width: 860px;
+  position: relative;
+}
+section#wealthManage .wealth-manage-bg {
+  background-image: url(../img/wealth-manage-bg.png);
+  position: absolute;
+  width: 500px;
+  height: 100px;
+  margin-left: 158px;
+  margin-top: 137px;
+  background-repeat: no-repeat;
+}
+section#wealthManage .wealth-manage-bg > li {
+  position: absolute;
+  height: 84px;
+  width: 84px;
+  line-height: 20px;
+  border-radius: 50%;
+  border: 8px solid #cccccc;
+  background-color: #0e9678;
+  font-size: 16px;
+  color: #ffffff;
+  box-sizing: border-box;
+  padding: 14px 12px;
+  vertical-align: middle;
+  text-align: center;
+}
+section#wealthManage .wealth-manage-bg > li span {
+  color: #333333;
+  font-size: 12px;
+  vertical-align: top;
+  line-height: 25px;
+}
+section#wealthManage .wealth-manage-bg > li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  text-align: center;
+}
+section#wealthManage .wealth-manage-bg > li > ul {
+  position: absolute;
+  top: 94px;
+  left: 50%;
+  margin-left: -42px;
+}
+section#wealthManage .wealth-manage-bg > li > ul > li {
+  width: 84px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #0e9678;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+section#wealthManage .wealth-manage-bg > li:hover {
+  background-color: #58a164;
+  transition: all .5s ease;
+}
+section#wealthManage .wealth-manage-bg > li.first-user1 {
+  left: -82px;
+  top: 5px;
+}
+section#wealthManage .wealth-manage-bg > li.first-user2 {
+  left: 109px;
+  top: 5px;
+}
+section#wealthManage .wealth-manage-bg > li.first-user3 {
+  right: 130px;
+  bottom: 5px;
+}
+section#wealthManage .wealth-manage-bg > li.first-user4 {
+  right: -75px;
+  top: -37px;
+}
+section#wealthManage .wealth-manage-bg > li.first-user5 {
+  right: -75px;
+  bottom: -35px;
+}
+section#wealthManage .wealth-manage-bg > li.first-user6 {
+  right: 80px;
+  top: 106px;
+}
+section#wealthManage .wealth-manage-bg > li.first-user7 {
+  right: -108px;
+  top: 106px;
+}
+
+section#buyManage {
+  box-sizing: border-box;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 560px;
+  width: 860px;
+  position: relative;
+}
+section#buyManage .buy-manage-bg {
+  background-image: url(../img/buy-manage-bg.png);
+  position: absolute;
+  width: 622px;
+  height: 148px;
+  right: 54px;
+  top: 160px;
+  background-repeat: no-repeat;
+}
+section#buyManage .buy-manage-bg > li {
+  position: absolute;
+  height: 46px;
+  width: 132px;
+  line-height: 36px;
+  border-radius: 23px;
+  border: 5px solid #cccccc;
+  background-color: #0e9678;
+  font-size: 16px;
+  color: #ffffff;
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: center;
+}
+section#buyManage .buy-manage-bg > li span {
+  color: #333333;
+  font-size: 12px;
+  vertical-align: top;
+  line-height: 25px;
+}
+section#buyManage .buy-manage-bg > li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  text-align: center;
+}
+section#buyManage .buy-manage-bg > li a > i {
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  margin-left: -26px;
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  line-height: 42px;
+  border: 5px solid #cccccc;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #0e9678;
+}
+section#buyManage .buy-manage-bg > li:hover {
+  background-color: #58a164;
+  transition: all .5s ease;
+}
+section#buyManage .buy-manage-bg > li.first-user1 {
+  left: -46px;
+  top: -15px;
+}
+section#buyManage .buy-manage-bg > li.first-user2 {
+  left: 164px;
+  top: -15px;
+}
+section#buyManage .buy-manage-bg > li.first-user3 {
+  right: 83px;
+  top: -15px;
+}
+section#buyManage .buy-manage-bg > li.first-user4 {
+  right: 34px;
+  bottom: -15px;
+}
+section#buyManage .buy-manage-bg > li.first-user5 {
+  right: 226px;
+  bottom: -15px;
+}
+section#buyManage .buy-manage-bg > li.first-user6 {
+  left: 60px;
+  bottom: -15px;
+}
+section#buyManage .buy-manage-bg > li.first-user7 {
+  left: -128px;
+  bottom: -15px;
+}
+
+section#textManage {
+  box-sizing: border-box;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 560px;
+  width: 860px;
+  position: relative;
+  padding: 60px 90px 0 60px;
+}
+section#textManage .text-manage-lf {
+  background-image: url(../img/text-manage-lf.png);
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 400px;
+  position: relative;
+}
+section#textManage .text-manage-lf > li {
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  border-width: 6px;
+  border-style: solid;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 50%;
+  padding: 9px 5px;
+  line-height: 18px;
+  background-color: #fff;
+}
+section#textManage .text-manage-lf > li i {
+  position: absolute;
+  right: -55px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent transparent transparent transparent;
+}
+section#textManage .text-manage-lf > li span {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  right: -25px;
+  top: 22px;
+}
+section#textManage .text-manage-lf > li.text-lf-1 {
+  border-color: #32c5d2;
+  color: #32c5d2;
+  top: 12px;
+  left: 19px;
+}
+section#textManage .text-manage-lf > li.text-lf-1 > i {
+  border-color: transparent transparent transparent #32c5d2;
+}
+section#textManage .text-manage-lf > li.text-lf-2 {
+  border-color: #ed6b75;
+  color: #ed6b75;
+  top: 112px;
+  left: 74px;
+}
+section#textManage .text-manage-lf > li.text-lf-2 > i {
+  border-color: transparent transparent transparent #ed6b75;
+}
+section#textManage .text-manage-lf > li.text-lf-3 {
+  border-color: #acb5c3;
+  color: #acb5c3;
+  bottom: 100px;
+  left: 70px;
+}
+section#textManage .text-manage-lf > li.text-lf-3 > i {
+  border-color: transparent transparent transparent #acb5c3;
+}
+section#textManage .text-manage-lf > li.text-lf-4 {
+  border-color: #5cd1b1;
+  color: #5cd1b1;
+  bottom: 5px;
+  left: 6px;
+  line-height: 36px;
+}
+section#textManage .text-manage-lf > li.text-lf-4 > i {
+  border-color: transparent transparent transparent #5cd1b1;
+}
+section#textManage .text-manage-lf > li.text-lf-4 > span {
+  top: 13px;
+}
+section#textManage .text-manage-rg {
+  background-image: url(../img/text-manage-rg.png);
+  background-repeat: no-repeat;
+  width: 403px;
+  height: 241px;
+  position: relative;
+  top: 36px;
+}
+section#textManage .text-manage-rg > li {
+  position: absolute;
+  width: 122px;
+  height: 46px;
+  border: 5px solid #cccccc;
+  border-radius: 23px;
+  box-sizing: border-box;
+  background-color: #0e9678;
+}
+section#textManage .text-manage-rg > li a {
+  display: inline-block;
+  width: 112px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+section#textManage .text-manage-rg > li:hover {
+  background-color: #58a164;
+  transition: all .5s ease;
+}
+section#textManage .text-manage-rg > li.text-rg-1 {
+  top: -14px;
+  left: 130px;
+}
+section#textManage .text-manage-rg > li.text-rg-2 {
+  top: 90px;
+  left: -55px;
+}
+section#textManage .text-manage-rg > li.text-rg-3 {
+  top: 90px;
+  left: 133px;
+}
+section#textManage .text-manage-rg > li.text-rg-4 {
+  top: 90px;
+  right: -52px;
+}
+section#textManage .text-manage-rg > li.text-rg-5 {
+  bottom: -14px;
+  right: -52px;
+}
+section#textManage .text-manage-rg > li.text-rg-6 {
+  bottom: -14px;
+  left: 133px;
+}
+section#textManage .text-manage-rg > li.text-rg-7 {
+  bottom: -14px;
+  left: -55px;
+}
+section#textManage .text-manage-rg > li.text-rg-8 {
+  bottom: -108px;
+  right: -52px;
+  width: 142px;
+}
+section#textManage .text-manage-rg > li.text-rg-8 > a {
+  width: 132px;
+}
+section#textManage .text-manage-rg > li.text-rg-9 {
+  bottom: -108px;
+  left: 133px;
+}
+section#textManage .text-manage-rg > li.text-rg-10 {
+  bottom: -108px;
+  left: -55px;
+}
+
+/*# sourceMappingURL=main-style.css.map */

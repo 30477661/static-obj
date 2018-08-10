@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/cssreste.css">
+    <title>图书管理系统left</title>
+    <style>
+        aside {
+            height: 100%;
+            width: 200px;
+            background-color: #cecece;
+            /* padding-right: 20px; */
+            overflow-x: hidden;
+        }
+        
+        .menu-bar {
+            position: relative;
+            background-color: #e4eaf7;
+            height: 100%;
+            animation: leftAnima .3s linear;
+        }
+        
+        .menu-bar>li {
+            background-color: #e4eaf7;
+            height: 84px;
+            text-align: center;
+            border-left: 5px solid transparent;
+            border-bottom: 1px solid #dddddd;
+        }
+        
+        .menu-bar>li>a {
+            /* display: inline-block; */
+            width: 100%;
+            height: 100%;
+            color: #333333;
+        }
+        
+        .menu-bar>li:hover {
+            background: #d6e1f8;
+            border-left: 5px solid #4b98ee;
+        }
+        
+        .menu-bar>li.menubar-active {
+            background: #d6e1f8;
+            color: #4b98ee;
+            font-weight: bold;
+            border-left: 5px solid #4b98ee;
+        }
+        
+        .menu-bar>li.menubar-active a {
+            color: #4b98ee;
+        }
+        
+        .menu-bar>li>a>img {
+            display: block;
+            margin: 0 auto;
+            padding-top: 10px;
+        }
+        
+        .menu-bar>li>a>span {
+            font-size: 16px;
+        }
+        
+        @keyframes leftAnima {
+            0% {
+                height: 0;
+                opacity: 0;
+                overflow-y: hidden;
+            }
+            99% {
+                overflow-y: hidden;
+            }
+            100% {
+                overflow-y: auto;
+            }
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="library/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <aside>
+        <ul class="menu-bar" id="menuBar">
+            <span class="left-switch" id="leftSwitch"><img src="img/switch-icon.png" alt=""></span>
+        </ul>
+    </aside>
+    <script src="library/jquery-1.11.3.min.js"></script>
+    <script>
+        var _this = {};
+        var menuBarImg = '';
+        var menuBarImgActive = '';
+        var navBarIndex = window.localStorage.index;
+        var menuBarText = [
+            ["图书征订", "图书验收", "移交编目", "移交编目", "征订新书分类统计", "到馆新书分类统计", "未到图书分类统计"],
+            ["图书编目", "辅助数据", "编目统计", "书标打印", "书本式目录", "目录卡打印", "条形码打印", "漏码检测"],
+            ['馆藏图书', '图书剔旧', '图书注销', '图书调拨', '注销图书清单', '图书分类统计', '图书年份统计', '图书馆藏地统计', '个别登记打印', '总括登记打印'],
+            ['期刊采验', '期刊编目', '辅助数据', '期刊注销', '期刊卡片', '期刊书标', '期刊合订清单', '期刊注销报表', '期刊统计', '期刊合订本统计'],
+            ['资料编目', '资料调拨', '资料注销'],
+            ['文献流通', '预约管理', '预借管理', '借书证管理', '文献催还', '读者催款', '流通统计', '阅览室登记'],
+            ['馆藏文献检索', '读者借阅检索', '文献流通查询', '借阅清单查询', '归还清单查询', '罚赔款情况查询', '丢失情况查询', '读者交款查询', '预约查询', '预借查询'],
+            ['电子图书管理', '视频管理', '文件管理', '热门资源统计', '资源信息统计'],
+            ['参数设置', '借阅权限设置', '工作人员管理', '读者部门管理', '申购批次管理', '节假日延迟设置', '历史数据管理', '数据字典管理', '馆藏地点管理', '出版社管理', '工作量统计', '图书馆综合统计', 'IP限制', '中图法管理', '图书经费管理', '阅览室管理', '通知公告', '活动记录', 'marc设置'],
+            ['本馆概况', '新书快报', '好书推荐', '新书推荐', '图书馆公告', '留言公告', '友情链接'],
+            ['在线帮助', '图书馆查询网站', '关于']
+        ];
+        var menuBarImgUrl = "";
+        var aHerfUrl = [
+            ["main1.html", "zhengding/tsys.php", "zhengding/yjbm.php", "zhengding/wdcs.php", 'zhengding/zdstat.php', 'zhengding/dgstat.php', 'zhengding/wdstat.php'],
+            ["main.html", "catalog/redata.php", 'catalog/catalogstat.php', 'catalog/booktagprint.php', 'catalog/catalogprint.php', 'catalog/cardprint.php', 'catalog/barcodeprint.php', 'catalog/lossbarcode.php'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ];
+        //菜单栏赋值
+        function menuBarValue() {
+            for (var i = 0; i < menuBarText[navBarIndex].length; i++) {
+                $("#menuBar").append($("<li><a href=" + aHerfUrl[navBarIndex][i] + " target='main'><img><span></span></a></li>"));
+                $($("#menuBar > li")[i]).find("span").text(menuBarText[navBarIndex][i]);
+                menuBarImgUrl = "img/menu-" + (+1 + +navBarIndex) + "-" + (1 + i) + ".png";
+                $($("#menuBar > li")[i]).find("img").attr("src", menuBarImgUrl);
+            }
+        }
+        menuBarValue();
+        $("#menuBar").find("li").on("click", function(event) {
+            navBarImg = "img/menu-" + (+navBarIndex + 1) + "-" + ($(_this).index() + 1) + ".png";
+            navBarImgActive = "img/menu-" + (+navBarIndex + 1) + "-" + ($(this).index() + 1) + "-active.png";
+            $(_this).removeClass("menubar-active");
+            $(_this).find("img").attr("src", navBarImg);
+            $(this).addClass("menubar-active");
+            $(this).find("img").attr("src", navBarImgActive);
+            _this = this;
+            console.dir(this);
+            console.count();
+        });
+        //切换导航,加载页面
+        $($("#menuBar").find("li")[0]).click();
+        $($("#menuBar > li")[0]).find("img").click();
+
+        $("#leftSwitch").on('click', function() {
+            // $(window.parent.parent)[0].attr('cols', '20,*');
+            console.log(window.parent.document.getElementsByTagName("frameset")[0].clos);
+
+            window.parent.document.getElementById("frame").cols = "20,*";
+        });
+    </script>
+</body>
+
+</html>

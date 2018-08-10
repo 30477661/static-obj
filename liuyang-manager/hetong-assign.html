@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0068)http://192.168.5.52/admin/htfp2.php?pageNum=100&htid=395&MyYear=2018 -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <title>金梦想教育装备管理软件V2.0</title>
+
+    <link href="css/manage.css" rel="stylesheet" type="text/css">
+    <meta content="MSHTML 6.00.5730.11" name="GENERATOR">
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // $('#pageNum').val('100');
+        });
+
+
+        function htchangeMyYear() {
+
+            var murl = 'htfp.php?pageNum=' + $('#pageNum').val() + '&MyYear=' + $("#MyYear").val();
+            window.open(murl, '_self');
+        }
+
+
+
+        function htchange() {
+
+            var t = $("#htlist").find("option:selected").attr("orderlistid")
+
+            //alert(t);
+
+            if (t == '-1') {
+                var murl = 'htfp2.php?pageNum=' + $('#pageNum').val() + '&htid=' + $("#htlist").val() + '&MyYear=' + $("#MyYear").val();
+            } else {
+                var murl = 'htfp.php?pageNum=' + $('#pageNum').val() + '&htid=' + $("#htlist").val() + '&MyYear=' + $("#MyYear").val();
+            }
+
+
+
+            window.open(murl, '_self');
+
+
+
+
+
+
+        }
+
+        function shlchange() {
+            window.open('htfp2.php?htid=' + $("#htlist").val() + '&shlid=' + $("#shllist").val() + '&MyYear=' + $("#MyYear").val(), '_self');
+        }
+
+
+        function selectchange() {
+            var seach = $("#shlname").val();
+            var seach1 = $("#orderid").val();
+            var Type5 = $("#Type5").val();
+            window.open('FpYq2_All.php?shltype=' + Type5 + '&pageNum=10&shlname=' + seach + '&shlid=&orderid=' + seach1, '_self');
+        }
+
+
+
+
+        function IsNum(s) {
+            if (s != null && s != "") {
+                return !isNaN(s);
+            }
+            return false;
+        }
+
+        function Gobarklx(s) {
+            window.open('kcseach.php', '_self');
+        }
+
+        function checkallprice() {
+
+            var re = '0';
+            $(':text').each(function(i) {
+                var id = $(this).attr('m');
+                //alert(id);
+                var htnum = 0;
+                var yfpnum = 0;
+                var cdata = 0;
+                var oldpnum = 0;
+                htnum = parseInt($('#htnum' + id).val());
+                yfpnum = parseInt($('#yfpnum' + id).val());
+                cdata = parseInt($('#cdata' + id).val());
+                oldpnum = parseInt($('#oldpnum' + id).val());
+                var nownum = yfpnum + cdata;
+                //alert(nownum);
+                if (htnum < nownum) {
+                    alert('分配的数量大于合同总数量，请重新分配!');
+                    re = '1';
+                    $(this).focus();
+                }
+
+            });
+
+            if (re == '1') {
+                return false;
+            }
+        }
+    </script>
+    <link rel="import" href="chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/assets/tpl/resize-tooltip.html">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <table class="tableBorder1" style="WIDTH: 100%" cellspacing="0" cellpadding="3" align="center" border="0">
+        <tbody>
+            <tr>
+                <td height="10"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table width="86%" height="63" border="0" align="center" cellpadding="3" cellspacing="1" class="tableBorder">
+        <tbody>
+            <tr>
+                <th width="29%" height="23" align="right" class="tableHeaderText">零星合同采购分配 </th>
+                <th width="6%" align="right" class="tableHeaderText">&nbsp;</th>
+                <th width="11%" align="right" class="tableHeaderText">&nbsp;</th>
+                <th width="49%" align="right" class="tableHeaderText">
+                </th>
+                <th width="5%" align="right" class="tableHeaderText">
+                </th>
+            </tr>
+            <tr>
+                <td height="18" colspan="5" class="forumRow">
+                    年度
+
+                    <select name="MyYear" id="MyYear" onchange="return htchangeMyYear();">
+           
+                        <option value="2018" selected="">
+            2018            </option>
+                        <option value="2017">
+            2017            </option>
+                        <option value="2016">
+            2016            </option>
+                        <option value="2015">
+            2015            </option>
+                        <option value="2014">
+            2014            </option>
+                        <option value="2013">
+            2013            </option>
+                        <option value="2012">
+            2012            </option>
+                        <option value="2011">
+            2011            </option>
+                        <option value="2010">
+            2010            </option>
+                    </select> 合同列表 <select name="htlist" id="htlist" onchange="return htchange();">
+           
+                        <option value="395" selected="" orderlistid="-1"> 
+            [零星]  零星合同分配（5）[湖南时运电脑有限公司2018-06-20]            </option>
+                        <option value="393" orderlistid="-1"> 
+            [零星]  零星合同分配（3）[湖南时运电脑有限公司2018-06-20]            </option>
+                        <option value="391" orderlistid="184"> 
+            [集中]  2018测试计划本道[湖南省教育技术装备处2018-06-19]            </option>
+                        <option value="390" orderlistid="186"> 
+            [集中]  测试统一采购合同分配[长沙市芙蓉区麦克电子产品商行2018-06-19]            </option>
+                        <option value="389" orderlistid="-1"> 
+            [零星]  测试零星合同分配[江苏上华教学设备有限公司2018-06-19]            </option>
+                        <option value="388" orderlistid="184"> 
+            [集中]  2018测试计划[湖南省教育技术装备处2018-06-19]            </option>
+                        <option value="386" orderlistid="-1"> 
+            [零星]  现场测试仪器[浏阳市新文文体用品有限责任公司2018-06-13]            </option>
+                        <option value="385" orderlistid="-1"> 
+            [零星]  中考设备配件[长沙县星沙湘菡文体用品店2018-06-13]            </option>
+                        <option value="384" orderlistid="-1"> 
+            [零星]  班班通设备[湖南美智科技有限公司2018-06-13]            </option>
+                        <option value="383" orderlistid="-1"> 
+            [零星]  班班通设备[湖南省新果成电脑科技有限公司2018-06-13]            </option>
+                        <option value="382" orderlistid="-1"> 
+            [零星]  办公电脑[湖南联凯科技股份有限公司2018-03-12]            </option>
+                        <option value="381" orderlistid="-1"> 
+            [零星]  广播系统增补[长沙栟茶电子科技有限公司2018-01-16]            </option>
+                        <option value="380" orderlistid="-1"> 
+            [零星]  广播系统[长沙栟茶电子科技有限公司2018-01-16]            </option>
+                    </select> 学校列表
+                    <select name="shllist" id="shllist" onchange="return shlchange();">
+           
+                    </select>
+                    <input class="sel_btn" type="button" name="ajaxWin" id="ajaxWin" value="绑定学校">
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <form id="myform" action="http://192.168.5.52/admin/htfpdata2.php?action=allpost" method="post" onsubmit="return checkallprice();">
+        <div style="text-align:center;">
+            <table id="mytable" width="92%" height="51" border="0" align="center" cellpadding="3" cellspacing="1" class="tableBorder">
+                <thead>
+                    <tr>
+                        <th width="5%" height="25" class="tableHeaderText">
+                            <select name="pageNum" id="pageNum" onchange="return htchange();">
+            			            <option value="100">显示100条</option>
+            <option value="1000">显示1000条</option>
+            <option value="5000">显示5000条</option>
+          </select> </th>
+                        <th width="7%" height="25" class="tableHeaderText"></th>
+                        <th class="tableHeaderText" height="25"><input type="hidden" id="url" name="url" value="http%3A%2F%2F192.168.5.52%2Fadmin%2Fhtfp2.php%3FpageNum%3D100%26htid%3D395%26MyYear%3D2018">
+                            <input type="hidden" id="shlid" name="shlid" value="0">
+                            <input type="hidden" id="htid" name="htid" value="395"> </th>
+                        <th height="25" colspan="2" class="tableHeaderText">统一仪器分配</th>
+                        <th height="25" colspan="2" class="tableHeaderText"> </th>
+                        <th width="14%" height="25" class="tableHeaderText"> </th>
+                    </tr>
+                    <tr>
+                        <th height="18" class="forumRow">序号</th>
+
+                        <th class="forumRow">
+                            编号
+                            <input name="allurl" type="hidden" id="allurl" value="http%3A%2F%2F192.168.5.52%2Fadmin%2Fhtfp2.php%3FpageNum%3D100%26htid%3D395%26MyYear%3D2018" size="50"> </th>
+                        <th width="18%" class="forumRow">仪器名称</th>
+                        <th width="29%" class="forumRow">型号</th>
+                        <th width="8%" class="forumRow">价格</th>
+                        <th width="10%" class="forumRow">合同数量</th>
+                        <th width="9%" class="forumRow">已分配数量</th>
+                        <th class="forumRow">分配数量 </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td height="18" colspan="7" class="forumRow"> </td>
+                        <td class="forumRow"><input type="submit" name="Submit2" value="提交"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+
+
+            $('#ajaxWin').click(function() {
+                showPop('tcc', 'Htfp');
+            });
+
+
+        });
+    </script>
+
+
+    <br>
+    <!--显示分页-->
+    <div style="align:center;">
+        <div align="center">
+            <span class="">首页</span> <span class="">上一页</span> [第1页]共0页 <span class="">下一页</span> <span class="">尾页</span> 第<select name="PB_Page_Select" onchange="location.replace(this.value)"></select>页 </div>
+    </div>
+    <p></p>
+    <table width="668" height="26" align="center" id="Noprint">
+        <tbody>
+            <tr align="middle">
+                <td class="copyright" width="100%">Copyright (c) <a href="javascript:void(0);" target="_blank"> 贵州本道信息科技有限公司</a>. All Rights Reserved .</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="mask" style="filter: Alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; background-color: #000; width: 100%; height: 100%; z-index: 5px;position: absolute; left: 0; top: 0; display: none; overflow: hidden;"> </div>
+    <div id="tcc" name="tcc" style="display:none;background-color:#FFFFFF;"> </div>
+    <div id="window_resizer_tooltip_wrapper" data-pos-y="bottom" data-pos-x="right"></div>
+</body>
+
+</html>

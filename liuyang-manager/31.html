@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0035)http://192.168.5.52/admin/cwgys.php -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <title>金梦想教育装备管理软件V2.0</title>
+
+    <link href="css/manage.css" rel="stylesheet" type="text/css">
+    <meta content="MSHTML 6.00.5730.11" name="GENERATOR">
+    <script src="./31_files/jquery-1.2.6.js.下载" type="text/javascript"></script>
+    <script src="./31_files/index.js.下载" type="text/javascript"></script>
+    <script language="JavaScript" src="./31_files/jquery.selectseach.min.js.下载"></script>
+    <link href="./31_files/select.css" rel="stylesheet" type="text/css">
+    <script src="./31_files/jquery.bgiframe.min.js.下载" type="text/javascript"></script>
+    <script src="./31_files/jquery.multiSelect.js.下载" type="text/javascript"></script>
+    <link href="./31_files/jquery.multiSelect.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        function Excel() {
+            window.location = 'excel.php?key=%B9%A9%D3%A6%C9%CC%BD%E1%CB%E3';
+        }
+
+        function myyears() {
+
+            var htlist = '';
+            var my = $("#myears").val();
+
+
+
+            window.location = 'cwgys.php?my=' + my;
+        }
+
+        function hthz() {
+
+            var htlist = '';
+            var my = $("#myears").val();
+            // alert(t);
+
+            $("input[name*=orderid]").each(function() {
+
+                // alert($(this).attr('checked'));
+                if ($(this).attr('checked') == true) {
+                    htlist = htlist + $(this).val() + ',';
+                }
+
+            });
+
+            htlist = htlist.substr(0, htlist.length - 1);
+
+
+            window.location = 'cwgys.php?htlist=' + htlist + '&my=' + my;
+        }
+
+        function fanall() {
+
+            $('input[id*=data]').each(function() {
+                $(this).attr("checked", !$(this).attr("checked"));
+            });
+
+            if ($("input[id*=data]:checkbox:checked").size() == 0) {
+                $("#Submit3").val('全选');
+                return false;
+            } else {
+                $("#Submit3").val('取消');
+                return false;
+            }
+        }
+        //提交表单
+        function selectchange() {
+            var seach = $("#shlname").val();
+            var orderidpost = $("#orderid").val();
+            var sid = $("#sid").val();
+            var t = '';
+            // alert(t);
+
+            $("input[name*=orderid]").each(function() {
+
+                // alert($(this).attr('checked'));
+                if ($(this).attr('checked') == true) {
+                    t = t + $(this).val() + ',';
+                }
+
+            });
+
+            var asdf = t;
+            //alert(asdf.length);
+            var qwer = asdf.substr(0, asdf.length - 1);
+
+
+            //if ((sid=='null')||(sid=='')){
+            //sid = '-1';
+            //}
+            //alert(sid);    _self
+            //alert('Fh.php?pageNum='+$('#pageNum').val()+'&shlname='+seach+'&orderid='+orderidpost+'&shlid='+sid+'&mt='+qwer);
+
+        }
+
+
+
+
+        $(document).ready(function() {
+            //  $('#sid').selectseach();
+            $('select').selectseach();
+            $('#myears').val('2018');
+
+        });
+
+
+        $(document).ready(function() {
+
+            $("#orderid").multiSelect();
+
+
+        });
+    </script>
+    <link rel="import" href="chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/assets/tpl/resize-tooltip.html">
+</head>
+
+
+
+
+
+
+
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <table class="tableBorder1" style="WIDTH: 100%" cellspacing="0" cellpadding="3" align="center" border="0">
+        <tbody>
+            <tr>
+                <td height="10"></td>
+            </tr>
+        </tbody>
+    </table>
+    <form id="myseachinfo">
+        <table width="86%" height="63" border="0" align="center" cellpadding="3" cellspacing="1" class="tableBorder">
+            <tbody>
+                <tr>
+                    <th class="tableHeaderText" height="23">汇总条件</th>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">
+
+                        年度
+                        <select name="myears" id="myears" onchange="return myyears();">
+		 <option value="kg"> 所有年度 </option>
+        <option value="2018" selected="">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>      </select>                        合同名称
+                        <a href="javascript:;" class="multiSelect" id="orderid"><span style="width: 436px;">选项</span></a>
+                        <div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; height: 150px; width: 459px;"><label class="selectAll checked"><input type="checkbox" class="selectAll">全选</label><label><input type="checkbox" name="orderid[]" value="413">
+			 
+            222222[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="412">
+			 
+            1[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="411">
+			 
+            2124545454545[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="410">
+			 
+            23362323[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="409">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="408">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="407">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="406">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="405">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="404">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="403">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="402">
+			 
+            123123123[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="400">
+			 
+            test2[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="399">
+			 
+            test[湖南省教育技术装备处2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="398">
+			 
+            620申购计划-合同[北京方正数码有限公司2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="397">
+			 
+            浏阳一中统一合同分配[中南传媒2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="396">
+			 
+            统一采购合同分配发货[长沙轩辰电子科技公司2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="395">
+			 
+            零星合同分配（5）[湖南时运电脑有限公司2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="393">
+			 
+            零星合同分配（3）[湖南时运电脑有限公司2018-06-20]            </label><label><input type="checkbox" name="orderid[]" value="392">
+			 
+            零星合同分配（1）[中国教育技术装备杂志社2018-06-19]            </label><label><input type="checkbox" name="orderid[]" value="391">
+			 
+            2018测试计划本道[湖南省教育技术装备处2018-06-19]            </label><label><input type="checkbox" name="orderid[]" value="390">
+			 
+            测试统一采购合同分配[长沙市芙蓉区麦克电子产品商行2018-06-19]            </label><label><input type="checkbox" name="orderid[]" value="389">
+			 
+            测试零星合同分配[江苏上华教学设备有限公司2018-06-19]            </label><label><input type="checkbox" name="orderid[]" value="388">
+			 
+            2018测试计划[湖南省教育技术装备处2018-06-19]            </label><label><input type="checkbox" name="orderid[]" value="387">
+			 
+            2018图书[湖南省教育技术装备处2018-06-15]            </label><label><input type="checkbox" name="orderid[]" value="386">
+			 
+            现场测试仪器[浏阳市新文文体用品有限责任公司2018-06-13]            </label><label><input type="checkbox" name="orderid[]" value="385">
+			 
+            中考设备配件[长沙县星沙湘菡文体用品店2018-06-13]            </label><label><input type="checkbox" name="orderid[]" value="384">
+			 
+            班班通设备[湖南美智科技有限公司2018-06-13]            </label><label><input type="checkbox" name="orderid[]" value="383">
+			 
+            班班通设备[湖南省新果成电脑科技有限公司2018-06-13]            </label><label><input type="checkbox" name="orderid[]" value="382">
+			 
+            办公电脑[湖南联凯科技股份有限公司2018-03-12]            </label><label><input type="checkbox" name="orderid[]" value="381">
+			 
+            广播系统增补[长沙栟茶电子科技有限公司2018-01-16]            </label><label><input type="checkbox" name="orderid[]" value="380">
+			 
+            广播系统[长沙栟茶电子科技有限公司2018-01-16]            </label></div>
+                        <input type="button" name="button" id="button" value="汇总" onclick="hthz();"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <form action="http://192.168.5.52/admin/Fh_data.php?action=allpost" method="post" onsubmit="return checkdata();">
+        <table width="86%" height="100" border="0" align="center" cellpadding="3" cellspacing="1" class="tableBorder">
+            <tbody>
+                <tr>
+                    <th height="29" class="tableHeaderText"><span class="forumRow">
+          <input type="button" name="Submit4" value="导出数据" onclick="Excel();">
+        </span></th>
+                    <th height="29" colspan="8" class="tableHeaderText">供应商汇总列表</th>
+                </tr>
+                <tr>
+                    <td width="4%" height="18" class="forumRow">序号</td>
+                    <td width="23%" height="18" class="forumRow">供应商名称</td>
+                    <td width="23%" class="forumRow">供应商总金额</td>
+                    <td colspan="2" class="forumRow">入库总金额</td>
+                    <td width="24%" colspan="4" class="forumRow">发货总金额</td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">1</td>
+                    <td height="18" class="forumRow">湖南省教育技术装备处</td>
+                    <td height="18" class="forumRow">22,164.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        21,394.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        9,797.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">2</td>
+                    <td height="18" class="forumRow">江苏上华教学设备有限公司</td>
+                    <td height="18" class="forumRow">136,700.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        136,700.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        136,700.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">3</td>
+                    <td height="18" class="forumRow">湖南省新果成电脑科技有限公司</td>
+                    <td height="18" class="forumRow">2,068,080.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        2,068,080.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        1,857,140.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">4</td>
+                    <td height="18" class="forumRow">长沙市芙蓉区麦克电子产品商行</td>
+                    <td height="18" class="forumRow">116,640.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        116,640.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        0.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">5</td>
+                    <td height="18" class="forumRow">湖南时运电脑有限公司</td>
+                    <td height="18" class="forumRow">1,493,910.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        1,493,910.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        159,715.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">6</td>
+                    <td height="18" class="forumRow">中国教育技术装备杂志社</td>
+                    <td height="18" class="forumRow">1,619,010.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        0.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        0.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">7</td>
+                    <td height="18" class="forumRow">中南传媒</td>
+                    <td height="18" class="forumRow">235,226.50</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        235,226.50
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        0.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">8</td>
+                    <td height="18" class="forumRow">长沙轩辰电子科技公司</td>
+                    <td height="18" class="forumRow">210,198.50</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        210,198.50
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        0.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">9</td>
+                    <td height="18" class="forumRow">湖南美智科技有限公司</td>
+                    <td height="18" class="forumRow">2,084,880.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        2,084,880.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        45,100.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">10</td>
+                    <td height="18" class="forumRow">北京方正数码有限公司</td>
+                    <td height="18" class="forumRow">20,252.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        20,252.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        20,252.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">11</td>
+                    <td height="18" class="forumRow">浏阳市新文文体用品有限责任公司</td>
+                    <td height="18" class="forumRow">49,990.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        49,990.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        0.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">12</td>
+                    <td height="18" class="forumRow">长沙栟茶电子科技有限公司</td>
+                    <td height="18" class="forumRow">249,680.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        249,680.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        249,680.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">13</td>
+                    <td height="18" class="forumRow">湖南联凯科技股份有限公司</td>
+                    <td height="18" class="forumRow">4,270,500.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        4,270,500.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        4,270,500.00 </td>
+                </tr>
+                <tr>
+                    <td height="18" class="forumRow">14</td>
+                    <td height="18" class="forumRow">长沙县星沙湘菡文体用品店</td>
+                    <td height="18" class="forumRow">14,420.00</td>
+                    <td height="18" colspan="2" class="forumRow">
+
+
+                        14,420.00
+
+
+
+
+
+
+                    </td>
+                    <td height="18" colspan="4" class="forumRow">
+                        0.00 </td>
+                </tr>
+
+
+                <tr>
+                    <td height="18" colspan="2" class="forumRow">汇总:</td>
+                    <td height="18" class="forumRow">12,591,651.00</td>
+                    <td height="18" colspan="2" class="forumRow">10,971,871.00</td>
+                    <td height="18" colspan="4" class="forumRow">6,748,884.00</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <br>
+    <!--显示分页-->
+    <div style="align:center;">
+        <div align="center">
+        </div>
+    </div>
+    <p></p>
+    <!--显示底部-->
+    <table width="668" height="26" align="center" id="Noprint">
+        <tbody>
+            <tr align="middle">
+                <td class="copyright" width="100%">Copyright (c) <a href="javascript:void(0);" target="_blank"> 贵州本道信息科技有限公司</a>. All Rights Reserved .</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="window_resizer_tooltip_wrapper" data-pos-y="bottom" data-pos-x="right" class="" style="transform: scale(1) translateY(1213px) translateX(2264px);"></div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>凤凰一中</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="newBookSheil">
+    <header>
+        <div><img src="img/newbook-title.png" alt=""> 通报信息</div>
+    </header>
+    <section>
+        <div>
+            <div id="tableBook"></div>
+            <div id="tablePage"></div>
+        </div>
+        <button><a href="javascript:history.go(-1)">返回</a></button>
+    </section>
+    <script src="./layui/layui.js"></script>
+    <script>
+        layui.use(['table', 'laypage'], function() {
+            var table = layui.table;
+            var laypage = layui.laypage;
+            table.render({
+                elem: '#tableBook',
+                url: 'layui/layui-data.json',
+                page: true,
+                cols: [
+                    [{
+                        field: 'wealth',
+                        title: '时间',
+                        width: '20%'
+
+                    }, {
+                        field: 'city',
+                        title: '标题',
+                        width: '60%',
+                    }, {
+                        title: '详细',
+                        width: '20%',
+                        style: 'text-align: center',
+                        templet: function(argVal) {
+                            return '<a href = "book-detail.html"> 更多 <a/>'
+                        }
+                    }]
+                ]
+            });
+        });
+    </script>
+</body>
+
+</html>

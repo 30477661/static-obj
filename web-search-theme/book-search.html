@@ -1,0 +1,191 @@
+<style>
+    div.layui-table-body {
+        height: 135px;
+    }
+    
+    .layui-tab-item-two .search-input th {
+        text-align: right;
+    }
+    
+    .book-search-two .search-input td span {
+        color: #0090e3;
+    }
+</style>
+<div class="tab-menu book-search-one">
+    <div class="layui-tab layui-tab-card" style="height: 100%; overflow: hidden;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">中国法</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div id="layui-tab-book">
+                    <ul class="ztree treeBook"></ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="tab-menu book-search-two">
+    <div class="layui-tab layui-tab-card" style="height: 100%;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">图书检索</li>
+            <li class="">检索内容</li>
+        </ul>
+        <div class="layui-tab-content" style="">
+            <div class="layui-tab-item layui-show">
+                <form class="search-input" style="padding: 30px 0 0 30px;">
+                    <table>
+                        <tr>
+                            <th>1.选择一个查找途径：</th>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 题名(刊名)</td>
+                            <td>（如：‘红楼梦’表示书以‘红楼梦’开头）</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 责任者</td>
+                            <td>（如：‘曹雪芹’)</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 主题词</td>
+                            <td>（如：‘计算机网络’）</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 分类号</td>
+                            <td>（如：‘A41’（根据中国图书馆图书分类法））</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 国际标准书/刊号</td>
+                            <td>（如：7-01-000922-8）</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><input type="radio" name="searchBook"> 索书号</td>
+                            <td>（如：‘A41/1:1’）</td>
+                        </tr>
+                        <tr>
+                            <th>2.在一下方框输入要查找的内容</th>
+                        </tr>
+                        <tr>
+                            <td><i></i><input class="search-input-content" type="text" value=""> </td>
+                        </tr>
+                        <tr>
+                            <th style="padding: 10px 0;">3.每页浏览条数：
+                                <select name="" id="">
+                                    <option value="1">10条</option>
+                                    <option value="2">20条</option>
+                                    <option value="1">30条</option>
+                                    <option value="1">40条</option>
+                                    <option value="1">50条</option>
+                                </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>4.检索方式：<input type="radio" name="searchType"> <span style="color: #815d45;">前方一致</span><i></i><input type="radio" name="searchType"> <span style="color: #815d45;">模糊检索</span></th>
+                        </tr>
+                    </table>
+                    <div style="text-align: center; padding: 40px 0;">
+                        <button class="btn-primary" type="submit">开始查询</button>
+                        <i></i>
+                        <button class="btn-primary" type="reset">重填检索</button>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item layui-tab-item-two">
+                <div class="table-search-box">
+                    [图书信息] 您可以 [预借该书] 或借阅该书，可供预借、借阅的数量2本，
+                </div>
+                <div class="search-input" style="padding: 10px 0;">
+                    <table>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>题名/责任者：&nbsp;</th>
+                            <td><span>社会热点面对面.六</span>/钱民辉著</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>丛编题名：&nbsp;</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>ISBN号：&nbsp;</th>
+                            <td>978-7-5115-4642-5</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>出版发行项：&nbsp;</th>
+                            <td>人民日报出版社 2017.06</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>载体信息：&nbsp;</th>
+                            <td>270页 24cm CNY38.8</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>责任者：&nbsp;</th>
+                            <td><span>钱民辉</span></td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>中图分类法类号：&nbsp;</th>
+                            <td><span>D66</span></td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>主题：&nbsp;</th>
+                            <td>社会问题</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>附注项：&nbsp;</th>
+                            <td>社会热点解读系列作品</td>
+                        </tr>
+                        <tr>
+                            <td><i></i><i></i><i></i></td>
+                            <th>内容简介：&nbsp;</th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="layui-tab-newbook"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use(['element', 'table', 'laypage'], function() {
+        var element = layui.element;
+        var table = layui.table;
+        var laypage = layui.laypage;
+        table.render({
+            elem: '.layui-tab-newbook',
+            url: 'lib/layui/layui-data.json',
+            cols: [
+                [{
+                    type: 'numbers',
+                    title: '名次',
+                    width: '10%',
+                    style: 'text-align: center; text-indent: 0;'
+
+                }, {
+                    field: 'id',
+                    title: '索引号',
+                    width: '20%',
+                }, {
+                    field: 'username',
+                    title: '书名',
+                    width: '50%',
+                }, {
+                    field: 'classify',
+                    title: '作者',
+                    width: '20%',
+                }]
+            ]
+        });
+    });
+    setTimeout(function() {
+        $.fn.zTree.init($(".treeBook"), setting, zNodes);
+    }, 300)
+</script>

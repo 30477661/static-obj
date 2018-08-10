@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/manage.css">
+    <title>right-top</title>
+</head>
+
+<body id="rightTop">
+    <div class="user-news">
+        <img onclick="Submit_onclick()" id="ImgArrow" style="float: left;cursor: pointer;" src="image/zuoce_03.png">
+        <img src="image/right-top-head.png" alt=""> &nbsp;个人信息
+    </div>
+</body>
+<script>
+    function Submit_onclick() {
+        if (window.parent.parent.document.getElementById("myFrame").cols == "178,*") {
+            window.parent.parent.document.getElementById("myFrame").cols = "0,*";
+            document.getElementById("ImgArrow").src = "image/youce_03.png";
+        } else {
+            window.parent.parent.document.getElementById("myFrame").cols = "178,*";
+            document.getElementById("ImgArrow").src = "image/zuoce_03.png";
+        }
+    }
+</script>
+
+</html>

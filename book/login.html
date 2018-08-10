@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>金梦想图书登录</title>
+    <link rel="stylesheet" href="css/cssreste.css">
+    <style>
+        body {
+            background-image: url(login-img/logo-bg.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        header {
+            width: 980px;
+            margin: 0 auto;
+            height: 25%;
+            line-height: 12;
+        }
+        
+        header>img {
+            vertical-align: bottom;
+        }
+        
+        footer {
+            width: 980px;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #fff;
+            padding-top: 10px;
+        }
+        
+        .content-out {
+            background-color: #eaf3fc;
+            height: 32%;
+        }
+        
+        .content {
+            height: 100%;
+            width: 980px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .login-role {
+            position: absolute;
+            width: 52px;
+            height: 53px;
+            bottom: -53px;
+            right: -40px;
+        }
+        
+        section {
+            font-size: 14px;
+            color: #333;
+            height: 150px;
+            width: 470px;
+            position: absolute;
+            top: 50%;
+            margin-top: -75px;
+        }
+        
+        .left-content>li {
+            margin-bottom: 10px;
+        }
+        
+        .left-content>li a {
+            margin-right: 15px;
+        }
+        
+        .left-content>li a:hover {
+            text-decoration-line: underline;
+        }
+        
+        .left-content>li img {
+            vertical-align: -2px;
+        }
+        
+        aside {
+            width: 340px;
+            height: 400px;
+            position: absolute;
+            top: 50%;
+            margin-top: -200px;
+            right: 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px -1px 10px 3px #cccccc59;
+        }
+        
+        .aside-top {
+            height: 49px;
+            border-bottom: 1px solid #ddd;
+            line-height: 49px;
+            color: #4a80ed;
+            font-size: 22px;
+            padding-left: 20px;
+        }
+        
+        .aside-cont {
+            padding: 50px 40px 0 40px;
+        }
+        
+        .login-entry>li {
+            width: 260px;
+            height: 32px;
+            /* box-sizing: border-box;
+            border: 1px solid #dddddd; */
+            line-height: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .login-entry>li img {
+            vertical-align: middle;
+        }
+        
+        .login-entry>li .verify-code img {
+            vertical-align: top;
+        }
+        
+        .login-entry>li .verify-code {
+            float: right;
+            border: 1px solid #dddddd;
+            height: 30px;
+            width: 102px;
+            text-align: center;
+        }
+        
+        .login-entry>li label {
+            display: inline-block;
+            width: 30px;
+            height: 32px;
+            text-align: center;
+            background-color: #dddddd;
+        }
+        
+        .login-entry>li input {
+            text-indent: 12px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0;
+            border: 1px solid #dddddd;
+            vertical-align: top;
+            transition: all .5s ease;
+        }
+        
+        .login-entry>li button {
+            font-size: 14px;
+            display: inline-block;
+            width: 120px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            border-radius: 4px;
+            background-color: rgb(74, 128, 237);
+            color: #fff;
+        }
+        
+        input:focus {
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="library/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <img src="login-img/login-logo.png" alt="">
+    </header>
+    <div class="content-out">
+        <div class="content">
+            <section>
+                <ul class="left-content">
+                    <li>1- 区域内图书馆集群物理上分布式，服务上零距离的系统平台</li>
+                    <li>2- 实现区域内图书馆的书刊信息和读者信息共享</li>
+                    <li>3- 管理部门可实时对区域内所有图书馆的工作进行监控，统计、分析，并进行统一采购、传达指示通知</li>
+                    <li>
+                        <a><img src="login-img/login-i1.png" alt=""> <b>使用说明</b></a>
+                        <a><img src="login-img/login-i2.png" alt=""> <b>编目器下载</b></a>
+                        <a><img src="login-img/login-i3.png" alt=""> <b>客户qq群</b></a>
+                        <a><img src="login-img/login-i4.png" alt=""> <b>打印组件</b></a>
+                    </li>
+                </ul>
+            </section>
+            <aside>
+                <div class="aside-top">用户登录</div>
+                <div class="aside-cont">
+                    <form action="">
+                        <ul class="login-entry">
+                            <li><label for="userName"><img src="login-img/login1.png" alt=""></label><input type="text" name="userName" id="userName" placeholder="用户名" style="width: 228px;" required="required"></li>
+                            <li><label for="passWord"><img src="login-img/login2.png" alt=""></label><input type="password" name="passWord" id="passWord" placeholder="密码" style="width: 228px;" required="required"></li>
+                            <li><label for="verifyCode"><img src="login-img/login3.png" alt=""></label><input type="text" name="verifyCode" id="verifyCode" placeholder="验证码" style="width: 108px;" required="required">
+                                <div class="verify-code"><img src="login-img/login-verify.png" alt=""></div>
+                            </li>
+                            <li>
+                                <button type="submit">登录</button>
+                                <button type="reset" class="pull-right">取消</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </aside>
+            <div class="login-role"><img src="login-img/login-role.png" alt=""></div>
+        </div>
+    </div>
+    <footer>金梦想图书馆管理系统 , Copyright (c) 2001-2016 jswkj.com. All Rights Reserved.</footer>
+    <script>
+        function resolve() {
+            console.log(1);
+        };
+
+        function reject() {
+            console.log(2);
+        };
+        let promise = new Promise((resolve, reject) => {
+            debugger;
+            resolve();
+            reject();
+        });
+    </script>
+</body>
+
+</html>

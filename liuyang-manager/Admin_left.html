@@ -1,0 +1,653 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href="css/manage.css" rel="stylesheet" type="text/css">
+    <LINK href="Admin/admin.css" type=text/css rel=stylesheet>
+
+</HEAD>
+
+<BODY>
+    <TABLE cellSpacing=0 cellPadding=0 width=180 border=0>
+        <TBODY>
+            <TR>
+                <TD width="180" height=60 align=center class=logo_bg><img src="image/logo.svg" width="120"></TD>
+            </TR>
+        </TBODY>
+    </TABLE>
+    <TABLE width=180 style="height: 100%; margin-top: -60px ;padding-top: 60px; border: none;" border=0 cellPadding=0 cellSpacing=0 class=ctrl_menu>
+        <TBODY width=180 style="height: 100%; position: relative;margin-top: -60px ;padding-top: 60px;">
+            <TR style=" position: absolute;">
+                <TD width="180" align=middle>
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc1')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon1_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;基础数据</TD>
+                                <TD width=20>
+                                    <IMG id=iconDown1 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc1 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+                                            <TR>
+                                                <TD onclick="this.children[0].children[0].setAttribute('src','image/icon-childmen.png')">
+                                                    <A href="basicinfo.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;本单位基本信息</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="shlinfo.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;学校信息管理</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <a href="expdirinfo_open.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;实验目录信息</a>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <a href="asseinfo_open.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;资产目录信息</a>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <a href="baseccode.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;基本代码维护</a>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <a href="EDUSuppliers_open.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;供货商管理</a>
+                                                </TD>
+                                            </TR>
+                                            <!--                    <TR>
+                      <TD><A 
+                  href="usermanagement.php" 
+                  target=main>用户管理</A></TD>
+                    </TR>
+                    <TR>
+                      <TD><A 
+                  href="updatemm.php" 
+                  target=main>修改管理密码</A></TD>
+                    </TR>-->
+                                        </TBODY>
+                                    </TABLE>
+                                </TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc38')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon2_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;采购管理</TD>
+                                <TD width=20>
+                                    <IMG id=MenuFunc9 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc38 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+                                            <TR>
+                                                <TD>
+                                                    <A href="cgplans.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;制定计划</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="Sgmlhz.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;编制订货</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="HtSeach.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;制作合同</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="OkHtSeach.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;合同查询</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="htfp.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;合同分配</A>
+                                                </TD>
+                                            </TR>
+
+
+
+                                        </TBODY>
+                                    </TABLE>
+                                </TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+
+
+                    <!----
+
+        <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 
+      border=0>
+          <TBODY>
+            <TR class=hand onClick="hide('hideMenuFunc9')">
+              <TD class=ctrl_menu_title width=155><img src="image/icon1_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;合同管理</TD>
+              <TD width=20><IMG id=MenuFunc9 
+            src="Admin/icon_03.png"></TD>
+            </TR>
+            <TR id=hideMenuFunc9 style="DISPLAY: none">
+              <TD class=menu_box_pad align=left colSpan=2><TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" 
+            border=0>
+                  <TBODY>
+ 
+                    <TR>
+                      <TD><A 
+                  href="HtSeach.php" 
+                  target=main>制作合同内容</A></TD>
+                    </TR>
+                    <TR>
+                      <TD><A 
+                  href="OkHtSeach.php" 
+                  target=main>签订合同查询</A> <A 
+                  href="HtYqSeach.php" 
+                  target=main></A></TD>
+                    </TR>
+                  </TBODY>
+                </TABLE></TD>
+            </TR>
+          </TBODY>
+        </TABLE>
+
+---->
+
+
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc10')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon3_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;仓储管理</TD>
+                                <TD width=20>
+                                    <IMG id=MenuFunc9 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc10 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+                                            <TR>
+                                                <TD>
+                                                    <A href="RkHt.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;入库</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="KcSeach.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;库存</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="htFh.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;发货</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="Ch.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;冲红</A>
+                                                </TD>
+                                            </TR>
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="ShlYsSeachOk.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;验收</A>
+                                                </TD>
+                                            </TR>
+
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="FhAllTj.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;发货统计</A>
+                                                </TD>
+                                            </TR>
+
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="FhhtTj.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;发货合同统计</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="ZBAllTj.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;装备统计</A>
+                                                </TD>
+                                            </TR>
+
+                                        </TBODY>
+                                    </TABLE>
+                                </TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc81')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon4_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;财务对账</TD>
+                                <TD width=20>
+                                    <IMG id=MenuFunc9 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc81 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+                                            <TR>
+                                                <TD>
+                                                    <A href="cwgys.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;供应商结算</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="cwxx.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;学校结算</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="cwht.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;合同结算</A>
+                                                </TD>
+                                            </TR>
+
+
+
+
+                                        </TBODY>
+                                    </TABLE>
+                                </TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc91')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon5_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;设备管理</TD>
+                                <TD width=20>
+                                    <IMG id=MenuFunc9 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc91 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+                                            <!--         <TR>
+                      <TD><A 
+                  href="allsbstat_open.php" 
+                  target=main>设备查看</A></TD>
+                    </TR> -->
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="allsbstat_open1.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;设备查看</A>
+                                                </TD>
+                                            </TR>
+
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="allsbstat_a3.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;已注销设备</A>
+                                                </TD>
+                                            </TR>
+
+
+                                            <TR>
+                                                <TR>
+                                                    <TD>
+                                                        <A href="EDUMigrate_open.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;设备转移</A>
+                                                    </TD>
+                                                </TR>
+                                                <TR>
+                                                    <TD>
+                                                        <A href="zhuxiao_open.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;批量注销</A>
+                                                    </TD>
+                                                </TR>
+
+
+
+
+                                        </TBODY>
+                                    </TABLE>
+                                </TD>
+                                </TR>
+                        </TBODY>
+                    </TABLE>
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc6')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon6_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;统计报表</TD>
+                                <TD width=20>
+                                    <IMG id=MenuFunc9 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc6 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+                                            <TR>
+                                                <TD>
+                                                    <A href="allstats_open.php?opentype=ok" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;学校基表</A>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+
+                                                <TD>
+                                                    <a href="xxhz.php?maction=小学教育技术装备汇总报表" target="main"><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;小学汇总</a>
+                                                </TD>
+                                            </TR>
+                                            <TR>
+                                                <TD>
+                                                    <A href="xxhz.php?maction=初级中学教育技术装备统计汇总表" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;初中汇总</A>
+                                                </TD>
+                                            </TR>
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="xxhz.php?maction=高级中学教育技术装备统计汇总表" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;高中汇总</A>
+                                                </TD>
+                                            </TR>
+
+                                            <TD>
+                                                <A href="fzsy.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;实验用房</A>
+                                            </TD>
+                            </TR>
+                            <TR>
+                                <TD>
+                                    <A href="fzpt.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;配套用房</A>
+                                </TD>
+                            </TR>
+
+                            <TR>
+                                <TD>
+                                    <A href="fzxx.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;信息技术用房</A>
+                                </TD>
+                            </TR>
+
+                            <TR>
+                                <TD>
+                                    <A href="fzqt.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;其它统计</A>
+                                </TD>
+                            </TR>
+                            <tr>
+                                <TD>
+                                    <A href="bbttj.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;班班通统计</A>
+                                </TD>
+                            </TR>
+                            <tr>
+                                <TD>
+                                    <A href="qctj.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;器材统计</A>
+                                </TD>
+                            </TR>
+
+
+                            <tr>
+                                <TD>
+                                    <A href="qst.php?action=y" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;装备采购趋势</A>
+                                </TD>
+                            </TR>
+
+
+                            <tr>
+                                <TD>
+                                    <A href="qstfh.php?action=y" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;学校发货趋势</A>
+                                </TD>
+                            </TR>
+
+
+                            <tr>
+                                <TD>
+                                    <A href="qstzb.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;学校装备趋势</A>
+                                </TD>
+                            </TR>
+
+                            </TBODY>
+                            </TABLE>
+                            </TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+
+
+
+
+
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc7')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon7_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;缺口分析</TD>
+                                <TD width=20>
+                                    <IMG id=MenuFunc9 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc7 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="yfrule.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;用房缺口规则</A>
+                                                </TD>
+                                            </TR>
+
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="syyfqk.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;实验用房缺口</A>
+                                                </TD>
+                                            </TR>
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="ptyfqk.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;配套用房缺口</A>
+                                                </TD>
+                                            </TR>
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="yqsbqk.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;仪器设备缺口</A>
+                                                </TD>
+                                            </TR>
+
+
+
+                                        </TBODY>
+                                    </TABLE>
+                                </TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+
+
+
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand onClick="hide('hideMenuFunc100')">
+                                <TD class=ctrl_menu_title width=155><img src="image/icon8_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;系统设置</TD>
+                                <TD width=20>
+                                    <IMG id=MenuFunc9 src="Admin/icon_03.png">
+                                </TD>
+                            </TR>
+                            <TR id=hideMenuFunc100 style="DISPLAY: none">
+                                <TD class=menu_box_pad align=left colSpan=2>
+                                    <TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="usermanagement.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;用户管理</A>
+                                                </TD>
+                                            </TR>
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="updatemm.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;密码设置</A>
+                                                </TD>
+                                            </TR>
+
+                                            <TR>
+                                                <TD>
+                                                    <A href="TaskSetting.php" target=main><img src="image/icon-childmen.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;计划任务</A>
+                                                </TD>
+                                            </TR>
+
+
+
+                                        </TBODY>
+                                    </TABLE>
+                                </TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+
+
+
+
+                    <!-----
+		 
+        <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 
+      border=0>
+          <TBODY>
+            <TR class=hand onClick="hide('hideMenuFunc7')">
+              <TD class=ctrl_menu_title width=155><img src="image/icon7_03.png" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;数据查询</TD>
+              <TD width=20><IMG id=MenuFunc9 
+            src="Admin/icon_03.png"></TD>
+            </TR>
+            <TR id=hideMenuFunc7 style="DISPLAY: none">
+              <TD class=menu_box_pad align=left colSpan=2><TABLE class=menu_box cellSpacing=0 cellPadding=0 width="100%" 
+            border=0>
+                  <TBODY>
+                    
+            
+                     <TR>
+                      <TD><A 
+                  href="allsbstat_open.php" 
+                  target=main>设备统计</A></TD>
+                    </TR> 
+                  
+                            <TR>
+                      <TD><A 
+                  href="xxhz2.php?maction=实验用房" 
+                  target=main>实验用房</A></TD>
+                    </TR>   
+                                                                        <TR>
+                      <TD><A 
+                  href="xxhz2.php?maction=配套用房" 
+                  target=main>配套用房</A></TD>
+                    </TR>
+                    
+                                                                         <TR>
+                      <TD><A 
+                  href="xxhz2.php?maction=信息技术用房" 
+                  target=main>信息技术用房</A></TD>
+                    </TR>
+                    
+                                                                       <TR>
+                      <TD><A 
+                  href="xxhz2.php?maction=其它统计" 
+                  target=main>其它统计</A></TD>
+                    </TR>
+   
+                  </TBODY>
+                </TABLE></TD>
+            </TR>
+          </TBODY>
+        </TABLE>
+
+ ---->
+                    <TABLE class=ctrl_menu_title_bg cellSpacing=0 cellPadding=0 width=180 border=0>
+                        <TBODY>
+                            <TR class=hand>
+                                <TD width=87 align="center" class=ctrl_menu_title><a href="index.php" target="_parent" style="color: #CCC">首页</a></TD>
+                                <TD width=87 align="center" class=ctrl_menu_title><a href="logout.php" target="_parent" onClick="javascript:return confirm('确定要退出吗？')" style="color: #CCC">退出</a></TD>
+                            </TR>
+                        </TBODY>
+                    </TABLE>
+                </TD>
+            </TR>
+            <TR height=5>
+                <TD></TD>
+            </TR>
+            <TR height=5>
+                <TD></TD>
+            </TR>
+            <TR height=5>
+                <TD></TD>
+            </TR>
+            <TR height=5>
+                <TD></TD>
+            </TR>
+        </TBODY>
+    </TABLE>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <SCRIPT type="text/javascript">
+        var displayTab = "none";
+        var _this = {
+            style: {},
+            children: [{
+                style: {}
+            }, {
+                children: [{
+                    setAttribute: function() {}
+                }]
+            }]
+        };
+        var _thisElmen = {
+            style: {}
+        };
+
+        function yy(_sId) {
+            return document.getElementById(_sId);
+        }
+        window.onload = function() {
+            yy('hideMenuFunc1').style.display = "none";
+            yy('hideMenuFunc38').style.display = "none";
+            yy('hideMenuFunc10').style.display = "none";
+            yy('hideMenuFunc6').style.display = "none";
+            yy('hideMenuFunc81').style.display = "none";
+            yy('hideMenuFunc91').style.display = "none";
+            yy('hideMenuFunc7').style.display = "none";
+            yy('hideMenuFunc100').style.display = "none";
+        }
+
+        function hide(_sId) {
+            if (_thisElmen != yy(_sId)) {
+                _thisElmen.style.display = "none";
+            }
+            _this.style.backgroundColor = "#0069ba";
+            _this.children[0].style.borderLeft = "5px solid transparent";
+            _this.children[1].children[0].setAttribute("src", "Admin/icon_03.png");
+            if (yy(_sId).style.display == "none") {
+                yy(_sId).style.display = "";
+                yy(_sId).parentNode.children[0].style.backgroundColor = "#0051ad";
+                yy(_sId).parentNode.children[0].children[0].style.borderLeft = "5px solid #00baff";
+                yy(_sId).parentNode.children[0].children[1].children[0].setAttribute("src", "image/icon-down.png");
+                _this = yy(_sId).parentNode.children[0];
+                _thisElmen = yy(_sId);
+            } else {
+                yy(_sId).style.display = "none";
+
+            }
+            jq_sId = '#' + _sId;
+            var jq_sIdTd = jq_sId + " " + "table";
+            // console.log($(jq_sId).find("img"));
+            $(jq_sIdTd).find("td").on("click", function() {
+                $(".menu_box_pad").find("img").attr("src", "image/icon-childmen.png");
+                $(this).find("img").attr("src", "image/icon-childmen1.png");
+
+            });
+        }
+
+        hide('hideMenuFunc1');
+    </SCRIPT>
+
+</BODY>
+
+</HTML>

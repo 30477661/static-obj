@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>凤凰一中</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="bookSearch">
+    <header>
+        <div><img src="img/booksearch-title.png" alt=""> 图书检索</div>
+    </header>
+    <section>
+        <div>
+            <div class="search-prompt">请输入检索关键字（可组合输入）输入拼音和索书号时请注意大写</div>
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">书名拼音</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="bookname" required placeholder="请输入书名拼音" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">作者拼音</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="bookauthor" required placeholder="请输入作者拼音" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">索取号</label>
+                    <div class="layui-input-block layui-form-selected">
+                        <select name="serialnumber">
+                            <option value=""></option>
+                            <option value="0">A-马、列、毛、邓理论</option>
+                            <option value="1">B-哲学、宗教</option>
+                            <option value="2">C-社会科技总论</option>
+                            <option value="3">D-政治、法律</option>
+                            <option value="4">E-军事</option>
+                            <option value="4">F-经济</option>
+                            <option value="4">G-文化、科学、教育、体育</option>
+                            <option value="4">H-语言、文字</option>
+                            <option value="4">I-文学</option>
+                            <option value="4">J-艺术</option>
+                            <option value="4">K-历史、地理</option>
+                            <option value="4">N-自然科学总论</option>
+                            <option value="4">O-数理科学和化学</option>
+                            <option value="4">P-天文学、地球科学</option>
+                            <option value="4">Q-生物科学</option>
+                            <option value="4">R-医药、卫生</option>
+                            <option value="4">S-农业科学</option>
+                            <option value="4">T-工业技术</option>
+                            <option value="4">U-交通运输</option>
+                            <option value="4">V-航空、航天</option>
+                            <option value="4">X-环境科学、安全科学</option>
+                            <option value="4">Z-综合性图书</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item clearfix search-submit">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">开始检索</button>
+                        <button type="reset" class="layui-btn layui-btn-primary pull-right">重新来过</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button><a href="javascript:history.go(-1)">返回</a></button>
+    </section>
+    <script src="./layui/layui.js"></script>
+    <script>
+        layui.use('form', function() {
+            var form = layui.form;
+
+            //监听提交
+            form.on('submit(formDemo)', function(data) {
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>

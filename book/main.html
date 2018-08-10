@@ -1,0 +1,240 @@
+<!-- saved from url=(0041)http://192.168.5.2/zhengding/lxzdlist.php -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="Author" content="jswkj.com">
+    <meta name="WebSite" content="www.jswkj.com">
+    <meta name="Version" content="ver 2.0">
+    <title>金梦想图书馆管理系统</title>
+    <link rel="stylesheet" href="css/cssreste.css">
+    <link href="./main_files/skin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./main_files/style.css" type="text/css">
+    <link href="./main_files/mask.css" rel="stylesheet" type="text/css">
+    <script language="JavaScript" src="./main_files/jquery.mask.js.下载"></script>
+    <script language="JavaScript" src="./main_files/jqDnR.js.下载"></script>
+    <script language="javascript">
+        var imgDir = "../js/calendar/";
+    </script>
+    <script language="javascript" src="./main_files/calendar.js.下载"></script>
+    <link rel="import" href="chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/assets/tpl/resize-tooltip.html">
+</head>
+
+<body>
+    <div onclick="bShow=true" id="calendar" style="z-index:+999;position:absolute;visibility:hidden;">
+        <table width="220" style="font-family:arial;font-size:11px;border-width:1;border-style:solid;border-color:#a0a0a0;font-family:arial; font-size:11px" bgcolor="#ffffff">
+            <tbody>
+                <tr bgcolor="#0000aa">
+                    <td>
+                        <table width="218">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:2px;font-family:arial; font-size:11px;">
+                                        <font color="#ffffff"><b><span id="caption"><span id="spanLeft" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeLeft&quot;,&quot;left2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to scroll to previous month. Hold mouse button to scroll automatically.&quot;" onclick="javascript:decMonth()" onmouseout="clearInterval(intervalID1);swapImage(&quot;changeLeft&quot;,&quot;left1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onmousedown="clearTimeout(timeoutID1);timeoutID1=setTimeout(&quot;StartDecMonth()&quot;,500)" onmouseup="clearTimeout(timeoutID1);clearInterval(intervalID1)">&nbsp;<img id="changeLeft" src="./main_files/left1.gif" width="10" height="11" border="0">&nbsp;</span>&nbsp;<span id="spanRight" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeRight&quot;,&quot;right2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to scroll to next month. Hold mouse button to scroll automatically.&quot;" onmouseout="clearInterval(intervalID1);swapImage(&quot;changeRight&quot;,&quot;right1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onclick="incMonth()" onmousedown="clearTimeout(timeoutID1);timeoutID1=setTimeout(&quot;StartIncMonth()&quot;,500)" onmouseup="clearTimeout(timeoutID1);clearInterval(intervalID1)">&nbsp;<img id="changeRight" src="./main_files/right1.gif" width="10" height="11" border="0">&nbsp;</span>&nbsp;<span id="spanMonth" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeMonth&quot;,&quot;drop2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to select a month.&quot;" onmouseout="swapImage(&quot;changeMonth&quot;,&quot;drop1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onclick="popUpMonth()"></span>&nbsp;<span id="spanYear" style="border-style:solid;border-width:1;border-color:#3366FF;cursor:pointer" onmouseover="swapImage(&quot;changeYear&quot;,&quot;drop2.gif&quot;);this.style.borderColor=&quot;#88AAFF&quot;;window.status=&quot;Click to select a year.&quot;" onmouseout="swapImage(&quot;changeYear&quot;,&quot;drop1.gif&quot;);this.style.borderColor=&quot;#3366FF&quot;;window.status=&quot;&quot;" onclick="popUpYear()"></span>&nbsp;</span></b></font>
+                                    </td>
+                                    <td align="right">
+                                        <a href="javascript:hideCalendar()"><img src="./main_files/close.gif" width="15" height="13" border="0" alt="Close the Calendar"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:5px" bgcolor="#ffffff"><span id="contents"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="selectMonth" style="z-index:+999;position:absolute;visibility:hidden;"></div>
+    <div id="selectYear" style="z-index:+999;position:absolute;visibility:hidden;"></div>
+    <script>
+        $(function() {
+            $('#seach').change(function() {
+                var seach_name = $('#seach').val();
+                if (seach_name == 'cgrq') {
+                    $('#search_where').html("起始：<input name='str' type='text' class='smallinput' id='str' value='2018-04-27'  isEmpty='true' msg='查询内容不能为空!' notice='请输入查询内容!' onclick=" + "popUpCalendar(this,document.getElementById('str'),'yyyy-mm-dd');" + ">结束：<input name='str1' type='text' class='smallinput' id='str1' value='2018-06-26'  isEmpty='true' msg='查询内容不能为空!' notice='请输入查询内容!' onclick=" + "popUpCalendar(this,document.getElementById('str1'),'yyyy-mm-dd');" + "><input type='submit' name='Submit42' value='查询'>");
+                }
+                if (seach_name != 'cgrq') {
+
+                    $('#search_where').html("<input name='str' type='text' class='smallinput' id='str' value=''  isEmpty='true' msg='查询内容不能为空!' notice='请输入查询内容!'>&nbsp;<input type='submit' name='Submit42' value='查询'>");
+                    $('#str').val('');
+                }
+            });
+            $('#seach1').checkform({
+                'fun': 'selectchange()'
+            });
+        });
+
+        function selectchange() {
+
+            var pdata = 'lxzdlist.php?' + $('#seach1').serialize();
+            //alert(pdata);
+            window.open(pdata, '_self')
+        }
+    </script>
+
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td width="17" valign="top"></td>
+                <td valign="top">
+                    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+                        <tbody>
+                            <tr>
+                                <td height="31">
+                                    <div class="titlebtno"><a href="http://192.168.5.2/zhengding/tszd.php">统一征订</a></div>
+                                    <div class="titlebt">自主征订</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td width="16" valign="top"></td>
+            </tr>
+            <tr>
+                <td valign="middle">&nbsp;</td>
+                <td valign="top">
+
+                    <!--主框架开始-->
+                    <div id="main">
+                        <div id="slip">
+
+                            <!--选项卡开始-->
+                            <div id="slipmenu">
+                                <a href="http://192.168.5.2/zhengding/lxzd.php">零星征订</a>
+                                <a href="http://192.168.5.2/zhengding/plzd.php">导入Excel征订</a>
+                                <a href="http://192.168.5.2/zhengding/lxzdlist.php#" id="t0" style="background: url(&quot;../images/menusel.png&quot;);">查询</a>
+                                <a href="http://192.168.5.2/zhengding/zdcc.php">征订查重</a>
+                                <a href="http://192.168.5.2/report/report.php?key=%E5%9B%BE%E4%B9%A6%E9%9B%B6%E6%98%9F%E5%BE%81%E8%AE%A2%E6%8A%A5%E8%A1%A8" target="_blank">打印</a>
+
+
+                            </div>
+                            <!--选项卡结束-->
+
+                            <div id="b0" style="">
+                                <div id="list">
+                                    <form id="seach1" mtype="seach">
+                                        <table width="480" cellspacing="0" class="tablesorter" id="table1">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="178">条件
+                                                        <select name="seach" id="seach">
+	  <option value="isbn">ISBN</option>
+	  <option value="ztm">主题名</option>
+	  <option value="UserName">订购人</option>
+      <option value="pcName">征订批次</option>
+	  <option value="cgrq">订购时间</option>
+	  </select>
+                                                    </td>
+                                                    <td width="705" id="search_where"> <input name="str" type="text" class="smallinput" id="str" value="" isempty="true" msg="查询内容不能为空!" notice="请输入查询内容!">
+                                                        <div id="msg" style="position: absolute; text-align: left; top: 54.8px; left: 432.6px; border: 0px; background-color: rgb(243, 250, 255); color: rgb(70, 181, 1); width: 0px;"></div> <input type="submit" name="Submit42" value="查询">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </form>
+
+                                    <!---分页内容开始-->
+
+
+                                    <table id="table1" cellspacing="0" class="tablesorter">
+                                        <thead>
+                                            <tr>
+                                                <th width="41">序号</th>
+                                                <th width="150">ISBN</th>
+                                                <th width="279">主题名</th>
+                                                <th width="246">作者</th>
+                                                <th width="84">征订价格</th>
+                                                <th width="118">征订数量</th>
+                                                <th width="118">征订批次</th>
+                                                <th colspan="2">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                            <tr>
+                                                <td height="18" colspan="9" class="forumRow">&nbsp;没有记录!</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                    <!--显示分页-->
+                                    <div class="k_pagelist">
+                                        <div align="center">
+                                            <span class=""><span style="border:1px solid #004b7e;color:Black">首页</span></span> <span class=""><span style="border:1px solid #004b7e;color:Black">上页</span></span> <span class=""><span style="border:1px solid #004b7e;color:Black">下页</span></span>
+                                            <span class=""><span style="border:1px solid #004b7e;color:Black">尾页</span></span>
+                                        </div>
+                                    </div>
+                                    <!---分页内容结束-->
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td valign="bottom"></td>
+                <td></td>
+                <td valign="bottom"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0;
+            font-family: Verdana;
+            font-size: 14px;
+        }
+        
+        .left_txt {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            line-height: 25px;
+            color: #666666;
+        }
+    </style>
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td height="5">
+                    <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                        <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="left_txt">
+                    <div align="center">金梦想图书馆管理系统 , 授权使用单位 : 双凤中学 . Copyright (c) 2001-2016jswkj.com. All Rights Reserved .</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script language="javascript1.5" type="text/javascript">
+        j = 0;
+        slip(0);
+    </script>
+
+    <div id="window_resizer_tooltip_wrapper" data-pos-y="bottom" data-pos-x="right"></div>
+</body>
+
+</html>

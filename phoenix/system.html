@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>凤凰一中</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="system">
+    <header>
+        <div><img src="img/system-title.png" alt=""> 规章制度</div>
+    </header>
+    <section>
+        <div class="one-page" id="onePage">
+            <p>为了充分发挥我校图书馆的作用，使之更好地为广大师生的教学服务，现将图书馆外借处学生借书事宜及有关制度知知如下：</p>
+            <p class="p-top p-number"><b>1. 读者凭借书证借书</b></p>
+            <p class="p-number">借书证只限本人使用，借书时须出示借书证，做到人、证相符，以防假冒，因转借、代借而造成的一切后果均由原持证人负责。</p>
+
+            <p class="p-top p-number"><b>2. 借书程序、数量及期限</b></p>
+            <p class="p-number">要借书的同学先由本人在书库找到自己所要的图书，由本人到借台办理借书手续。学生看完后由本人来办理还书手续。</p>
+            <p class="p-number">学生每人借书指标为3本，借书期限一个月。教师25本。</p>
+
+            <p class="p-top p-number"><b>3. 借书超期罚款制度</b></p>
+            <p class="p-number">借书逾期不还者，停止借书，同时予以罚款，罚款额每本每日0.1元，寒暑假不在逾期天数内。如书遗失，办理赔书手续前的超期天数亦按此条例罚款。</p>
+
+            <p class="p-top p-number"><b>4. 图书遗失、污损、盗窃处理规定</b></p>
+            <p class="p-number">所借图书如有遗失，限时以版本相同的图书赔偿，并交加工费三元，赔偿同种书确有困难者，则视图书情况按原价2—10倍 罚款。</p>
+            <p class="p-number">所借图书如有污损，则按污损程度处以程度不等的罚款，被污损的图书经罚款处理后，仍归图书馆。</p>
+            <p class="p-number">凡对书刊资料撕页“开天窗”者，视情节轻重处以10—50元罚款，并写出检讨，情节严重者，报告学校按有关规定处理。</p>
+            <p class="p-number">凡未办理借阅手续将书刊私自携出室外者，以盗窃书刊论处，除写出检讨外，按所窃图书价格10倍罚款，并交保卫部门按有关规定处理</p>
+
+            <button type="button" id="oneBtn" onclick="btnClick(getELeFun('onePage'),getELeFun('twoPage'))">下一页</button>
+        </div>
+        <div class="two-page" id="twoPage">
+            <p class="p-top p-number"><b>5. 学生毕业，须还清在图书馆所借图书，并交回借书证，未还清者，按丢失图书处以罚款，并扣留毕业证。</b></p>
+            <p class="p-top p-number"><b>6. 本处实行电脑自动化管理，读者进入时不能妄动该处的工作电脑。</b></p>
+            <p class="p-number">希同学们努力与本室工作人员配合！</p>
+            <button type="button" id="twoBtn" onclick="btnClick(getELeFun('twoPage'),getELeFun('onePage'))">上一页</button>
+        </div>
+        <button><a href="javascript:history.go(-1)">返回</a></button>
+    </section>
+    <script>
+        function getELeFun(id) {
+            return document.getElementById(id);
+        }
+
+        function btnClick(hideObj, showObj) {
+            hideObj.style.display = "none";
+            showObj.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

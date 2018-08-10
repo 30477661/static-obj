@@ -1,0 +1,143 @@
+<div class="index-one">
+    <div class="login-form" style="height: 260px;" action="">
+        <div class="reader-text">
+            读者登录
+        </div>
+        <ul class="link-ul" id="loginLink">
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <div onclick="$('#infoTabOne').trigger('click')">欠账情况</div>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <div onclick="$('#infoTabTwo').trigger('click')">预约情况</div>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <div onclick="$('#infoTabThree').trigger('click')">预借情况</div>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <div onclick="$('#infoTabFour').trigger('click')">借阅情况</div>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <div onclick="$('#infoTabFives').trigger('click')">个人资料修改</div>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <div onclick="sessionStorage.loginSwitch = 0;location.reload();">注销</div>
+            </li>
+        </ul>
+    </div>
+    <div class="login-form" style="height: 179px; margin-top: 10px;">
+        <div class="reader-text">
+            在线图书馆
+        </div>
+        <img class="index-libimg" src="img/index-libimg.png" alt="">
+    </div>
+    <div class="login-form links-link" style="margin-top: 10px; top: 470px; ">
+        <div class="reader-text">
+            友情链接
+        </div>
+        <ul class="link-ul">
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">金思维科技</a>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">技术支持</a>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">国家图书馆</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="tab-menu lib-descrip-two">
+    <div class="layui-tab layui-tab-card" style="height: 100%;">
+        <ul class="layui-tab-title">
+            <li class="layui-this" id="infoTabOne">欠账情况</li>
+            <li id="infoTabTwo">预约情况</li>
+            <li id="infoTabThree">预借情况</li>
+            <li id="infoTabFour">借阅情况</li>
+            <li id="infoTabFives">个人资料修改</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show" style="">
+                1
+            </div>
+            <div class="layui-tab-item" style="">
+                2
+            </div>
+            <div class="layui-tab-item" style="">
+                3
+            </div>
+            <div class="layui-tab-item" style="">
+                4
+            </div>
+            <div class="layui-tab-item">
+                <form class="guest-book-min">
+                    <table>
+                        <tr>
+                            <th>用户名：</th>
+                            <td>李艳</td>
+                        </tr>
+
+                        <tr>
+                            <th>借书证号：</th>
+                            <td>000039</td>
+                        </tr>
+                        <tr>
+                            <th>密码：</th>
+                            <td><input type="password"></td>
+                            <td>重设密码</td>
+                        </tr>
+
+                        <tr>
+                            <th>部门：</th>
+                            <td>外语组</td>
+                        </tr>
+                        <tr>
+                            <th>借阅权限：</th>
+                            <td>教师</td>
+                        </tr>
+                        <tr>
+                            <th>性别：</th>
+                            <td>女</td>
+                        </tr>
+                        <tr>
+                            <th>借书数量：</th>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <th>记账金额：</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>办证日期：</th>
+                            <td>2002-02-20</td>
+                        </tr>
+                        <tr>
+                            <th>有效日期：</th>
+                            <td>2030-06-12</td>
+                        </tr>
+                        <tr>
+                            <th>状态：</th>
+                            <td>正常</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align: center;">
+                                <button class="btn-primary" type="submit">提交</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn-primary" type="reset">重填</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var loginMenuIndex = sessionStorage.loginMenuIndex;
+    $($(".layui-tab-title li")[loginMenuIndex]).trigger("click");
+
+    function logout() {
+        sessionStorage.loginSwitch = 0;
+        location.reload();
+    }
+</script>

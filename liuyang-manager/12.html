@@ -1,0 +1,1545 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0140)http://192.168.5.52/admin/cgplansshl.php?orderid=186&allprice=30000000.0&myname=%B2%E2%CA%D4%CD%B3%D2%BB%B2%C9%B9%BA%BA%CF%CD%AC%B7%D6%C5%E4 -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <title>金梦想教育装备管理软件V2.0</title>
+
+    <link href="css/manage.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="./12_files/jquery.toast.css">
+
+
+    <meta content="MSHTML 6.00.5730.11" name="GENERATOR">
+    <script src="./12_files/jquery-1.2.6.js.下载" type="text/javascript"></script>
+    <script src="./12_files/jquery.ScrollableTable.js.下载" type="text/javascript"></script>
+    <script type="text/javascript">
+        //提交表单
+        function selectchange() {
+            var seach = $("#shlname").val();
+            window.open('cgplansshl.php?pageNum=' + $('#pageNum').val() + '&shlname=' + seach + '&orderid=186&myname=测试统一采购合同分配', '_self');
+        }
+
+        $(document).ready(function() {
+            $('#pageNum').val('10');
+
+            /*  $("#Submit4").click(function(){
+                 $("#Submit2").click();
+              });*/
+
+
+        });
+
+        function Print(jh, xx) {
+
+            // alert(jh+ xx);
+            window.location = 'cgplansshlOut.php?key=分配金额列表&keyname=测试统一采购合同分配&orderid=186';
+        }
+
+
+
+
+
+        function checkallprice() {
+            /*
+	var p='0',myno='0',allprice='0';
+	$('#myform input:not(:hidden)').each( function(){
+		    myno=$(this).val();  
+		    
+ 	                   if (IsNum(myno)){
+			               p=eval(p)+eval(myno);
+						 //   alert(p);
+		               }  
+		
+		});
+	 //alert(p)
+	 allprice=$('#allprice').val();
+	// alert(allprice);
+	 if (eval(p)<=eval(allprice)){
+		 return true;
+	 }else{
+		 alert('分配学校的金额超过本期采购总金额，请重新分配。');
+	return false;
+	 }*/
+        }
+
+        function IsNum(s) {
+            if (s != null && s != "") {
+                return !isNaN(s);
+            }
+            return false;
+        }
+
+
+        function submit1() {
+            var check = false;
+            var file1 = document.getElementById("file1").value;
+            if (file1 == "") {
+                alert("请选择要导入的数据库文件。");
+                return false;
+            } else {
+                return true;
+            }
+            return check;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        function ShowMyWin() {
+
+
+            showPop('tcc');
+
+        }
+
+
+
+
+        //获得坐标
+        function getPosition() {
+            var top = document.documentElement.scrollTop;
+            var left = document.documentElement.scrollLeft;
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+            //top=500;
+            left = 200;
+            //height=0;
+            width = 500;
+            height = 300;
+            top = 200;
+            return {
+                top: top,
+                left: left,
+                height: height,
+                width: width
+            };
+        }
+        //屏蔽输入，显示蒙板
+        function showMask(id) {
+            var obj = document.getElementById(id);
+            obj.style.width = document.body.clientWidth;
+            obj.style.height = document.body.clientHeight;
+            obj.style.display = "block";
+
+
+
+            $.ajax({
+                type: 'post',
+                url: 'inc/showmywin.php?allprice=30000000.0', //后台处理程序
+                //数据发送方式
+                dataType: 'html', //接受数据格式
+                data: null, //要传递的数据
+                success: function(data) { //回传函数实体，参数为XMLhttpRequest.responseText
+
+                    // alert(data);
+                    //   $('#mytree').html('');
+                    $('#tcc').append(data);
+                }
+            });
+
+
+
+
+        }
+        //隐藏蒙板
+        function hideMask(id) {
+            document.getElementById(id).style.display = "none";
+
+
+
+        }
+        //显示登录
+        function showPop(id) {
+            showMask('mask');
+            var width = 300; //弹出框的宽度
+            var height = 130; //弹出框的高度
+            var obj = document.getElementById(id);
+            obj.style.display = "block";
+            obj.style.position = "absolute";
+            obj.style.zindex = "10";
+            obj.style.overflow = "hidden";
+            obj.style.width = width + "px";
+            obj.style.height = height + "px";
+            var Position = getPosition();
+            leftadd = (Position.width - width) / 2;
+            topadd = (Position.height - height) / 2;
+            obj.style.top = (Position.top + topadd) + "px";
+            obj.style.left = (Position.left + leftadd) + "px";
+            window.onscroll = function() {
+                var Position = getPosition();
+                obj.style.top = (Position.top + topadd) + "px";
+                obj.style.left = (Position.left + leftadd) + "px";
+            };
+
+        }
+        //隐含
+        function hidePop(id) {
+            hideMask('mask');
+            document.getElementById(id).style.display = "none";
+            document.getElementById(id).innerHTML = '';
+        }
+
+
+
+        $(document).ready(function() {
+
+            $("body").append("<div id='mask' style='filter: Alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; background-color: #000; width: 100%; height: 100%; z-index: 5px;position: absolute; left: 0; top: 0; display: none; overflow: hidden;'> </div><div id='tcc' name='tcc' style='display:none;background-color:#FFFFFF;'> </div>");
+
+
+        });
+    </script>
+    <link rel="import" href="chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/assets/tpl/resize-tooltip.html">
+</head>
+
+
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <table class="tableBorder1" style="WIDTH: 100%" cellspacing="0" cellpadding="3" align="center" border="0">
+        <tbody>
+            <tr>
+                <td height="10"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table width="86%" height="63" border="0" align="center" cellpadding="3" cellspacing="1" class="tableBorder">
+        <tbody>
+            <tr>
+                <th width="11%" height="23" class="tableHeaderText">
+
+
+                    <div align="left">
+                        <form>
+
+
+                            <input type="button" name="Submitbutton" value="返回上一页" onclick="self.location=document.referrer;">
+                            <input name="Submit4" id="Submit4" value="导出数据" type="button" onclick="return Print(1,1);">
+                        </form>
+                    </div>
+
+
+
+                </th>
+                <th width="89%" height="23" class="tableHeaderText">
+                    <form action="http://192.168.5.52/admin/cgplansshlOut_In.php?mAction=upload&amp;orderid=186" method="post" enctype="multipart/form-data" name="frm" onsubmit="return submit1();">
+                        <div align="left">
+                            <input name="Submit42" value="导入数据" type="submit">
+                            <input type="file" name="file1" id="file1" style="width:150">
+                        </div>
+                    </form>
+
+                </th>
+            </tr>
+            <tr>
+                <td height="18" colspan="2" class="forumRow">
+
+                    <!--<font color="#FF0000" size="16">请仔细检查每个学校分配的申购金额！！！</font>-->
+                    <!--  <input name="shlname" type="text" id="shlname" value="" size="50">
+          <input type="reset" name="Submit" value="查询" onClick="return selectchange();">
+		  --></td>
+            </tr>
+        </tbody>
+    </table>
+    <form id="myform" action="http://192.168.5.52/admin/cgplans_data.php?action=allpost&amp;orderid=186" method="post" onsubmit="return checkallprice();">
+        <div style="text-align:center;">
+            <table id="mytable" width="86%" height="51" border="0" align="center" cellpadding="3" cellspacing="1" class="tableBorder">
+                <thead>
+                    <tr>
+                        <th width="6%" height="25" class="tableHeaderText"><input type="button" value="自动分配金额" onclick="return ShowMyWin();"> </th>
+                        <th class="tableHeaderText" height="25"><input type="hidden" id="allprice" name="allprice" value="30000000.0"></th>
+                        <th height="25" colspan="4" class="tableHeaderText">学校金额分配列表</th>
+                        <th height="25" colspan="2" class="tableHeaderText">
+
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <th height="18" class="forumRow">序号
+                            <input name="allurl" type="hidden" id="allurl" value="http%3A%2F%2F192.168.5.52%2Fadmin%2Fcgplansshl.php%3Forderid%3D186%26allprice%3D30000000.0%26myname%3D%25B2%25E2%25CA%25D4%25CD%25B3%25D2%25BB%25B2%25C9%25B9%25BA%25BA%25CF%25CD%25AC%25B7%25D6%25C5%25E4"
+                                size="50"></th>
+                        <th width="14%" class="forumRow">学校名称</th>
+                        <th width="15%" class="forumRow">本区域总金额(人民币)</th>
+                        <th width="15%" class="forumRow">本区已申购金额</th>
+                        <th width="10%" class="forumRow">开始日期</th>
+                        <th width="8%" class="forumRow">结束日期</th>
+                        <th colspan="2" class="forumRow">申购批次</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            1</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市教育局</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13640" type="text" id="data13640" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            2</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第一中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13641" type="text" id="data13641" value="2000000.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            3</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第二中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13642" type="text" id="data13642" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            4</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第三中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13643" type="text" id="data13643" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            5</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第四中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13644" type="text" id="data13644" value="1000000.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            116,640.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            6</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第五中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13645" type="text" id="data13645" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            7</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第六中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13646" type="text" id="data13646" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            8</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第八中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13647" type="text" id="data13647" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            9</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第九中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13648" type="text" id="data13648" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            10</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市第十一中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13649" type="text" id="data13649" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            11</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市田家炳实验中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13650" type="text" id="data13650" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            12</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市职业中专</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13651" type="text" id="data13651" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            13</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市淮川浏阳河中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13652" type="text" id="data13652" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            14</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市集里中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13653" type="text" id="data13653" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            15</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市荷花中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13654" type="text" id="data13654" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            16</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市关口中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13655" type="text" id="data13655" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            17</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市太平桥中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13656" type="text" id="data13656" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            18</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市葛家中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13657" type="text" id="data13657" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            19</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市枨冲中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13658" type="text" id="data13658" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            20</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市青草中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13659" type="text" id="data13659" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            21</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市柏加中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13660" type="text" id="data13660" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            22</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市普迹中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13661" type="text" id="data13661" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            23</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市官桥中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13662" type="text" id="data13662" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            24</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市镇头中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13663" type="text" id="data13663" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            25</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市扬眉中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13664" type="text" id="data13664" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            26</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市蕉溪中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13665" type="text" id="data13665" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            27</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市丰裕中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13666" type="text" id="data13666" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            28</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市洞阳中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13667" type="text" id="data13667" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            29</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市北盛中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13668" type="text" id="data13668" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            30</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市乌龙中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13669" type="text" id="data13669" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            31</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市淳口中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13670" type="text" id="data13670" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            32</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市楼古中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13671" type="text" id="data13671" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            33</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市山田中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13672" type="text" id="data13672" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            34</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市文光中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13673" type="text" id="data13673" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            35</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市秀山中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13674" type="text" id="data13674" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            36</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市赤马中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13675" type="text" id="data13675" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            37</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市龙伏中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13676" type="text" id="data13676" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            38</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市泮春中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13677" type="text" id="data13677" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            39</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市社港中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13678" type="text" id="data13678" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            40</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市双狮坪中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13679" type="text" id="data13679" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            41</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市溪江中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13680" type="text" id="data13680" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            42</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市古港中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13681" type="text" id="data13681" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            43</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市高坪中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13682" type="text" id="data13682" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            44</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市三口中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13683" type="text" id="data13683" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            45</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市永和中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13684" type="text" id="data13684" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            46</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市七宝山中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13685" type="text" id="data13685" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            47</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市官渡中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13686" type="text" id="data13686" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            48</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市沿溪中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13687" type="text" id="data13687" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            49</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市达浒中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13688" type="text" id="data13688" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            50</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市大围山中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13689" type="text" id="data13689" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            51</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市张坊中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13690" type="text" id="data13690" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            52</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市小河中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13691" type="text" id="data13691" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            53</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市大瑶中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13692" type="text" id="data13692" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            54</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市金刚中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13693" type="text" id="data13693" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            55</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市杨花中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13694" type="text" id="data13694" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            56</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市澄潭江中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13695" type="text" id="data13695" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            57</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市山下中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13696" type="text" id="data13696" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            58</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市文家市中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13697" type="text" id="data13697" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            59</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市岩前中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13698" type="text" id="data13698" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            60</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市中和中学</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13699" type="text" id="data13699" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            61</td>
+                        <td width="14%" class="forumRow">
+                            零购单位</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13700" type="text" id="data13700" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            62</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市青少年校外活动中心</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13701" type="text" id="data13701" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            63</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市一中艺术学校</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13702" type="text" id="data13702" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            64</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市金桥学校</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13703" type="text" id="data13703" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            65</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市特殊教育学校</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13704" type="text" id="data13704" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            66</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市素质教育培训基地</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13705" type="text" id="data13705" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            67</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市教师进修学校</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13706" type="text" id="data13706" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            68</td>
+                        <td width="14%" class="forumRow">
+                            长郡·浏阳实验学校</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13707" type="text" id="data13707" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            69</td>
+                        <td width="14%" class="forumRow">
+                            浏阳市永安镇教育办公室</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13708" type="text" id="data13708" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow">
+                            70</td>
+                        <td width="14%" class="forumRow">
+                            本道</td>
+                        <td width="15%" class="forumRow">
+
+                            <input name="data13715" type="text" id="data13715" value="0.00" size="20" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onbeforepaste="clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[^\d.]/g,&#39;&#39;))"></td>
+                        <td width="15%" class="forumRow">
+                            0.00
+
+                        </td>
+                        <td width="10%" class="forumRow">2018-06-19 </td>
+                        <td width="8%" class="forumRow">
+                            2018-06-21 </td>
+                        <td colspan="2" class="forumRow">测试统一采购合同分配</td>
+                    </tr>
+                    <tr>
+                        <td height="18" class="forumRow"></td>
+                        <td width="14%" class="forumRow"></td>
+                        <td colspan="2" class="forumRow">
+
+
+                            全区分配总金额 ： 3,000,000.00（RMB）</td>
+                        <td class="forumRow"></td>
+                        <td width="8%" class="forumRow"></td>
+                        <td width="10%" class="forumRow"></td>
+                        <td width="22%" class="forumRow"><input type="submit" name="Submit2" id="Submit2" value="提交"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <br>
+    <!--显示分页-->
+    <div style="align:center;">
+        <div align="center">
+        </div>
+    </div>
+    <p></p>
+
+
+    <script type="text/javascript">
+        function divFadeAlert() {
+            var hidvalue_str = '保存成功！';
+            var divWidth = 200;
+            var divHeight = 50;
+            var iLeft = ($(window).width() - divWidth) - 100;
+            // var iTop=($(window).height()-divHeight)/2+$(document).scrollTop();
+            var iTop = 20;
+            // var divhtml=$("<div>"+hidvalue_str+"</div>").css({position:'absolute',top:iTop+'px',left:iLeft+'px',display:'none',width:divWidth+'px',height:divHeight+'px'});
+            var divhtml = $("<div id='msgbox' class='jq-toast-single jq-has-icon jq-icon-info' style='text-align: left; display: none;'><span class='jq-toast-loader jq-toast-loaded' style='-webkit-transition: width 2.6s ease-in;                       -o-transition: width 2.6s ease-in;                       transition: width 2.6s ease-in;                       background-color: #9EC600;'></span><span class='close-jq-toast-single'>×</span><h2 class='jq-toast-heading'>提示信息</h2>请仔细检查每个学校分配的申购金额！！！</div>").css({
+                position: 'absolute',
+                top: iTop + 'px',
+                left: iLeft + 'px',
+                display: 'none',
+                width: divWidth + 'px',
+                height: divHeight + 'px'
+            });
+            divhtml.appendTo('body').fadeIn();
+
+            setTimeout("aa()", 5000);
+
+        }
+
+        function aa() {
+            $('#msgbox').appendTo('body').fadeOut(3000);
+        }
+
+        $(document).ready(function() {
+            divFadeAlert();
+        });
+    </script>
+
+
+    <table width="668" height="26" align="center" id="Noprint">
+        <tbody>
+            <tr align="middle">
+                <td class="copyright" width="100%">Copyright (c) <a href="javascript:void(0);" target="_blank"> 贵州本道信息科技有限公司</a>. All Rights Reserved .</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="mask" style="filter: Alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; background-color: #000; width: 100%; height: 100%; z-index: 5px;position: absolute; left: 0; top: 0; display: none; overflow: hidden;"> </div>
+    <div id="tcc" name="tcc" style="display:none;background-color:#FFFFFF;"> </div>
+    <div id="window_resizer_tooltip_wrapper" data-pos-y="bottom" data-pos-x="right" class="" style="transform: scale(1) translateY(876px) translateX(1794px);"></div>
+    <div id="msgbox" class="jq-toast-single jq-has-icon jq-icon-info" style="text-align: left; position: absolute; top: 20px; left: 1273px; width: 200px; height: 50px; display: none;"><span class="jq-toast-loader jq-toast-loaded" style="-webkit-transition: width 2.6s ease-in;                       -o-transition: width 2.6s ease-in;                       transition: width 2.6s ease-in;                       background-color: #9EC600;"></span>
+        <span
+            class="close-jq-toast-single">×</span>
+            <h2 class="jq-toast-heading">提示信息</h2>请仔细检查每个学校分配的申购金额！！！</div>
+</body>
+
+</html>

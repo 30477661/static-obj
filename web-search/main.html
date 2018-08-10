@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>金梦想</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/jsw-logo.ico">
+    <link href="lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="lib/zTree/zTreeStyle.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="main" id="main">
+    <header>
+        <img src="img/index-logo.png" alt="">
+        <div class="browser-set">
+            <span>设为首页</span> &nbsp;&nbsp;
+            <b>|</b> &nbsp;&nbsp;
+            <span>加入收藏</span>
+        </div>
+        <ul id="navTab" class="nav clearfix" ng-init="navTab = 9">
+            <li ng-click="navTab = 1"><a class="active">首页</a></li>
+            <li ng-click="navTab = 2"><a>馆情介绍</a></li>
+            <li ng-click="navTab = 3"><a>信息发布</a></li>
+            <li ng-click="navTab = 4"><a>图书检索</a></li>
+            <li ng-click="navTab = 5"><a>期刊检索</a></li>
+            <li ng-click="navTab = 6"><a>数字资源</a></li>
+            <li ng-click="navTab = 7"><a>热门文献</a></li>
+            <li ng-click="navTab = 8"><a>我的图书馆</a></li>
+            <li ng-click="navTab = 9"><a>论坛</a></li>
+            <li ng-click="navTab = 10"><a>留言本</a></li>
+        </ul>
+    </header>
+    <div class="carousel">
+        <img src="img/index-carouse0.jpg" alt="">
+    </div>
+    <div class="all-cont">
+        <aside class="clearfix">
+            <a class="aside-link" style="margin-bottom: 6px;">馆情介绍</a>
+            <a class="aside-link">帮助（?）</a>
+        </aside>
+        <div ng-if="navTab == 1" ng-include="'index.html'" onload="" class="index clearfix"></div>
+        <div ng-if="navTab == 2" ng-include="'lib-descrip.html'" onload="" class="lib-descrip"></div>
+        <div ng-if="navTab == 3" ng-include="'info-publish.html'" onload="" class="info-publish"></div>
+        <div ng-if="navTab == 4" ng-include="'book-search.html'" onload="" class="book-search"></div>
+        <div ng-if="navTab == 5" ng-include="'journal-search.html'" onload="" class="journal-search"></div>
+        <div ng-if="navTab == 6" ng-include="'number-resource.html'" onload="" class="number-resource"></div>
+        <div ng-if="navTab == 7" ng-include="'hot-document.html'" onload="" class="hot-document"></div>
+        <div ng-if="navTab == 8" ng-include="'my-booklib.html'" onload="" class="my-booklib"></div>
+        <div ng-if="navTab == 9" ng-include="'forum.html'" onload="" class="forum"></div>
+        <div ng-if="navTab == 10" ng-include="'guest-book.html'" onload="" class="forum"></div>
+        <div ng-if="navTab == 100" ng-include="'login-success.html'" onload="" class="forum"></div>
+    </div>
+    <footer>
+        <p>湖南师范大学附属中学 @ 版权所有 保留所有权益</p>
+        <p>Powered by GoldMind (c) 2012-2015 jswkj.com</p>
+    </footer>
+
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-lazy.js"></script>
+    <script src="lib/jquery-1.10.2.js"></script>
+    <script src="lib/zTree/jquery.ztree.core.js"></script>
+    <script src="lib/layui/layui.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        angular.module('app', ['ngLoadScript']).controller('main', ['$scope', function() {
+            $('#navTab').on('click', 'li', function() {
+                var carouselIndex = $(this).index();
+                $('#navTab li').children().removeClass('active');
+                $(this).children().addClass('active');
+                $(".carousel").find("img").attr("src", "img/index-carouse" + carouselIndex + ".jpg");
+            });
+        }]);
+    </script>
+</body>
+
+</html>

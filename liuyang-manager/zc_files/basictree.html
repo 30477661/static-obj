@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0060)http://192.168.5.52/admin/inc/mytree/basictree.php?action=sq -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <title>MyTree</title>
+
+    <link href="../css/manage.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        <!-- * a,
+        table,
+        div {
+            font-size: 12px;
+        }
+        
+        img {
+            border: none;
+            vertical-align: middle;
+            margin: 0px 3px 0px 3px;
+            vertical-align: middle;
+        }
+        
+        -->
+    </style>
+    <script src="./jquery-1.2.6.js.下载" type="text/javascript"></script>
+    <script type="text/javascript">
+        var mmmmmms = 'xx';
+        ////分类法选中样式操作///////////////////////////////////////////////////////
+        function myflhdiv() {
+            //alert('1');
+            var mform = $('#mytree');
+            mform.find('.divcss').each(function() {
+                var _self = $(this);
+                _self.click(function() {
+                    //$('div[id*=myjs]').html('');
+                    $('.divcss').css({
+                        background: "White"
+                    });
+                    $(this).css({
+                        background: "#00ccdd"
+                    });
+                    //$(this).hide();
+
+
+                });
+            });
+
+        }
+        ////分类法选中样式操作///////////////////////////////////////////////////////
+        $(document).ready(function() {
+            myflhdiv();
+        });
+        //分类法获取
+        //树请求AJAX函数;
+        function DoPostBack(pclass, pname) {
+            //  alert(pclass+pname);
+            if ($('#' + pname).html()) {
+                $('#' + pname).html('');
+                $('#' + pname + 'a').show();
+                $('#' + pname + 'b').hide();
+            } else {
+                $.ajax({
+                    type: 'post',
+                    url: './flf.php?pclass=' + pclass + '&pname=' + pname, //后台处理程序
+                    //数据发送方式
+                    dataType: 'html', //接受数据格式
+                    data: null, //要传递的数据
+                    success: function(data) { //回传函数实体，参数为XMLhttpRequest.responseText
+                        $('#' + pname).html(data);
+                    }
+                });
+                $('#' + pname + 'a').hide();
+                $('#' + pname + 'b').show();
+
+            }
+        }
+
+        function myselecttype1() {
+
+            if (mmmmmms == 'xx') {
+                // alert(123);
+                mmmmmms = 'pz';
+                $('#myselecttype').attr('value', '按品种');
+            } else if (mmmmmms == 'pz') {
+                //  alert(456);
+                mmmmmms = 'xx';
+                $('#myselecttype').attr('value', '按学校');
+            }
+        }
+
+        //获取分类法函数
+        function DoPostFlf(namein, id) {
+
+
+
+            var html = $('#' + id + 'a' + id).html();
+
+            var dd = html.replace(/<\/?.+?>/g, "");
+            var dds = dd.replace(/ /g, ""); //dds为得到后的内容
+            html = dds;
+            // alert(html);
+            window.open('../../asseinfo.php?action=a&expeid=' + id, 'dtreedata');
+
+
+        }
+    </script>
+</head>
+
+
+
+<body marginwidth="0" marginheight="0">
+    <table cellspacing="1" width="350" cellpadding="3" align="center" border="0">
+        <tbody>
+            <tr>
+                <th class="tableHeaderText" colspan="2" height="25">
+                    <div align="left">仪器分类目录表
+
+
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <td height="600" colspan="2" valign="top" class="forumRow">
+                    <div id="mytree" style="width:500;height:800;　　overflow :yes;  ">
+                        <div id="02a02" class="divcss">
+
+                            <img src="./WebResourcef.gif" width="19" height="20" id="020" onclick="DoPostBack(&#39;1&#39;,&#39;02&#39;);">
+                            <a href="javascript:;" onclick="javascript:DoPostFlf(&#39;1&#39;,&#39;02&#39;);">  仪器设备器材</a>
+                        </div>
+                        <div id="02">
+                            <div id="0201a0201" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="0201a" onclick="DoPostBack(&#39;2&#39;,&#39;0201&#39;);"><img src="./WebResourceless.gif" width="19" height="20"
+                                    id="0201b" style="display:none" onclick="DoPostBack(&#39;2&#39;,&#39;0201&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;0201&#39;,&#39;0201&#39;);">  实验室仪器</a></div>
+                            <div id="0201">
+                                <div id="020101a020101" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020101a" onclick="DoPostBack(&#39;3&#39;,&#39;020101&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020101b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020101&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020101&#39;,&#39;020101&#39;);">  高中数学</a></div>
+                                <div id="020101"></div>
+                                <div id="020102a020102" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020102a" onclick="DoPostBack(&#39;3&#39;,&#39;020102&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020102b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020102&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020102&#39;,&#39;020102&#39;);">  高中物理</a></div>
+                                <div id="020102"></div>
+                                <div id="020103a020103" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020103a" onclick="DoPostBack(&#39;3&#39;,&#39;020103&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020103b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020103&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020103&#39;,&#39;020103&#39;);">  高中化学</a></div>
+                                <div id="020103"></div>
+                                <div id="020104a020104" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020104a" onclick="DoPostBack(&#39;3&#39;,&#39;020104&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020104b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020104&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020104&#39;,&#39;020104&#39;);">  高中生物</a></div>
+                                <div id="020104"></div>
+                                <div id="020105a020105" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020105a" onclick="DoPostBack(&#39;3&#39;,&#39;020105&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020105b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020105&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020105&#39;,&#39;020105&#39;);">  高中地理 </a></div>
+                                <div id="020105"></div>
+                                <div id="020106a020106" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020106a" onclick="DoPostBack(&#39;3&#39;,&#39;020106&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020106b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020106&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020106&#39;,&#39;020106&#39;);">  初中物理</a></div>
+                                <div id="020106"></div>
+                                <div id="020107a020107" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020107a" onclick="DoPostBack(&#39;3&#39;,&#39;020107&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020107b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020107&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020107&#39;,&#39;020107&#39;);">  初中化学</a></div>
+                                <div id="020107"></div>
+                                <div id="020108a020108" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020108a" onclick="DoPostBack(&#39;3&#39;,&#39;020108&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020108b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020108&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020108&#39;,&#39;020108&#39;);">  初中生物</a></div>
+                                <div id="020108"></div>
+                                <div id="020109a020109" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020109a" onclick="DoPostBack(&#39;3&#39;,&#39;020109&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020109b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020109&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020109&#39;,&#39;020109&#39;);">  初中地理</a></div>
+                                <div id="020109"></div>
+                                <div id="020110a020110" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020110a" onclick="DoPostBack(&#39;3&#39;,&#39;020110&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020110b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020110&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020110&#39;,&#39;020110&#39;);">  初中数学</a></div>
+                                <div id="020110"></div>
+                                <div id="020112a020112" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020112a" onclick="DoPostBack(&#39;3&#39;,&#39;020112&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020112b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020112&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020112&#39;,&#39;020112&#39;);">  小学数学</a></div>
+                                <div id="020112"></div>
+                                <div id="020113a020113" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourcel.gif" width="19" height="20" onclick="DoPostBack(&#39;3&#39;,&#39;020113&#39;);"><a href="javascript:;"
+                                        onclick="javascript:DoPostFlf(&#39;020113&#39;,&#39;020113&#39;);">  小学科学</a></div>
+                                <div id="020113"></div>
+                            </div>
+                            <div id="0202a0202" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="0202a" onclick="DoPostBack(&#39;2&#39;,&#39;0202&#39;);"><img src="./WebResourceless.gif" width="19" height="20"
+                                    id="0202b" style="display:none" onclick="DoPostBack(&#39;2&#39;,&#39;0202&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;0202&#39;,&#39;0202&#39;);">  实验室设备</a></div>
+                            <div id="0202">
+                                <div id="020201a020201" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020201a" onclick="DoPostBack(&#39;3&#39;,&#39;020201&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020201b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020201&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020201&#39;,&#39;020201&#39;);">  物理</a></div>
+                                <div id="020201"></div>
+                                <div id="020202a020202" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020202a" onclick="DoPostBack(&#39;3&#39;,&#39;020202&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020202b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020202&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020202&#39;,&#39;020202&#39;);">  化学</a></div>
+                                <div id="020202"></div>
+                                <div id="020203a020203" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020203a" onclick="DoPostBack(&#39;3&#39;,&#39;020203&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020203b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020203&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020203&#39;,&#39;020203&#39;);">  生物</a></div>
+                                <div id="020203"></div>
+                                <div id="020204a020204" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020204a" onclick="DoPostBack(&#39;3&#39;,&#39;020204&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020204b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020204&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020204&#39;,&#39;020204&#39;);">  科学(自然)</a></div>
+                                <div id="020204"></div>
+                                <div id="020205a020205" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020205a" onclick="DoPostBack(&#39;3&#39;,&#39;020205&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020205b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020205&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020205&#39;,&#39;020205&#39;);">  通用技术实验室</a></div>
+                                <div id="020205"></div>
+                                <div id="020206a020206" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020206a" onclick="DoPostBack(&#39;3&#39;,&#39;020206&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020206b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020206&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020206&#39;,&#39;020206&#39;);">  劳技电子电工</a></div>
+                                <div id="020206"></div>
+                                <div id="020207a020207" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020207a" onclick="DoPostBack(&#39;3&#39;,&#39;020207&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020207b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020207&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020207&#39;,&#39;020207&#39;);">  地理教室</a></div>
+                                <div id="020207"></div>
+                                <div id="020208a020208" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020208a" onclick="DoPostBack(&#39;3&#39;,&#39;020208&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020208b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020208&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020208&#39;,&#39;020208&#39;);">  历史教室</a></div>
+                                <div id="020208"></div>
+                                <div id="020209a020209" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020209a" onclick="DoPostBack(&#39;3&#39;,&#39;020209&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020209b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020209&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020209&#39;,&#39;020209&#39;);">  心理咨询室</a></div>
+                                <div id="020209"></div>
+                                <div id="020210a020210" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020210a" onclick="DoPostBack(&#39;3&#39;,&#39;020210&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020210b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020210&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020210&#39;,&#39;020210&#39;);">  3D创客实验室</a></div>
+                                <div id="020210"></div>
+                                <div id="020211a020211" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourcel.gif" width="19" height="20" onclick="DoPostBack(&#39;3&#39;,&#39;020211&#39;);"><a href="javascript:;"
+                                        onclick="javascript:DoPostFlf(&#39;020211&#39;,&#39;020211&#39;);">  创客机器人</a></div>
+                                <div id="020211"></div>
+                            </div>
+                            <div id="0203a0203" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourcel.gif" width="19" height="20" onclick="DoPostBack(&#39;2&#39;,&#39;0203&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;0203&#39;,&#39;0203&#39;);">  功能室器材</a></div>
+                            <div
+                                id="0203">
+                                <div id="020319a020319" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020319a" onclick="DoPostBack(&#39;3&#39;,&#39;020319&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020319b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020319&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020319&#39;,&#39;020319&#39;);">  高中音乐</a></div>
+                                <div id="020319"></div>
+                                <div id="020320a020320" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020320a" onclick="DoPostBack(&#39;3&#39;,&#39;020320&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020320b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020320&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020320&#39;,&#39;020320&#39;);">  高中美术</a></div>
+                                <div id="020320"></div>
+                                <div id="020321a020321" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020321a" onclick="DoPostBack(&#39;3&#39;,&#39;020321&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020321b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020321&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020321&#39;,&#39;020321&#39;);">  高中卫生</a></div>
+                                <div id="020321"></div>
+                                <div id="020322a020322" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020322a" onclick="DoPostBack(&#39;3&#39;,&#39;020322&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020322b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020322&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020322&#39;,&#39;020322&#39;);">  高中体育</a></div>
+                                <div id="020322"></div>
+                                <div id="020323a020323" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020323a" onclick="DoPostBack(&#39;3&#39;,&#39;020323&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020323b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020323&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020323&#39;,&#39;020323&#39;);">  高中通用技术</a></div>
+                                <div id="020323"></div>
+                                <div id="020324a020324" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020324a" onclick="DoPostBack(&#39;3&#39;,&#39;020324&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020324b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020324&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020324&#39;,&#39;020324&#39;);">  高中信息技术</a></div>
+                                <div id="020324"></div>
+                                <div id="020325a020325" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020325a" onclick="DoPostBack(&#39;3&#39;,&#39;020325&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020325b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020325&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020325&#39;,&#39;020325&#39;);">  高中仪器配件</a></div>
+                                <div id="020325"></div>
+                                <div id="020301a020301" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020301a" onclick="DoPostBack(&#39;3&#39;,&#39;020301&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020301b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020301&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020301&#39;,&#39;020301&#39;);">  中学音乐</a></div>
+                                <div id="020301"></div>
+                                <div id="020302a020302" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020302a" onclick="DoPostBack(&#39;3&#39;,&#39;020302&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020302b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020302&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020302&#39;,&#39;020302&#39;);">  中学体育</a></div>
+                                <div id="020302"></div>
+                                <div id="020303a020303" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020303a" onclick="DoPostBack(&#39;3&#39;,&#39;020303&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020303b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020303&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020303&#39;,&#39;020303&#39;);">  中学美术</a></div>
+                                <div id="020303"></div>
+                                <div id="020304a020304" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020304a" onclick="DoPostBack(&#39;3&#39;,&#39;020304&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020304b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020304&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020304&#39;,&#39;020304&#39;);">  中学卫生</a></div>
+                                <div id="020304"></div>
+                                <div id="020305a020305" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020305a" onclick="DoPostBack(&#39;3&#39;,&#39;020305&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020305b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020305&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020305&#39;,&#39;020305&#39;);">  中学劳技</a></div>
+                                <div id="020305"></div>
+                                <div id="020306a020306" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020306a" onclick="DoPostBack(&#39;3&#39;,&#39;020306&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020306b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020306&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020306&#39;,&#39;020306&#39;);">  中学文科</a></div>
+                                <div id="020306"></div>
+                                <div id="020307a020307" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020307a" onclick="DoPostBack(&#39;3&#39;,&#39;020307&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020307b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020307&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020307&#39;,&#39;020307&#39;);">  中学仪器配件</a></div>
+                                <div id="020307"></div>
+                                <div id="020308a020308" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020308a" onclick="DoPostBack(&#39;3&#39;,&#39;020308&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020308b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020308&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020308&#39;,&#39;020308&#39;);">  中学活动</a></div>
+                                <div id="020308"></div>
+                                <div id="020309a020309" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020309a" onclick="DoPostBack(&#39;3&#39;,&#39;020309&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020309b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020309&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020309&#39;,&#39;020309&#39;);">  中学学具</a></div>
+                                <div id="020309"></div>
+                                <div id="020310a020310" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020310a" onclick="DoPostBack(&#39;3&#39;,&#39;020310&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020310b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020310&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020310&#39;,&#39;020310&#39;);">  小学音乐</a></div>
+                                <div id="020310"></div>
+                                <div id="020311a020311" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020311a" onclick="DoPostBack(&#39;3&#39;,&#39;020311&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020311b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020311&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020311&#39;,&#39;020311&#39;);">  小学体育</a></div>
+                                <div id="020311"></div>
+                                <div id="020312a020312" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020312a" onclick="DoPostBack(&#39;3&#39;,&#39;020312&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020312b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020312&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020312&#39;,&#39;020312&#39;);">  小学美术</a></div>
+                                <div id="020312"></div>
+                                <div id="020313a020313" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020313a" onclick="DoPostBack(&#39;3&#39;,&#39;020313&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020313b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020313&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020313&#39;,&#39;020313&#39;);">  小学卫生</a></div>
+                                <div id="020313"></div>
+                                <div id="020314a020314" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020314a" onclick="DoPostBack(&#39;3&#39;,&#39;020314&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020314b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020314&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020314&#39;,&#39;020314&#39;);">  小学劳技</a></div>
+                                <div id="020314"></div>
+                                <div id="020315a020315" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020315a" onclick="DoPostBack(&#39;3&#39;,&#39;020315&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020315b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020315&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020315&#39;,&#39;020315&#39;);">  小学文科</a></div>
+                                <div id="020315"></div>
+                                <div id="020316a020316" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020316a" onclick="DoPostBack(&#39;3&#39;,&#39;020316&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020316b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020316&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020316&#39;,&#39;020316&#39;);">  小学仪器配件</a></div>
+                                <div id="020316"></div>
+                                <div id="020317a020317" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourceadd.gif" width="19" height="20" id="020317a" onclick="DoPostBack(&#39;3&#39;,&#39;020317&#39;);">
+                                    <img
+                                        src="./WebResourceless.gif" width="19" height="20" id="020317b" style="display:none" onclick="DoPostBack(&#39;3&#39;,&#39;020317&#39;);"><a href="javascript:;" onclick="javascript:DoPostFlf(&#39;020317&#39;,&#39;020317&#39;);">  小学活动</a></div>
+                                <div id="020317"></div>
+                                <div id="020318a020318" class="divcss"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResource.gif" width="19" height="20"><img src="./WebResourcel.gif" width="19" height="20" onclick="DoPostBack(&#39;3&#39;,&#39;020318&#39;);"><a href="javascript:;"
+                                        onclick="javascript:DoPostFlf(&#39;020318&#39;,&#39;020318&#39;);">  小学学具</a></div>
+                                <div id="020318"></div>
+                        </div>
+                    </div>
+                    <div id="03a03" class="divcss">
+
+                        <img src="./WebResourcef.gif" width="19" height="20" id="030" onclick="DoPostBack(&#39;1&#39;,&#39;03&#39;);">
+                        <a href="javascript:;" onclick="javascript:DoPostFlf(&#39;1&#39;,&#39;03&#39;);">  现代教育技术设备</a>
+                    </div>
+                    <div id="03"></div>
+                    <div id="04a04" class="divcss">
+
+                        <img src="./WebResourcef.gif" width="19" height="20" id="040" onclick="DoPostBack(&#39;1&#39;,&#39;04&#39;);">
+                        <a href="javascript:;" onclick="javascript:DoPostFlf(&#39;1&#39;,&#39;04&#39;);">  图书</a>
+                    </div>
+                    <div id="04"></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        //分类法获取展开
+
+        DoPostBack('1', '02');
+        DoPostBack('2', '0201');
+        DoPostBack('2', '0202');
+        DoPostBack('2', '0203');
+        /*
+        eval(DoPostBack('1','02'));
+        eval(DoPostBack('2','0201'));
+        eval(DoPostBack('2','0202'));
+        eval(DoPostBack('2','0203'));
+        */
+    </script>
+
+
+</body>
+
+</html>

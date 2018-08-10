@@ -1,0 +1,86 @@
+<form class="login-form" id="loginForm" style="height: 193px;">
+    <div class="reader-text">
+        读者登录
+    </div>
+    <div id="inputBox">
+        <div class="input-box">
+            <div>
+                <label for="userName">借书证</label>&nbsp;&nbsp;
+                <input type="text" id="userName" name="userName" placeholder="请输入..." required>
+            </div>
+            <div>
+                <label for="passWord">密码</label>&nbsp;&nbsp;
+                <input type="password" id="passWord" name="passWord" placeholder="请输入..." required>
+            </div>
+            <div>
+                <label for="codeIfy">验证码</label>&nbsp;&nbsp;
+                <input type="text" id="codeIfy" name="codeIfy" placeholder="请输入..." required><span><img src="img/login-code.png" alt=""></span>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button class="btn-primary" id="loginSubmit" type="submit">登录</button> &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn-primary" type="reset">重置</button>
+        </div>
+    </div>
+    <ul class="link-ul" id="loginLink" style="display: none;">
+        <li ng-click="alert(1)"><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+            <div onclick="$('#infoTabOne').trigger('click')">欠账情况</div>
+        </li>
+        <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+            <div onclick="$('#infoTabTwo').trigger('click')">预约情况</div>
+        </li>
+        <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+            <div onclick="$('#infoTabThree').trigger('click')">预借情况</div>
+        </li>
+        <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+            <div onclick="$('#infoTabFour').trigger('click')">借阅情况</div>
+        </li>
+        <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+            <div onclick="$('#infoTabFives').trigger('click')">个人资料修改</div>
+        </li>
+        <li onclick="$(this).off()"><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+            <div onclick="sessionStorage.loginSwitch = 0;location.reload();">注销</div>
+        </li>
+    </ul>
+</form>
+<script type="text/javascript">
+    var layer;
+    var layerMsg = layui.use('layer', function() {
+        layer = layui.layer;
+    });
+    $(".login-form").submit(function() {
+        var urlStr = $(".login-form").serialize();
+        $.ajax({
+            type: "GET",
+            url: "js/login-data.json",
+            data: urlStr,
+            success: function(data) {
+                layer.msg('登录成功');
+                if (data.response == 1) {
+                    loginSuccess();
+                    sessionStorage.loginSwitch = 1;
+                }
+            },
+            error: function() {}
+        });
+        return false
+    });
+    if (+sessionStorage.loginSwitch) {
+        loginSuccess();
+    }
+
+    function loginSuccess() {
+        $("#inputBox").hide();
+        $("#loginForm").css("height", "260px");
+        $(".links-link").css("top", "470px");
+        $("#loginLink").show();
+    }
+    var $Scope = angular.element($("#main")).scope();
+
+    $("#loginLink").on("click", "li", function() {
+        $Scope.$apply(function() {
+            $Scope.navTab = 100;
+        });
+        sessionStorage.loginMenuIndex = $(this).index();
+    });
+</script>

@@ -1,0 +1,303 @@
+<div class="index-one">
+    <div ng-include="'share-module/login-box.html'"></div>
+    <div class="login-form" style="height: 179px; margin-top: 10px;">
+        <div class="reader-text">
+            在线图书馆
+        </div>
+        <img class="index-libimg" src="img/index-libimg.png" alt="">
+    </div>
+    <div class="login-form links-link" style="margin-top: 10px;">
+        <div class="reader-text">
+            友情链接
+        </div>
+        <ul class="link-ul">
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">金思维科技</a>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">技术支持</a>
+            </li>
+            <li><img src="img/link-linksimg.png" alt="">&nbsp;&nbsp;
+                <a href="">国家图书馆</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="tab-menu index-two">
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">快速检索</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 118px;">
+            <div class="layui-tab-item layui-show">
+                <div class="search-box">
+                    <select name="selecttype" id="selecttype">
+                        <option value="tm" selected="selected">题名</option>
+                        <option value="zrz">责任者</option>
+                        <option value="ssh">索书号</option>
+                        <option value="ztc">主题词</option>
+                        <option value="flh">分类号</option>
+                        <option value="isbn">国际标准书</option> 
+                    </select>
+                    <input type="text" value="">
+                    <button class="btn-primary" type="button">搜索</button>
+                    <a href="" class="btn-primary" type="button">高级检索</a>
+                </div>
+                <p class="hot-key">热门关键词：</p>
+                <p class="ley-word"><span>易中天</span> &nbsp;&nbsp;<span>听听那冷雨</span> &nbsp;&nbsp;<span>品中国文人 </span> &nbsp;&nbsp;<span>阴阳师  </span> &nbsp;&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-menu index-three">
+    <div class="layui-tab layui-tab-card" style="height: 100%; overflow: hidden;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">最新图书</li>
+            <li>热门图书</li>
+            <li>最新期刊</li>
+            <li>热门资源</li>
+            <li class="last-tab-title"><a href="">更多>></a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-tab-newbook"></div>
+            </div>
+            <div class="layui-tab-item">
+                <div id="layui-tab-hotbook"></div>
+            </div>
+            <div class="layui-tab-item">3</div>
+            <div class="layui-tab-item">4</div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-menu index-four">
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">本站公告</li>
+            <li class="last-tab-title" style="border-right: none;"><a href="">更多>></a></li>
+        </ul>
+        <div class="layui-tab-content" style="height: 118px;">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-tab-item layui-show">
+                    <p><img src="img/index-notice-img.png" alt=""> 略略略略略略略略略略略略略略</p>
+                    <p><img src="img/index-notice-img.png" alt=""> 略略略略略略略略略略略略略略</p>
+                    <p><img src="img/index-notice-img.png" alt=""> 略略略略略略略略略略略略略略</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-menu index-fives">
+    <div class="layui-tab layui-tab-card" style="height: 100%; overflow: hidden;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">图书</li>
+            <li>期刊</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div id="layui-tab-book">
+                    <ul id="treeBook" class="ztree treeBook"></ul>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div id="layui-tab-journal">2</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use(['element', 'table', 'laypage'], function() {
+        var element = layui.element;
+        var table = layui.table;
+        var laypage = layui.laypage;
+        table.render({
+            elem: '.layui-tab-newbook',
+            url: 'lib/layui/layui-data.json',
+            cols: [
+                [{
+                    type: 'numbers',
+                    title: '名次',
+                    width: '10%',
+                    style: 'text-align: center; text-indent: 0;'
+
+                }, {
+                    field: 'id',
+                    title: '索引号',
+                    width: '20%',
+                }, {
+                    field: 'username',
+                    title: '书名',
+                    width: '50%',
+                }, {
+                    field: 'classify',
+                    title: '作者',
+                    width: '20%',
+                }]
+            ]
+        });
+        table.render({
+            elem: '#layui-tab-hotbook',
+            url: 'lib/layui/layui-data.json',
+            cols: [
+                [{
+                    type: 'numbers',
+                    title: '名次11',
+                    width: '10%',
+                    style: 'text-align: center; text-indent: 0;'
+
+                }, {
+                    field: 'id',
+                    title: '索引号22',
+                    width: '20%',
+                }, {
+                    field: 'username',
+                    title: '书名33',
+                    width: '50%',
+                }, {
+                    field: 'classify',
+                    title: '作者44',
+                    width: '20%',
+                }]
+            ]
+        });
+
+    });
+
+
+    var setting = {
+        data: {
+            simpleData: {
+                enable: true
+            }
+        }
+    };
+
+    var zNodes = [{
+        id: 1,
+        pId: 0,
+        name: "父节点1 - 展开",
+        open: true
+    }, {
+        id: 11,
+        pId: 1,
+        name: "父节点11 - 折叠"
+    }, {
+        id: 111,
+        pId: 11,
+        name: "叶子节点111"
+    }, {
+        id: 112,
+        pId: 11,
+        name: "叶子节点112"
+    }, {
+        id: 113,
+        pId: 11,
+        name: "叶子节点113"
+    }, {
+        id: 114,
+        pId: 11,
+        name: "叶子节点114"
+    }, {
+        id: 12,
+        pId: 1,
+        name: "父节点12 - 折叠"
+    }, {
+        id: 121,
+        pId: 12,
+        name: "叶子节点121"
+    }, {
+        id: 122,
+        pId: 12,
+        name: "叶子节点122"
+    }, {
+        id: 123,
+        pId: 12,
+        name: "叶子节点123"
+    }, {
+        id: 124,
+        pId: 12,
+        name: "叶子节点124"
+    }, {
+        id: 13,
+        pId: 1,
+        name: "父节点13 - 没有子节点",
+        isParent: true
+    }, {
+        id: 2,
+        pId: 0,
+        name: "父节点2 - 折叠"
+    }, {
+        id: 21,
+        pId: 2,
+        name: "父节点21 - 展开",
+        open: true
+    }, {
+        id: 211,
+        pId: 21,
+        name: "叶子节点211"
+    }, {
+        id: 212,
+        pId: 21,
+        name: "叶子节点212"
+    }, {
+        id: 213,
+        pId: 21,
+        name: "叶子节点213"
+    }, {
+        id: 214,
+        pId: 21,
+        name: "叶子节点214"
+    }, {
+        id: 22,
+        pId: 2,
+        name: "父节点22 - 折叠"
+    }, {
+        id: 221,
+        pId: 22,
+        name: "叶子节点221"
+    }, {
+        id: 222,
+        pId: 22,
+        name: "叶子节点222"
+    }, {
+        id: 223,
+        pId: 22,
+        name: "叶子节点223"
+    }, {
+        id: 224,
+        pId: 22,
+        name: "叶子节点224"
+    }, {
+        id: 23,
+        pId: 2,
+        name: "父节点23 - 折叠"
+    }, {
+        id: 231,
+        pId: 23,
+        name: "叶子节点231"
+    }, {
+        id: 232,
+        pId: 23,
+        name: "叶子节点232"
+    }, {
+        id: 233,
+        pId: 23,
+        name: "叶子节点233"
+    }, {
+        id: 234,
+        pId: 23,
+        name: "叶子节点234"
+    }, {
+        id: 3,
+        pId: 0,
+        name: "父节点3 - 没有子节点",
+        isParent: true
+    }];
+
+    setTimeout(function() {
+        $.fn.zTree.init($(".treeBook"), setting, zNodes);
+    }, 500)
+</script>

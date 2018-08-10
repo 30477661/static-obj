@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/login.css" type="text/css" rel="stylesheet">
+    <title>登录</title>
+    <style>
+        body {
+            background: url(image/login-bg.jpg) no-repeat center;
+            background-size: cover;
+        }
+        
+        .content {
+            width: 400px;
+            height: 350px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -175px;
+            background: url(image/DL2_03.png) no-repeat center bottom;
+        }
+        
+        .top {
+            width: 400px;
+            height: 240px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 8px 0px rgba(119, 119, 119, 0.6);
+            background-color: #fff;
+        }
+        
+        .welcome {
+            font-size: 30px;
+            padding: 20px 0 0 40px;
+            height: 56px;
+        }
+        
+        #userInput {
+            right: -80px;
+        }
+        
+        .input-group-addon,
+        .form-control {
+            border: none;
+        }
+        
+        .has-success .input-group-addon {
+            background-color: #fff;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            border: 1px solid rgb(221, 221, 221);
+            border-radius: 4px;
+            width: 328px;
+            height: 32px;
+            box-shadow: 0px 3px 7px 0px rgba(119, 119, 119, 0.4);
+            margin-top: 15px;
+        }
+        
+        .login-btn {
+            background-color: #1283e1;
+            padding: 3px 70px;
+        }
+        
+        .three-role {
+            position: absolute;
+            right: -1px;
+            top: -12px;
+        }
+        
+        .login-logo {
+            width: 442px;
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -221px;
+            margin-top: -275px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-logo text-center">
+        <img src="image/aa_03.png" alt="">
+    </div>
+    <div class="content">
+        <div class="top">
+            <div class="welcome">
+                <span style="font-size: 36px;height: 36px; line-height: 36px; color: #0571ad;">欢迎</span>
+                <span style="font-size: 30px; color: #666666;">Welcome</span>
+            </div>
+            <form class="form-inline">
+                <div class="form-group has-success has-feedback" id="userInput">
+                    <div class="input-group">
+                        <label for="inputGroupSuccess3" class="input-group-addon">用户名 : </label>
+                        <input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
+                        <span class="three-role"><img src="image/three-role.png" alt=""></span>
+                    </div>
+                    <div class="input-group">
+                        <label for="inputGroupSuccess4" class="input-group-addon">密&nbsp;&nbsp;
+                            码 : </label>
+                        <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
+                        <span class="three-role"><img src="image/three-role.png" alt=""></span>
+                    </div>
+                </div>
+                <div style="margin: 24px 100px 0 0; text-align: right;">
+                    <input type="submit" style="font-size: 16px;" class="btn btn-primary btn-sm login-btn" value="登录">
+                </div>
+            </form>
+        </div>
+        <div class="bottom text-center" style="position: relative; font-size: 14px; color: #fff;top: 60px;">
+            贵州本道信息科技有限公司
+        </div>
+    </div>
+</body>
+
+</html>

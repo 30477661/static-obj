@@ -1,0 +1,823 @@
+Date.prototype.Format = function(fmt)   
+{ //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+}  
+
+var timeidval=0;
+var timefun;
+var icurl='';
+var timehtmid='';
+function ysiccard(param,htmid,fun) {
+timehtmid=htmid;	
+icid=new Date().Format("yyyyMMddHHmmss");  
+	
+icurl="http://localhost:9988/iccard?id="+icid+"&param="+param;	
+timefun=fun;	
+clearInterval(timeidval);
+timeidval = setInterval(ysgeticcard, 1000);
+}
+function ysgeticcard() {
+$.ajax({
+                    type: 'post',
+                    url: icurl,
+                    data:null, 
+				    dataType: 'json',
+                    success: function (msg) {
+					  $('#'+timehtmid).val(msg.jszh);
+                       clearInterval(timeidval);
+					   timefun(msg);
+                    }
+                });
+
+}
+
+function slip(l1){
+     for (i = 0; i <= j; i++){
+         document.getElementById('t'+i).style.background='';
+         document.getElementById('b'+i).style.display='none';
+     }
+         document.getElementById('t'+l1).style.background='url(../images/menusel.png)';
+		// document.getElementById('t'+l1).style.backgroundColor='red';
+         document.getElementById('b'+l1).style.display='';
+		 //document.getElementById('t'+l1).style.height=30;
+}
+
+/*分页函数*/
+function ajaxpage(url){ 
+ 
+  //$('#list').html('');  
+  $('#list').load(url); 
+
+}
+
+function ajaxpageall(url){ 
+ // alert('test');
+  //$('#list').html('');  
+  $('#listall').load(url); 
+
+}
+
+function ajax_page(url){
+  $('#ajaxlist').load(url); 
+
+}
+//期刊 记到
+function ajaxpageqkjd(url){ 
+ 
+  //$('#list').html('');  
+  $('#qkjd').load(url); 
+
+}
+//期刊 合订 列表
+function ajaxpageqkbmhklist(url){ 
+    
+  //$('#list').html('');  
+  $('#divlist').load(url); 
+
+}
+//文献流通
+function ajaxpageyjwxlist(url){ 
+    
+  //$('#list').html('');  
+  $('#yjtslist').load(url); 
+
+}
+/*分页函数*/
+
+
+/*分页删除数据函数*/
+function AjaxDelData(delurl,dataurl){
+	 
+            // alert(delurl);
+	        $.ajax({
+		        type:'get',
+				url:delurl, 
+				dataType: 'json', 
+				//async:false,
+				success: function (a)
+				{	 	 
+				 //  alert(a);
+				 if(a.action=='ture'){
+					 
+                        $.success('操作成功!');
+					     ajaxpage(dataurl);
+					  }
+				  if(a.action=='false'){ 
+				  
+				      $.error('操作失败!');
+					  
+                  }
+				  if(a.action=='nuse'){
+					  $.error('已经被占用!');
+					  }
+				  if(a.action=='nodel'){ 
+				  
+				      $.error('该数据已被引用,不能删除!');
+					  
+                  }
+				   if(a.action=='msg'){ 
+				  
+				      $.error(a.msg);
+					  
+                  }
+				}
+		  });
+
+}
+function AjaxDelDataAll(delurl,dataurl){
+	 
+ 
+	        $.ajax({
+		        type:'get',
+				url:delurl, 
+				dataType: 'json', 
+				 async:false,
+				success: function (a)
+				{	
+				//alert(a);
+				 if(a.action=='ture'){
+                        $.success('操作成功!');
+					    ajaxpageall(dataurl);
+					  }
+				  if(a.action=='false'){ 
+				  
+				      $.error('操作失败!');
+					  
+                  }
+				}
+		  });
+
+}
+
+
+function AjaxDelDataReload(delurl,dataurl){
+	 
+ 
+	        $.ajax({
+		        type:'get',
+				url:delurl, 
+				dataType: 'json', 
+				 async:false,
+				success: function (a)
+				{	
+				// alert(a);
+				 if(a.action=='ture'){
+					 
+                       	 $.success('操作成功!');
+						document.location.reload();
+					
+					   // ajaxpageall(dataurl);
+					  }
+				  if(a.action=='false'){ 
+				 // alert(a.msg);
+				       if (a.msg){
+				        $.error(a.msg);
+					   }else{
+						   $.error('操作失败!');
+						   
+						   }
+                  }
+				}
+		  });
+
+}
+
+/*分页删除数据函数*/
+
+/*JQUERY 重置表单插件*/
+$.fn.rlmsreset = function() {
+     	var mform=$(this);
+	//	alert(111);
+ 		     mform.find('input[type=text],input[type=checkbox],input[type=radio],textarea,select').each(function(){
+			         var _self=$(this);
+					 var check=_self.attr('reset');
+					// alert(check);
+					 if(typeof(check)=='undefined'){
+						   _self.val(''); 
+					 }
+			  });
+			
+};
+/*JQUERY 重置表单插件*/
+
+/*JQUERY  表单只读插件*/
+$.fn.rlmsreadonly = function () {
+	  var mform=$(this);
+	
+	  mform.find('input,select').each(function(){
+											   
+											var _self=$(this);
+											    _self.attr('readonly','true');
+											
+											
+											});
+	
+	
+	
+	}
+/*JQUERY  表单只读插件*/
+
+
+
+//回传ISBN
+function DoPostIsbn(){
+	      //  alert(1)
+           var isbn=$('#Isbn').val();
+           $.ajax({
+	        type:'post',
+            url:'../inc/isbn.php?isbn='+isbn,  //后台处理程序
+             //数据发送方式
+            dataType:'json', //接受数据格式
+             data:null,   //要传递的数据
+			 async:false,
+            success:function(a) {  
+			// alert(a);
+			     //装载返回数据
+				 if (a.action=='ture'){
+					     $('#Cbsm').val(a.cbsm);
+
+				         $('#Cbs').val(a.cbsm);
+			             $('#Cbdq').val(a.cbd);
+         				 $('#Isbn').val(a.isbn);
+						// Showmk();
+				        // $('#Ztm').focus();
+				        // return true;
+				 }
+				  if (a.action=='false'){
+				     // $.error(a.msg);
+                     //  $('#Cbs').val('');
+					 //  $('#Cbsm').val('');
+			         //  $('#Cbdq').val('');
+					  // $('#Isbn').focus();
+					 //  Showmk();
+				      // return false;
+				  }
+				  
+                  }
+            });
+		    
+ }
+ function DoPostIsbnPutInput(){
+	        // alert(1)
+           var isbn=$('#str').val();
+		  // alert(isbn);
+		   
+		   if (mytest.GetLength(isbn)==10  ||  mytest.GetLength(isbn) == 13 ){
+			   
+			    
+		  
+           $.ajax({
+	        type:'post',
+            url:'../inc/isbninput.php?isbn='+isbn,  //后台处理程序
+             //数据发送方式
+            dataType:'json', //接受数据格式
+             data:null,   //要传递的数据
+			 async:false,
+            success:function(a) {  
+			 // alert(a);
+			     //装载返回数据
+				 if (a.action=='ture'){ 
+         				 $('#str').val(a.isbn); 
+						// return true;
+				 }
+				  if (a.action=='false'){ 
+				         // alert(a.msg);
+						// return false;
+				  }
+				  
+                  }
+            });
+			
+		   }
+		    
+ }
+///////////图书打印属性设置 ///////////////////////
+function PrintSet(data){
+	$.win({
+	       title:'打印字段设置',
+		   url:'../inc/print.php?key='+data,
+		   width:560,
+		   height:250
+		   });
+}
+///////////图书打印属性设置 ///////////////////////
+function PrintSetBox(data){
+	$.win({
+	       title:'打印字段设置',
+		   url:'../inc/boxprint.php?key='+data,
+		   width:350,
+		   height:250
+		   });
+}
+
+//////获取系统时间//////////////////////////////////////////
+function GetDate(){
+   var d, s = "";           // 声明变量。
+   d = new Date();                           // 创建 Date 对象。
+   s += (d.getMonth() + 1) + "/";            // 获取月份。
+   s += d.getDate() + "/";                   // 获取日。
+   s += d.getYear();                         // 获取年份。
+   return(s);                                // 返回日期。
+}
+
+
+////分类法选中样式操作///////////////////////////////////////////////////////
+function myflhdiv(){
+	
+	     	var mform=$('#mytree');
+ 		     mform.find('.divcss').each(function(){
+			         var _self=$(this);
+					     _self.click( function () { 
+												
+												$('.divcss').css({background: "White" });
+												$(this).css({background: "#00ccdd" });  
+												//$(this).hide();
+												
+												
+												}); 
+			  });
+	
+	}
+////分类法选中样式操作///////////////////////////////////////////////////////
+
+////期刊合订明细列表///////////////////////////////////////////////////////
+function ShowQkHdMxbList(){
+			   $.ajax({
+				url:'../inc/qkbmaddhklist.php?parentid='+$('#listid').val(),
+				data:null, 
+				dataType: 'html',
+				success: function (a)
+				{	
+	            $('#divlist').html(a);
+				}
+		  });
+	
+	}
+////期刊合订明细列表///////////////////////////////////////////////////////
+
+
+//只允许录入数据字符 0-9 和小数点//////////////////////////////////////
+function KeyPress(objTR)   
+{
+        //只允许录入数据字符 0-9 和小数点    
+        //var objTR = element.document.activeElement;   
+        var txtval=objTR.value;        
+        var key = event.keyCode; 
+		
+        if((key < 48||key > 57)&&key != 46)   
+        {          
+            event.keyCode = 0;   
+        }   
+        else  
+        {   
+            if(key == 46)   
+            {   
+                if(txtval.indexOf(".") != -1||txtval.length == 0)   
+                    event.keyCode = 0;   
+            }   
+        }   
+}  
+//只允许录入数据字符 0-9 和小数点  ///////////////////
+
+//分类号//////////////////////////////////////
+ function flhcheck(name){
+			  var key =window.event.keyCode;
+		 if($('#'+name).val().length==0){
+			if((key<65||(key>90&& key<97)||key>122)){
+				  event.returnValue=false;
+			 }	 
+		 }
+		 if($('#'+name).val().length>0){
+			// alert($('#'+name).val().indexOf('t'));
+				 if(key<48|| key>57){
+				  event.returnValue=false;
+				 }	
+			 if($('#'+name).val().length==1){	 
+			   if($('#'+name).val().indexOf('t')==0||$('#'+name).val().indexOf('T')==0){
+					 event.returnValue=true;
+			   }
+			 }
+			 if($('#'+name).val().length>3&&key==46&&$('#'+name).val().lastIndexOf('.')==-1){
+				 event.returnValue=true;
+				 }
+			 }
+		
+ }
+//分类号///////////////////////////////////////////
+
+////判断字符串a中是否包含b///////////////////////////////////////////////////////
+function StrIndexOff(a,b){
+	
+		   
+	  if(a.indexOf(b)!=-1){  
+			return true;
+	  }else{  
+		   return false;
+	  }
+	  
+	  
+	}
+////判断日期///////////////////////////////////////////////////////
+function IsDate(dateval){
+    var arr = new Array();
+   
+    if(dateval.indexOf("-") != -1){
+        arr = dateval.toString().split("-");
+    }else if(dateval.indexOf("/") != -1){
+        arr = dateval.toString().split("/");
+    }else{
+        return false;
+    }
+   
+    //yyyy-mm-dd || yyyy/mm/dd
+    if(arr[0].length==4){
+        var date = new Date(arr[0],arr[1]-1,arr[2]);
+        if(date.getFullYear()==arr[0] && date.getMonth()==arr[1]-1 && date.getDate()==arr[2]){
+            return true;
+        }
+
+
+    }
+    //dd-mm-yyyy || dd/mm/yyyy
+    if(arr[2].length==4){
+        var date = new Date(arr[2],arr[1]-1,arr[0]);
+        if(date.getFullYear()==arr[2] && date.getMonth()==arr[1]-1 && date.getDate()==arr[0]){
+            return true;
+        }
+    }
+    //mm-dd-yyyy || mm/dd/yyyy
+    if(arr[2].length==4){
+        var date = new Date(arr[2],arr[0]-1,arr[1]);
+        if(date.getFullYear()==arr[2] && date.getMonth()==arr[0]-1 && date.getDate()==arr[1]){
+            return true;
+        }
+    }  
+   
+    return false;
+} 	
+////判断日期///////////////////////////////////////////////////////
+
+
+
+////条形码补位///////////////////////////////////////////////////////
+function CheckF(){
+	
+		     if ($('#txm').val()==''){
+			 return false;
+			 }
+          $.ajax({
+				type:'post',
+				url:'../inc/datachek.php?action=tstxm&txm='+$('#txm').val(),
+				data:null, 
+				dataType: 'json',
+				success: function (a)
+				{	
+				   // alert(a);
+	            //$('#zch').val(a);
+				if (a.action=='ture'){
+				$('#txm').val(a.t.replace('rlms',''));
+				}
+				if (a.action=='false'){
+				alert(a.msg);
+				}
+				}
+		  });	
+}
+////条形码补位///////////////////////////////////////////////////////
+
+function CheckFc(){
+		     if ($('#txm').val()==''){
+			 return false;
+			 }
+          $.ajax({
+				type:'post',
+				url:'../inc/datachek.php?action=yxtxm&txm='+$('#txm').val(),
+				data:null, 
+				dataType: 'json',
+				success: function (a)
+				{	
+				   // alert(a);
+	            //$('#zch').val(a);
+				if (a.action=='ture'){
+				$('#txm').val(a.t.replace('rlms',''));
+				}
+				if (a.action=='false'){
+				alert(a.msg);
+				}
+				}
+		  });	
+}
+
+function CheckFq(){
+		     if ($('#txm').val()==''){
+			 return false;
+			 }
+          $.ajax({
+				type:'post',
+				url:'../inc/datachek.php?action=qtxm&txm='+$('#txm').val(),
+				data:null, 
+				dataType: 'json',
+				success: function (a)
+				{	
+				   // alert(a);
+	            //$('#zch').val(a);
+				if (a.action=='ture'){
+				$('#txm').val(a.t.replace('rlms',''));
+				}
+				if (a.action=='false'){
+				alert(a.msg);
+				}
+				}
+		  });	
+}
+////借书证补位///////////////////////////////////////////////////////
+function CheckD(){
+	
+	     if ($('#jszh').val()==''){
+			 return false;
+			 }
+          $.ajax({
+				type:'post',
+				url:'../inc/datachek.php?action=jszh&jszh='+$('#jszh').val(),
+				data:null, 
+				dataType: 'json',
+				success: function (a)
+				{	
+				  // alert(a);
+	            //$('#zch').val(a);
+				if (a.action=='ture'){
+				$('#jszh').val(a.j.replace('rlms',''));
+				}
+				if (a.action=='false'){
+				alert(a.msg);
+				}
+				}
+		  });	
+}
+////借书证补位///////////////////////////////////////////////////////
+
+////借书证弹出窗口查询///////////////////////////////////////////////////////
+function ShowSeach(d){
+ 
+	$.win({
+	       title:'借书证查询',
+		   url:'../inc/jszseach.php?type='+d,
+		   width:550,
+		   height:308
+		   });
+}
+////借书证弹出窗口查询///////////////////////////////////////////////////////
+
+
+
+////Submit js 提交函数///////////////////////////////////////////////////////
+function FormSubmitClick(id,url){
+	
+	var pdata = $('#'+id).serialize();
+	//alert(url + '&' + pdata);
+	window.open (url + '&' + pdata, "_self");
+	}
+////Submit js 提交函数///////////////////////////////////////////////////////	
+
+function pageHeight(){
+if($.browser.msie){
+return document.compatMode == "CSS1Compat"? document.documentElement.clientHeight-30:document.body.clientHeight-30;
+}else{
+return self.innerHeight-30;
+}
+}; 
+
+function pageWith(){
+if($.browser.msie){
+return document.compatMode == "CSS1Compat"? document.documentElement.clientWidth-15:document.body.clientWidth-15;
+}else{
+return self.innerWidth-15;
+}
+}; 
+
+
+$(document).ready(function(){
+
+$("a[href*='report']") .each(function() {							  
+    var _self=$(this);
+	
+	
+	//alert(escape("打印!"));
+	   // _self.click( function () { 
+			
+		_self.bind("click", function(){
+			if($.browser.safari) {
+                $.error(unescape("%u8BF7%u7528IE%u6D4F%u89C8%u5668%u6D4F%u89C8%21"));return false; 
+            }else{			
+		  $.win({
+	       title:unescape('%u6253%u5370%21'),
+		   url:$(this).attr('href'),
+		   width:pageWith(),
+		   height:pageHeight()
+		   }); 
+   
+           return false;	}
+	  }); 
+	
+ 
+
+});
+
+}); 
+
+
+//处理jscookie 写数据
+function mcookiechangeset(data){ 
+  $("#"+data).change( function() {
+ 		
+	if($("#"+data).attr("checked")==true)	{
+	  
+	  $.cookie(data,'true'); 
+	}
+		if($("#"+data).attr("checked")==false)	{
+	  
+	  $.cookie(data,'false'); 
+	}
+  }); 
+}
+//处理jscookie 读数据 并附值
+function mcookieget(data){
+  if ($.cookie(data)=='true'){
+  $("#"+data).attr("checked",true);
+  }
+  if ($.cookie(data)=='false'){
+  $("#"+data).attr("checked",false);
+  }
+}
+
+
+
+ 
+
+
+//借书
+function Mjs(){
+	
+	 
+	$.ajax({
+				type:'post',
+				url:'Books_data.php?action=js&inmsg=txm&txm='+$('#txm').val()+'&dzlsh='+$('#dzlsh').val()+'&booktype='+$('#booktype').val()+'&Browtype='+$('#Browtype').val(),
+				data:null, 
+				dataType: 'json',
+				async:false,
+				error :function (XMLHttpRequest, textStatus, errorThrown) {
+         // 通常情况下textStatus和errorThown只有其中一个有值 
+         alert('操作时发生错误:'+XMLHttpRequest.responseText);
+         },
+				success: function (a)
+				{	//alert(a);
+				 
+				  if (a.action=='ture'){
+                 // $('#txm').val(a.txm);
+				  $('#booktype').val(a.booktype);
+				 
+				  
+				  GetBook(a.booktype);
+                  SendData(a.booktype);
+				  }
+				  if (a.action=='false'){
+					  if (a.msg=='[fsok]')
+					{
+					alert ('文献已经借阅，成功归还。');
+					 GetBook(a.booktype);
+                  SendData(a.booktype);
+					}
+					   else if  (a.msg=='[fsfk]')
+					 
+				  {
+				  Mhs();
+				  }
+					  else
+					{ 
+				
+				  alert (a.msg);
+					}
+					  
+				  }
+				}
+		  });	
+	
+ 
+}
+//借书
+
+
+//还书
+
+function Mhs(){
+		  $.ajax({
+				type:'post',
+				url:'Books_data.php?action=fs&inmsg=txm&txm='+$('#txm').val()+'&booktype='+$('#booktype').val(),
+				data:null, 
+				dataType: 'json',
+				async:false,
+				success: function (a)
+				{
+					 // alert(a);
+				  if (a.action=='ture'){
+					  
+			         if (a.fine>0){
+					
+		 
+				  
+				  if (window.confirm('该书已超期欠费,是否还书!')){
+				  
+				  }else{
+				  return false;  
+					  
+				  }
+				  
+			    alert(a.msg);
+					
+				  if (window.confirm(a.msg+',是否记帐？')){
+				//  $.get('Books_data.php', { action: 'dzjkjz', txm : a.txm , booktype:$('#booktype').val()},function(data){alert( data);} ); 
+				  $.get('Books_data.php', { action: 'dzjkjz', txm : $('#txm').val() , booktype:$('#booktype').val()},function(data){alert( data);} );  
+				  }else{
+				
+				//  $.get('Books_data.php', { action: 'dzjk', txm : a.txm ,booktype:$('#booktype').val()},function(data){alert( data);} );   
+				 $.get('Books_data.php', { action: 'dzjk', txm : $('#txm').val() ,booktype:$('#booktype').val()},function(data){alert( data);} );   	  
+				  }
+				  
+				  
+				  
+						  
+					  }
+					  
+					  
+				  //////读者信息
+				  $('#dzlsh').val(a.dzlsh);
+				  /////图书信息
+				 // $('#txm').val(a.txm);
+				  GetStudent();
+				 // alert(a.booktype);
+				  GetBook(a.booktype);
+				  SendData(a.booktype);
+                  }
+				  if (a.action=='false'){
+				  alert (a.msg);
+				  }
+				  
+				}
+		  });	
+	
+	
+	
+	}
+	
+//还书
+$.fn.StrReplace = function () {
+	  var _self=$(this);
+	  
+	 // alert(_self.attr('id'));
+	  
+	  var  mstr  =_self.val(); 
+	  _self.val(mstr.replace(/[^0-9]/g, "")); 
+	}
+
+function StrToUpperCase(e){
+	  var _self=e;
+	  var  mstr  =_self.val(); 
+	  _self.val(mstr.toUpperCase()); 
+	 // alert(mstr.toUpperCase());
+}
+
+
+var mytest = {};
+mytest.GetLength = function(str) {
+    ///<summary>获得字符串实际长度，中文2，英文1</summary>
+    ///<param name="str">要获得长度的字符串</param>
+    var realLength = 0, len = str.length, charCode = -1;
+    for (var i = 0; i < len; i++) {
+        charCode = str.charCodeAt(i);
+        if (charCode >= 0 && charCode <= 128) realLength += 1;
+        else realLength += 2;
+    }
+    return realLength;
+};
+
+var StrToBigStr ={}
+StrToBigStr.Go = function(Data){
+	var mData;
+	mData=$('#'+Data).val().toUpperCase();
+	
+	$('#'+Data).val(mData);
+  }

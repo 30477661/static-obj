@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<link href="css/manage.css" rel="stylesheet" type="text/css">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <style>
+        body {
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            margin: 0px;
+        }
+        
+        #switchpic {
+            width: 6px;
+            cursor: pointer;
+            clear: both;
+            vertical-align: bottom;
+            margin-top: 220px;
+        }
+        
+        a {
+            color: #555;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #0099CC;
+        }
+        
+        img {
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+            display: inline;
+        }
+    </style>
+    <title>显示/隐藏左侧导航栏</title>
+</head>
+<script language="JavaScript">
+    function Submit_onclick() {
+        if (window.parent.document.getElementById("myFrame").cols == "178,7,*") {
+            window.parent.document.getElementById("myFrame").cols = "0,7,*";
+            document.getElementById("ImgArrow").src = "image/youce_03.png";
+            // document.getElementById("ImgArrow").alt="打开左侧导航栏";
+        } else {
+            window.parent.document.getElementById("myFrame").cols = "178,7,*";
+            document.getElementById("ImgArrow").src = "image/youce_03.png";
+            // document.getElementById("ImgArrow").alt="隐藏左侧导航栏";
+        }
+    }
+
+    function MyLoad() {
+        if (window.parent.location.href.indexOf("MainUrl") > 0) {
+            window.top.midFrame.document.getElementById("ImgArrow").src = "image/youce_03.png";
+        }
+    }
+</script>
+
+<body onload="MyLoad()">
+    <div id="switchpic">
+        <a href="javascript:Submit_onclick()"><img src="image/youce_03.png" alt="隐藏左侧导航栏" id="ImgArrow" /></a>
+    </div>
+</body>
+
+</html>

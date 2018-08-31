@@ -47,7 +47,7 @@
                 <div class="line"></div>
             </li>
         </ul>
-        <router-link tag="a" to="" class="many-show-text" style="margin: 24px 0;">
+        <router-link tag="a" to="/change-password" class="many-show-text" style="margin: 24px 0;">
             <span>修改密码</span><img src="../../../static/rg-arrow.png" alt="">
         </router-link>
     </div>

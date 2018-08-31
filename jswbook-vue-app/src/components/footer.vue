@@ -3,8 +3,8 @@
         <ul>
             <li><router-link to="/"><img ref="imgIcon" :src="imgActive==1?navImgUrl_active1:navImgUrl_1" alt=""><span>首页</span></router-link></li>
             <li><router-link to='/search'><img :src="imgActive==2?navImgUrl_active2:navImgUrl_2" alt=""><span>搜索</span></router-link></li>
-            <li><router-link to='/Message'><img :src="imgActive==3?navImgUrl_active3:navImgUrl_3" alt=""><span>消息</span></router-link></li>
-            <li><router-link to='/Note'><img :src="imgActive==4?navImgUrl_active4:navImgUrl_4" alt=""><span>笔记</span></router-link></li>
+            <li><router-link to='/news'><img :src="imgActive==3?navImgUrl_active3:navImgUrl_3" alt=""><span>消息</span></router-link></li>
+            <li><router-link to='/notes'><img :src="imgActive==4?navImgUrl_active4:navImgUrl_4" alt=""><span>笔记</span></router-link></li>
             <li><router-link to='/my'><img :src="imgActive==5?navImgUrl_active5:navImgUrl_5" alt=""><span>我的</span></router-link></li>
         </ul>
     </div>

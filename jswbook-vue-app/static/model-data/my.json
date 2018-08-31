@@ -15,7 +15,15 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "cancelText": "已取消",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
+
         },
         {
             "id": 1002,
@@ -30,7 +38,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "cancelText": "已取消",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 1003,
@@ -45,7 +60,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "cancelText": "已取消",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 1004,
@@ -60,7 +82,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "expiredText": "已失效",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 1005,
@@ -75,7 +104,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "expiredText": "已失效",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 1006,
@@ -90,7 +126,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "expiredText": "已失效",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 1007,
@@ -105,7 +148,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "cancelText": "已取消",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 1008,
@@ -120,7 +170,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "expiredText": "已失效",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 1009,
@@ -135,7 +192,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "expiredText": "已失效",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         },
         {
             "id": 10010,
@@ -150,7 +214,14 @@
             "blackBookDate": "2018-08-21",
             "remainDay": "2",
             "beyondDay": "5",
-            "beyondDayMoney": "3.5"
+            "beyondDayMoney": "3.5",
+            "btnCancelServe": "1",
+            "btnRenew": "1",
+            "cancelText": "已取消",
+            "barCode": "978-7-235-09991-5",
+            "categoryNumber": "G245.2",
+            "bookPrice": "39.9",
+            "missBuyData": "2018-07-20"
         }
     ]
 }

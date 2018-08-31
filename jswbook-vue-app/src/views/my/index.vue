@@ -22,7 +22,7 @@
             <img src="../../../static/mycenter-icon-1.png" alt=""><span>我的预约</span><img src="../../../static/rg-arrow.png" alt="">
         </router-link>
         <ul style="margin: 16px 0 24px 0;">
-            <router-link tag="a" to="" class="many-nav">
+            <router-link tag="a" to="/my-pre-borrow" class="many-nav">
                 <img src="../../../static/mycenter-icon-2.png" alt=""><span>我的预借</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
@@ -35,14 +35,19 @@
                 <div class="line"></div>
             </router-link>
             <router-link tag="a" to="" class="many-nav">
+                <img src="../../../static/mycenter-icon-11.png" alt=""><span>我参加的活动</span><img src="../../../static/rg-arrow.png" alt="">
+                <i></i>
+                <div class="line"></div>
+            </router-link>
+            <router-link tag="a" to="" class="many-nav">
                 <img src="../../../static/mycenter-icon-5.png" alt=""><span>缴费相关</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            <router-link tag="a" to="/reader-loss" class="many-nav">
                 <img src="../../../static/mycenter-icon-6.png" alt=""><span>读者证挂失</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            <router-link tag="a" to="/my-miss-buylist" class="many-nav">
                 <img src="../../../static/mycenter-icon-7.png" alt=""><span>我的荐购</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
@@ -54,12 +59,12 @@
                 <img src="../../../static/mycenter-icon-9.png" alt=""><span>我的留言</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            <router-link tag="a" to="/help" class="many-nav">
                 <img src="../../../static/mycenter-icon-10.png" alt=""><span>帮助</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
         </ul>
-        <div class="exit" style="margin: 24px 0;">退出登录</div>
+        <router-link to="/login" tag="div" class="exit" style="margin: 24px 0;">退出登录</router-link>
         <footernav :imgActive='imgActive=5'></footernav>
     </div>
 </template>

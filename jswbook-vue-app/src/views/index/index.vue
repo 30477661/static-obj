@@ -7,17 +7,25 @@
         <div class="school-logo">
             <div class="school-name"><img src="../../../static/school-logo.png" alt=""></div>
         </div>
+        <ul class="self-book-static">
+            <router-link to="/my-borrowing" tag="li"><span><img src="../../../static/self-book-static-1.png" alt=""><i>1</i></span><span>在借中</span></router-link>
+            <router-link to="/overdue-book" tag="li"><span><img src="../../../static/self-book-static-2.png" alt=""><i>2</i></span><span>超期未还</span></router-link>
+            <router-link to="/" tag="li"><span><img src="../../../static/self-book-static-3.png" alt=""><i>3</i></span><span>欠款情况</span></router-link>
+            
+        </ul>
         <nav>
             <ul style="margin-bottom: 10px;">
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_1" alt=""><span>新书通报</span></router-link>
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_2" alt=""><span>好书推荐</span></router-link>
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_3" alt=""><span>借阅排行榜</span></router-link>
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_4" alt=""><span>数字资源</span></router-link>
+                <router-link to="/news-list" tag="li"><img :src="indexNavImg.indexNav_9" alt=""><span>新闻公告</span></router-link>
+                <router-link to="/new-book" tag="li"><img :src="indexNavImg.indexNav_1" alt=""><span>新书通报</span></router-link>
+                <router-link to="/good-book" tag="li"><img :src="indexNavImg.indexNav_2" alt=""><span>好书推荐</span></router-link>
+                <router-link to="/borrow-ranking" tag="li"><img :src="indexNavImg.indexNav_3" alt=""><span>借阅排行</span></router-link>
+                
             </ul>
             <ul>
+                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_4" alt=""><span>数字资源</span></router-link>
                 <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_5" alt=""><span>阅读活动</span></router-link>
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_6" alt=""><span>图书荐购</span></router-link>
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_7" alt=""><span>缴费记录</span></router-link>
+                <router-link to="/my-miss-buylist" tag="li"><img :src="indexNavImg.indexNav_6" alt=""><span>图书荐购</span></router-link>
+                <!-- <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_7" alt=""><span>缴费记录</span></router-link> -->
                 <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_8" alt=""><span>馆长信箱</span></router-link>
             </ul>
         </nav>
@@ -28,6 +36,26 @@
             </ul>
         </div>
         <div class="bookli">
+            <ul>
+                <li>
+                    <img src="../../../static/index-bookimg-1.png" alt="">
+                    <div>
+                        <span>图书名称</span>
+                        <span>图书作者</span>
+                    </div>
+                    <button class="btn-primary">预借</button>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="../../../static/index-bookimg-1.png" alt="">
+                    <div>
+                        <span>图书名称</span>
+                        <span>图书作者</span>
+                    </div>
+                    <button class="btn-primary">预借</button>
+                </li>
+            </ul>
             <ul>
                 <li>
                     <img src="../../../static/index-bookimg-1.png" alt="">
@@ -62,12 +90,25 @@ export default {
                 indexNav_5:require('../../../static/index-nav-5.png'),
                 indexNav_6:require('../../../static/index-nav-6.png'),
                 indexNav_7:require('../../../static/index-nav-7.png'),
-                indexNav_8:require('../../../static/index-nav-8.png')
+                indexNav_8:require('../../../static/index-nav-8.png'),
+                indexNav_9:require('../../../static/index-nav-9.png')
             }
         }
     },
     created(){
-        
+        let that = this;
+        // this.myAjax.postData('jieyue/my_list',
+        // function(result){
+        //     that.resultData = result.resMsg;
+        //     let resultList = result.resMsg.list;
+        //     resultList.forEach(element => {
+        //         that.blackData.push(element);
+        //     });
+        //     console.log(that.blackData,55);
+
+        // },function(){
+
+        // },{id:1002},that)
     },
     mounted(){
         // this.$refs.footernav.imgUrlChange();
@@ -81,6 +122,7 @@ export default {
 <style lang="scss">
     div.index{
         padding-bottom: 100px;
+        background-color: #fff;
         header {
             height: 80px;
             line-height: 80px;
@@ -133,6 +175,42 @@ export default {
                 }
             }
         }
+        .self-book-static {
+            display: flex;
+            height: 160px;
+            // align-items: center;
+            // justify-content: center;
+            >li {
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                &:active {
+                    background-color: #ddd;
+                }
+                span {
+                    position: relative;
+                    i {
+                        position: absolute;
+                        top: -13px;
+                        right: -4px;
+                        background-color: rgb(255, 0, 0);
+                        width: 26px;
+                        height: 26px;
+                        line-height: 26px;
+                        border-radius: 50%;
+                        text-align: center;
+                        font-size: 20px;
+                        color: #fff;
+                        font-style: normal;
+                    }
+                }
+                img {
+                    width: 64px;
+                }
+            }
+        }
         nav {
             height: 360px;
             background-color: #efefef;
@@ -167,6 +245,7 @@ export default {
             line-height: 80px;
             border-bottom: 1px solid #dddddd;
             padding-left:25px;
+            background-color: #fff;
             ul {
                 display: flex;
                 >li {
@@ -188,6 +267,7 @@ export default {
             }
         }
         .bookli {
+            background-color: #fff;
             ul {
                 width: 95%;
                 margin: 0 auto;

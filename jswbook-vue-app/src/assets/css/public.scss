@@ -2,6 +2,7 @@
 
 body {
     font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    background-color: #efefef;
 }
 
 body,
@@ -275,6 +276,16 @@ a.many-nav .line {
     border-bottom: 1px solid rgba(221, 221, 221, .41);
 }
 
+a.many-nav>i {
+    border-radius: 50%;
+    background-color: rgb(255, 0, 0);
+    position: absolute;
+    right: 78px;
+    top: 10px;
+    width: 14px;
+    height: 14px;
+}
+
 .many-show-text {
     height: 70px;
     background-color: #ffffff;
@@ -283,6 +294,17 @@ a.many-nav .line {
     align-items: center;
     position: relative;
     font-size: 30px;
+    color: #333;
+    >label {
+        margin-right: 40px;
+    }
+    >input {
+        height: 50px;
+        line-height: 48px;
+        font-size: 30px;
+        text-indent: 30px;
+        flex-grow: 1;
+    }
 }
 
 .many-show-text>span {
@@ -306,23 +328,18 @@ a.many-nav .line {
     border-bottom: 1px solid rgba(221, 221, 221, .41);
 }
 
-div.my-borrowing,
-div.overdue-book,
-div.borrow-book-list,
-div.my-serve {
-    height: 100%;
+div.my-serve,
+div.my-miss-buy {
+    // height: 100%;
     background-color: #efefef;
-    >ul:last-child {
-        margin-bottom: 0!important;
-    }
     .borrowing-book {
         border-radius: 10px;
         background-color: rgb(255, 255, 255);
         width: 702px;
-        height: 310px;
+        // height: 310px;
         box-sizing: border-box;
         margin: 0 auto 24px;
-        padding: 0 20px 0 30px;
+        padding: 23px 20px 23px 30px;
         display: flex;
         flex-direction: column;
         // align-items: center;
@@ -355,6 +372,167 @@ div.my-serve {
             }
         }
     }
+}
+
+.borrowing-book:last-child {
+    margin-bottom: 0!important;
+}
+
+// div.borrow-ranking,
+div.overdue-book,
+div.my-borrowing,
+div.borrow-book-list {
+    background-color: #efefef;
+    div.borrowing-book-data {
+        padding: 23px;
+        background-color: #fff;
+        width: 702px;
+        border-radius: 10px;
+        margin: 0 auto 24px;
+        >div {
+            display: flex;
+            align-items: center;
+            .book-img {
+                border-radius: 4px;
+                background-color: rgb(171, 171, 171);
+                width: 142px;
+                height: 184px;
+                overflow: hidden;
+                >img {
+                    width: 142px;
+                    height: 184px;
+                }
+            }
+            .bookimg-rg {
+                margin-left: 24px;
+                flex-grow: 1;
+                >li {
+                    display: flex;
+                    padding-right: 85px;
+                    position: relative;
+                    >span:nth-of-type(2) {
+                        width: 250px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                }
+                >li {
+                    height: 38px;
+                    line-height: 38px;
+                    font-size: 26px;
+                    >span:nth-of-type(1) {
+                        color: #333333;
+                    }
+                    >span:nth-of-type(2) {
+                        color: #666666;
+                    }
+                    >span:nth-of-type(3) {
+                        position: absolute;
+                        right: 0;
+                        >button {
+                            border-width: 1px;
+                            border-color: rgb(11, 127, 229);
+                            border-style: solid;
+                            border-radius: 6px;
+                            width: 85px;
+                            height: 38px;
+                            line-height: 36px;
+                            text-align: center;
+                            font-size: 24px;
+                            color: rgb(11, 127, 229);
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+        .book-bottom {
+            margin-top: 20px;
+            >li {
+                height: 38px;
+                line-height: 38px;
+                font-size: 26px;
+                >span:nth-of-type(1) {
+                    color: #666666;
+                }
+                >span:nth-of-type(2) {
+                    color: #666666;
+                }
+                >span:nth-of-type(3) {
+                    float: right;
+                    >button {
+                        border-width: 1px;
+                        border-color: rgb(11, 127, 229);
+                        border-style: solid;
+                        border-radius: 6px;
+                        width: 85px;
+                        height: 38px;
+                        line-height: 36px;
+                        text-align: center;
+                        font-size: 24px;
+                        color: rgb(11, 127, 229);
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.comment-btn {
+    display: inline-block;
+    border-radius: 6px;
+    background-color: rgb(255, 108, 0);
+    padding: 0 16px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 26px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.tab-switch {
+    height: 80px;
+    background-color: #ffffff;
+    display: flex;
+    >li {
+        flex-grow: 1;
+        font-size: 28px;
+        color: #333333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        span {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+    }
+    >li.active {
+        color: #0b7fe5;
+        >i {
+            width: 40px;
+            height: 4px;
+            background-color: #0b7fe5;
+            // align-self: flex-end;
+        }
+    }
+}
+
+.one-row-btn {
+    border-radius: 10px;
+    background-color: rgb(65, 176, 250);
+    width: 500px;
+    height: 72px;
+    line-height: 72px;
+    font-size: 30px;
+    color: #fff;
+}
+
+div.mint-spinner-fading-circle-circle {
+    left: 360px;
 }
 
 

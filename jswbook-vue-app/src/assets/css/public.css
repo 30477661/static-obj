@@ -2,6 +2,7 @@
 /* reste  s-- */
 body {
   font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  background-color: #efefef;
 }
 
 body,
@@ -271,6 +272,16 @@ a.many-nav .line {
   border-bottom: 1px solid rgba(221, 221, 221, 0.41);
 }
 
+a.many-nav > i {
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  right: 78px;
+  top: 10px;
+  width: 14px;
+  height: 14px;
+}
+
 .many-show-text {
   height: 70px;
   background-color: #ffffff;
@@ -279,6 +290,17 @@ a.many-nav .line {
   align-items: center;
   position: relative;
   font-size: 30px;
+  color: #333;
+}
+.many-show-text > label {
+  margin-right: 40px;
+}
+.many-show-text > input {
+  height: 50px;
+  line-height: 48px;
+  font-size: 30px;
+  text-indent: 30px;
+  flex-grow: 1;
 }
 
 .many-show-text > span {
@@ -302,64 +324,42 @@ a.many-nav .line {
   border-bottom: 1px solid rgba(221, 221, 221, 0.41);
 }
 
-div.my-borrowing,
-div.overdue-book,
-div.borrow-book-list,
-div.my-serve {
-  height: 100%;
+div.my-serve,
+div.my-miss-buy {
   background-color: #efefef;
 }
-div.my-borrowing > ul:last-child,
-div.overdue-book > ul:last-child,
-div.borrow-book-list > ul:last-child,
-div.my-serve > ul:last-child {
-  margin-bottom: 0 !important;
-}
-div.my-borrowing .borrowing-book,
-div.overdue-book .borrowing-book,
-div.borrow-book-list .borrowing-book,
-div.my-serve .borrowing-book {
+div.my-serve .borrowing-book,
+div.my-miss-buy .borrowing-book {
   border-radius: 10px;
   background-color: white;
   width: 702px;
-  height: 310px;
   box-sizing: border-box;
   margin: 0 auto 24px;
-  padding: 0 20px 0 30px;
+  padding: 23px 20px 23px 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-div.my-borrowing .borrowing-book > li,
-div.overdue-book .borrowing-book > li,
-div.borrow-book-list .borrowing-book > li,
-div.my-serve .borrowing-book > li {
+div.my-serve .borrowing-book > li,
+div.my-miss-buy .borrowing-book > li {
   height: 40px;
   line-height: 40px;
   font-size: 26px;
 }
-div.my-borrowing .borrowing-book > li > span:nth-of-type(1),
-div.overdue-book .borrowing-book > li > span:nth-of-type(1),
-div.borrow-book-list .borrowing-book > li > span:nth-of-type(1),
-div.my-serve .borrowing-book > li > span:nth-of-type(1) {
+div.my-serve .borrowing-book > li > span:nth-of-type(1),
+div.my-miss-buy .borrowing-book > li > span:nth-of-type(1) {
   color: #333333;
 }
-div.my-borrowing .borrowing-book > li > span:nth-of-type(2),
-div.overdue-book .borrowing-book > li > span:nth-of-type(2),
-div.borrow-book-list .borrowing-book > li > span:nth-of-type(2),
-div.my-serve .borrowing-book > li > span:nth-of-type(2) {
+div.my-serve .borrowing-book > li > span:nth-of-type(2),
+div.my-miss-buy .borrowing-book > li > span:nth-of-type(2) {
   color: #666666;
 }
-div.my-borrowing .borrowing-book > li > span:nth-of-type(3),
-div.overdue-book .borrowing-book > li > span:nth-of-type(3),
-div.borrow-book-list .borrowing-book > li > span:nth-of-type(3),
-div.my-serve .borrowing-book > li > span:nth-of-type(3) {
+div.my-serve .borrowing-book > li > span:nth-of-type(3),
+div.my-miss-buy .borrowing-book > li > span:nth-of-type(3) {
   float: right;
 }
-div.my-borrowing .borrowing-book > li > span:nth-of-type(3) > button,
-div.overdue-book .borrowing-book > li > span:nth-of-type(3) > button,
-div.borrow-book-list .borrowing-book > li > span:nth-of-type(3) > button,
-div.my-serve .borrowing-book > li > span:nth-of-type(3) > button {
+div.my-serve .borrowing-book > li > span:nth-of-type(3) > button,
+div.my-miss-buy .borrowing-book > li > span:nth-of-type(3) > button {
   border-width: 1px;
   border-color: #0b7fe5;
   border-style: solid;
@@ -371,6 +371,201 @@ div.my-serve .borrowing-book > li > span:nth-of-type(3) > button {
   font-size: 24px;
   color: #0b7fe5;
   background-color: transparent;
+}
+
+.borrowing-book:last-child {
+  margin-bottom: 0 !important;
+}
+
+div.overdue-book,
+div.my-borrowing,
+div.borrow-book-list {
+  background-color: #efefef;
+}
+div.overdue-book div.borrowing-book-data,
+div.my-borrowing div.borrowing-book-data,
+div.borrow-book-list div.borrowing-book-data {
+  padding: 23px;
+  background-color: #fff;
+  width: 702px;
+  border-radius: 10px;
+  margin: 0 auto 24px;
+}
+div.overdue-book div.borrowing-book-data > div,
+div.my-borrowing div.borrowing-book-data > div,
+div.borrow-book-list div.borrowing-book-data > div {
+  display: flex;
+  align-items: center;
+}
+div.overdue-book div.borrowing-book-data > div .book-img,
+div.my-borrowing div.borrowing-book-data > div .book-img,
+div.borrow-book-list div.borrowing-book-data > div .book-img {
+  border-radius: 4px;
+  background-color: #ababab;
+  width: 142px;
+  height: 184px;
+  overflow: hidden;
+}
+div.overdue-book div.borrowing-book-data > div .book-img > img,
+div.my-borrowing div.borrowing-book-data > div .book-img > img,
+div.borrow-book-list div.borrowing-book-data > div .book-img > img {
+  width: 142px;
+  height: 184px;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg,
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg,
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg {
+  margin-left: 24px;
+  flex-grow: 1;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg > li,
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg > li,
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg > li {
+  display: flex;
+  padding-right: 85px;
+  position: relative;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(2),
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(2),
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(2) {
+  width: 250px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg > li,
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg > li,
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg > li {
+  height: 38px;
+  line-height: 38px;
+  font-size: 26px;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(1),
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(1),
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(1) {
+  color: #333333;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(2),
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(2),
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(2) {
+  color: #666666;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(3),
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(3),
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(3) {
+  position: absolute;
+  right: 0;
+}
+div.overdue-book div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(3) > button,
+div.my-borrowing div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(3) > button,
+div.borrow-book-list div.borrowing-book-data > div .bookimg-rg > li > span:nth-of-type(3) > button {
+  border-width: 1px;
+  border-color: #0b7fe5;
+  border-style: solid;
+  border-radius: 6px;
+  width: 85px;
+  height: 38px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  color: #0b7fe5;
+  background-color: transparent;
+}
+div.overdue-book div.borrowing-book-data .book-bottom,
+div.my-borrowing div.borrowing-book-data .book-bottom,
+div.borrow-book-list div.borrowing-book-data .book-bottom {
+  margin-top: 20px;
+}
+div.overdue-book div.borrowing-book-data .book-bottom > li,
+div.my-borrowing div.borrowing-book-data .book-bottom > li,
+div.borrow-book-list div.borrowing-book-data .book-bottom > li {
+  height: 38px;
+  line-height: 38px;
+  font-size: 26px;
+}
+div.overdue-book div.borrowing-book-data .book-bottom > li > span:nth-of-type(1),
+div.my-borrowing div.borrowing-book-data .book-bottom > li > span:nth-of-type(1),
+div.borrow-book-list div.borrowing-book-data .book-bottom > li > span:nth-of-type(1) {
+  color: #666666;
+}
+div.overdue-book div.borrowing-book-data .book-bottom > li > span:nth-of-type(2),
+div.my-borrowing div.borrowing-book-data .book-bottom > li > span:nth-of-type(2),
+div.borrow-book-list div.borrowing-book-data .book-bottom > li > span:nth-of-type(2) {
+  color: #666666;
+}
+div.overdue-book div.borrowing-book-data .book-bottom > li > span:nth-of-type(3),
+div.my-borrowing div.borrowing-book-data .book-bottom > li > span:nth-of-type(3),
+div.borrow-book-list div.borrowing-book-data .book-bottom > li > span:nth-of-type(3) {
+  float: right;
+}
+div.overdue-book div.borrowing-book-data .book-bottom > li > span:nth-of-type(3) > button,
+div.my-borrowing div.borrowing-book-data .book-bottom > li > span:nth-of-type(3) > button,
+div.borrow-book-list div.borrowing-book-data .book-bottom > li > span:nth-of-type(3) > button {
+  border-width: 1px;
+  border-color: #0b7fe5;
+  border-style: solid;
+  border-radius: 6px;
+  width: 85px;
+  height: 38px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  color: #0b7fe5;
+  background-color: transparent;
+}
+
+.comment-btn {
+  display: inline-block;
+  border-radius: 6px;
+  background-color: #ff6c00;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 26px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.tab-switch {
+  height: 80px;
+  background-color: #ffffff;
+  display: flex;
+}
+.tab-switch > li {
+  flex-grow: 1;
+  font-size: 28px;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tab-switch > li span {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.tab-switch > li.active {
+  color: #0b7fe5;
+}
+.tab-switch > li.active > i {
+  width: 40px;
+  height: 4px;
+  background-color: #0b7fe5;
+}
+
+.one-row-btn {
+  border-radius: 10px;
+  background-color: #41b0fa;
+  width: 500px;
+  height: 72px;
+  line-height: 72px;
+  font-size: 30px;
+  color: #fff;
+}
+
+div.mint-spinner-fading-circle-circle {
+  left: 360px;
 }
 
 /* 自定义  e-- */

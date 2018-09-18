@@ -12,10 +12,10 @@
             </ul>
         </section>
         <div class="top-search" style="background-color:#fff;">
-            <input type="password" placeholder="输入密码" style="background-color:#e5e5e5; box-shadow:none;">
+            <input type="password" placeholder="输入密码" v-model="passWord" style="background-color:#e5e5e5; box-shadow:none;">
         </div>
         <div class="buy-fromBtn-div">
-            <button type="submit" class="one-row-btn" @click="missBuySubmit">提交</button>
+            <button type="submit" class="one-row-btn" @click="submit">提交</button>
         </div>
     </div>
 </template>
@@ -34,11 +34,19 @@ export default {
     },
     data(){
         return {
-
+            passWord:'',
         }
     },
     methods:{
-        
+        submit(){
+            let that = this;
+            this.myAjax.postData('wode/reporttheloss',
+            (result)=>{
+                that.$toast(result);
+            },()=>{
+
+            },{mm:this.passWord},that);
+        }
     }
 }
 </script>

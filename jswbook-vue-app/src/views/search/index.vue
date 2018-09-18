@@ -2,9 +2,9 @@
     <div class="search-index">
         <header class="clearfix">搜索</header>
         <div class="top-search">
-            <img src="../../../static/index-search-icon.png" alt=""><input type="text" placeholder="题名、著者、分类号、出版社、主题词">
+            <img src="../../../static/index-search-icon.png" alt=""><input type="text" v-model="searchText" @keyup.enter="enterFun({name:'SearchResult',params:{searchText:searchText}})" placeholder="题名、著者、分类号、出版社、主题词">
         </div>
-        <div class="search-btn-div" style="border: none;margin-bottom: 20px;"><router-link tag="button" to="/search-result" class="one-row-btn">检索</router-link></div>
+        <div class="search-btn-div" style="border: none;margin-bottom: 20px;"><router-link tag="button" :to="{name:'SearchResult',params:{searchText:searchText}}" class="one-row-btn" ref="search">检索</router-link></div>
         <div class="search-btn-div">
             <router-link to="/highlevel-search" tag="button" class="one-row-btn">高级检索</router-link>
         </div>
@@ -43,7 +43,16 @@ import footernav from '../../components/footer'
 export default {
     components:{
         footernav,
-        
+    },
+    data(){
+        return {
+            searchText:''
+        }
+    },
+    methods:{
+        enterFun(to){
+            this.$router.push(to);
+        }
     }
 }
 </script>

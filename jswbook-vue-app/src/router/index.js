@@ -9,6 +9,7 @@ import BookDetail from '../views/index/book-detail'
 import BorrowRanking from '../views/index/borrow-ranking'
 import NewsList from '../views/index/news-list'
 import NewsDetail from '../views/index/news-detail'
+import LibSystem from '../views/index/lib-system'
 /////////////// search ////////////////////
 import Search from '../views/search/index'
 import HighlevelSearch from '../views/search/highlevel-search'
@@ -34,6 +35,7 @@ import MyMissBuy from '../views/my/my-miss-buy'
 import MyMissBuylist from '../views/my/my-miss-buylist'
 import Help from '../views/my/help'
 import HelpDescription from '../views/my/help-description'
+import MyCollect from '../views/my/my-collect'
 
 Vue.use(Router)
 
@@ -80,6 +82,11 @@ export default new Router({
             path: '/news-detail',
             name: 'NewsDetail',
             component: NewsDetail
+        },
+        {
+            path: '/lib-system',
+            name: 'LibSystem',
+            component: LibSystem
         },
         ///////////////////////////////////////////////
         /////////////// search  s-- ///////////////////
@@ -193,6 +200,11 @@ export default new Router({
             path: '/my-miss-buy',
             name: 'MyMissBuy',
             component: MyMissBuy
+        },
+        {
+            path: '/my-collect',
+            name: 'MyCollect',
+            component: MyCollect
         },
         /////////////// my  e-- ///////////////////////
         ///////////////////////////////////////////////

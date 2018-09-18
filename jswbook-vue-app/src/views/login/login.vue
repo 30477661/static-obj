@@ -1,23 +1,23 @@
 
 <template>
     <div class="login">
-        <headerpage :title_page='title_page=""' :backBtn='backBtn=2' ></headerpage>
+        <!-- <headerpage :title_page='title_page=""' :backBtn='backBtn=2' ></headerpage> -->
         <div class="login-con">
-            <form>
+            <form @submit.prevent="submit">
                 <ul>
                     <li>
                         <div><img src="../../../static/login-header.png" alt=""></div>
                     </li>
                     <li>
                         <label for="userName"><img src="../../../static/login-name.png" alt=""></label>
-                        <input id="userName" type="text" placeholder="请输入读者证号">
+                        <input id="userName" v-model="name" ref="foucsInput" type="text" placeholder="请输入读者证号" required>
                         </li>
                     <li>
                         <label for="passWord"><img src="../../../static/login-word.png" alt=""></label>
-                        <input id="passWord" type="password" placeholder="初始密码默认为读者证后6位">
+                        <input id="passWord" v-model="password" type="password" placeholder="初始密码默认为读者证后6位" required>
                     </li>
                     <li>
-                        <button @click="submit" type="submit">登 &nbsp;&nbsp; 录</button>
+                        <button type="submit">登 &nbsp;&nbsp; 录</button>
                     </li>
                 </ul>
             </form>
@@ -32,13 +32,14 @@ export default {
     },
     data(){
         return {
-            name:'000039',
-            password:'000039'
+            name:'',
+            password:''
         }
     },
     methods:{
         submit(){
             let that = this;
+            // alert(1);
             this.myAjax.noTokenPost('login?username='+this.name+'&password='+this.password,
             function(result){
                 that.$toast('登录成功');
@@ -47,11 +48,14 @@ export default {
                     that.$router.push('/');
                 },2000)
                 
-            },function(){
-
+            },function(result){
+                that.$toast(result.resMsg);
             });
             return false;
         }
+    },
+    mounted(){
+        this.$refs["foucsInput"].focus();
     }
 }
 </script>

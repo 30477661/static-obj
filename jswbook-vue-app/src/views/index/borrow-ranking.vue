@@ -2,148 +2,51 @@
     <div class="borrow-ranking">
         <headerpage :title_page='title_page="图书借阅排行榜"' :backBtn='backBtn=true'></headerpage>
         <div class="date-btn">
-            <button :class="{active:dateSearch==1}" @click="dateSearch=1">近1个月</button>
-            <button :class="{active:dateSearch==2}" @click="dateSearch=2">近3个月</button>
-            <button :class="{active:dateSearch==3}" @click="dateSearch=3">近6个月</button>
-            <button :class="{active:dateSearch==4}" @click="dateSearch=4">近1年</button>
+            <button :class="{active:dateSearch==1}" @click="dateSearch=1;queryData(1)">近1个月</button>
+            <button :class="{active:dateSearch==2}" @click="dateSearch=2;queryData(2)">近3个月</button>
+            <button :class="{active:dateSearch==3}" @click="dateSearch=3;queryData(3)">近6个月</button>
+            <button :class="{active:dateSearch==4}" @click="dateSearch=4;queryData(4)">近1年</button>
         </div>
-        <div class="borrowing-book-data" :key="bookNumber">
-            <p>1</p>
-            <router-link tag="div" :to="{name:'BookDetail',params:{id:2001}}">
-                <div class="book-img"><img src="../../../static/book-img.png" alt=""></div>
-                <ul class="bookimg-rg">
-                    <li class="new-book-name">
-                        <span>人性的弱点</span>
-                        <span></span>
-                        <span>
-                            <button @click.stop="bookPosition(bookNumber)">在馆信息</button>
-                            <i v-show="bookNumberDiv"><img src="../../../static/direction-img.png" alt=""></i>
-                            <ul class="book-lib-message" v-show="bookNumberDiv">
-                                <li>
-                                    <span>一楼藏书室</span>
-                                    <span><font color="ff0000">1</font>本</span>
-                                </li>
-                            </ul>
-                        </span>
-                    </li>
-                    <li>
-                        <span><font color="#5db3ff">著者：</font></span>
-                        <span><font color="#5db3ff">【美】卡耐基</font></span>
-                    </li>
-                    <li>
-                        <span>出版社：</span>
-                        <span>湖南文艺出版社</span>
-                    </li>
-                    <li>
-                        <span>借阅次数：</span>
-                        <span>400</span>
-                    </li>
-                </ul>
-            </router-link>
+        <div class="infinite-scroll" v-infinite-scroll="loadMore"
+            infinite-scroll-disabled="loading"
+            infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
+            <div class="borrowing-book-data" v-for="(item,index) in resultList" :key="index">
+                <p>{{index+1}}</p>
+                <router-link tag="div" :to="{name:'BookDetail',params:{ssh:item.Ssh,lsh:item.lsh}}">
+                    <div class="book-img"><img src="../../../static/book-img.png" alt=""></div>
+                    <ul class="bookimg-rg">
+                        <li class="new-book-name">
+                            <span>{{item.Ztm}}</span>
+                            <span></span>
+                            <span>
+                                <button @click.stop="bookPosition(index)">在馆信息</button>
+                                <i v-show="index===setShow"><img src="../../../static/direction-img.png" alt=""></i>
+                                <ul class="book-lib-message" v-show="index===setShow">
+                                    <li v-for="(itemChild,indexChild) in item.gcd" :key="indexChild">
+                                        <span>{{itemChild.gcd}}</span>
+                                        <span><font color="ff0000">{{itemChild.number}}</font>本</span>
+                                    </li>
+                                </ul>
+                            </span>
+                        </li>
+                        <li>
+                            <span><font color="#5db3ff">著者：</font></span>
+                            <span><font color="#5db3ff">{{item.Dyzrsm}}</font></span>
+                        </li>
+                        <li>
+                            <span>出版社：</span>
+                            <span>{{item.Cbsm}}</span>
+                        </li>
+                        <li>
+                            <span>借阅次数：</span>
+                            <span>{{item.cishu}}</span>
+                        </li>
+                    </ul>
+                </router-link>
+            </div>
         </div>
-        <div class="borrowing-book-data" :key="bookNumber">
-            <p>1</p>
-            <router-link tag="div" :to="{name:'BookDetail',params:{id:2001}}">
-                <div class="book-img"><img src="../../../static/book-img.png" alt=""></div>
-                <ul class="bookimg-rg">
-                    <li class="new-book-name">
-                        <span>人性的弱点</span>
-                        <span></span>
-                        <span>
-                            <button @click.stop="bookPosition(bookNumber)">在馆信息</button>
-                            <i v-show="bookNumberDiv"><img src="../../../static/direction-img.png" alt=""></i>
-                            <ul class="book-lib-message" v-show="bookNumberDiv">
-                                <li>
-                                    <span>一楼藏书室</span>
-                                    <span><font color="ff0000">1</font>本</span>
-                                </li>
-                            </ul>
-                        </span>
-                    </li>
-                    <li>
-                        <span><font color="#5db3ff">著者：</font></span>
-                        <span><font color="#5db3ff">【美】卡耐基</font></span>
-                    </li>
-                    <li>
-                        <span>出版社：</span>
-                        <span>湖南文艺出版社</span>
-                    </li>
-                    <li>
-                        <span>借阅次数：</span>
-                        <span>400</span>
-                    </li>
-                </ul>
-            </router-link>
-        </div>
-        <div class="borrowing-book-data" :key="bookNumber">
-            <p>1</p>
-            <router-link tag="div" :to="{name:'BookDetail',params:{id:2001}}">
-                <div class="book-img"><img src="../../../static/book-img.png" alt=""></div>
-                <ul class="bookimg-rg">
-                    <li class="new-book-name">
-                        <span>人性的弱点</span>
-                        <span></span>
-                        <span>
-                            <button @click.stop="bookPosition(bookNumber)">在馆信息</button>
-                            <i v-show="bookNumberDiv"><img src="../../../static/direction-img.png" alt=""></i>
-                            <ul class="book-lib-message" v-show="bookNumberDiv">
-                                <li>
-                                    <span>一楼藏书室</span>
-                                    <span><font color="ff0000">1</font>本</span>
-                                </li>
-                            </ul>
-                        </span>
-                    </li>
-                    <li>
-                        <span><font color="#5db3ff">著者：</font></span>
-                        <span><font color="#5db3ff">【美】卡耐基</font></span>
-                    </li>
-                    <li>
-                        <span>出版社：</span>
-                        <span>湖南文艺出版社</span>
-                    </li>
-                    <li>
-                        <span>借阅次数：</span>
-                        <span>400</span>
-                    </li>
-                </ul>
-            </router-link>
-        </div>
-        <div class="borrowing-book-data" :key="bookNumber">
-            <p>1</p>
-            <router-link tag="div" :to="{name:'BookDetail',params:{id:2001}}">
-                <div class="book-img"><img src="../../../static/book-img.png" alt=""></div>
-                <ul class="bookimg-rg">
-                    <li class="new-book-name">
-                        <span>人性的弱点</span>
-                        <span></span>
-                        <span>
-                            <button @click.stop="bookPosition(bookNumber)">在馆信息</button>
-                            <i v-show="bookNumberDiv"><img src="../../../static/direction-img.png" alt=""></i>
-                            <ul class="book-lib-message" v-show="bookNumberDiv">
-                                <li>
-                                    <span>一楼藏书室</span>
-                                    <span><font color="ff0000">1</font>本</span>
-                                </li>
-                            </ul>
-                        </span>
-                    </li>
-                    <li>
-                        <span><font color="#5db3ff">著者：</font></span>
-                        <span><font color="#5db3ff">【美】卡耐基</font></span>
-                    </li>
-                    <li>
-                        <span>出版社：</span>
-                        <span>湖南文艺出版社</span>
-                    </li>
-                    <li>
-                        <span>借阅次数：</span>
-                        <span>400</span>
-                    </li>
-                </ul>
-            </router-link>
-        </div>
-        
+        <mt-spinner :type="3" v-show="loadingImg"></mt-spinner>
+        <div v-show="noneData" class="noDataShow">全部数据已加载</div>
     </div>
 </template>
 <script>
@@ -154,6 +57,14 @@ export default {
     },
     data(){
         return {
+            lastPage:'',
+            setShow:null,
+            loadingImg:null,
+            noneData:'',        
+            loading:null,
+            dropNumber:1,
+            resultList:[],
+            totalRow:'',
             indexNavImg:{
                 indexSearch_icon:require('../../../static/index-search-icon.png')
             },
@@ -163,11 +74,61 @@ export default {
         }
     },
     methods:{
-        bookPosition(argument){
-            // this.bookNumberDiv = argument;
-            this.bookNumberDiv = !this.bookNumberDiv;
-            console.log();
+        queryData(argument){
+            let that = this;
+            this.dropNumber = 1;
+            this.myAjax.postData('tuijian/book_ranking',
+            function(result){
+                that.result = result;
+                that.resultList = result.list;
+                that.lastPage = result.lastPage;
+                if(that.lastPage){
+                    that.noneData = true;
+                    that.loadingImg = false;
+                } else {
+                    that.noneData = false;
+                    that.loadingImg = true;
+                }
+            },function(){
+
+            },{jsrq:argument},that);
+        },
+        bookPosition(a){
+            // debugger;
+            if( this.setShow === a) {
+                this.setShow = '';
+            }else {
+                this.setShow = a;
+            }
+        },
+        loadMore(){
+            if(this.lastPage){
+                this.noneData = true;
+                this.loadingImg = false;
+                return;
+            } 
+            let that = this;
+            this.loadingImg = true;
+            this.loading = true;
+            setTimeout(() => {
+            this.myAjax.postData('tuijian/book_ranking',
+            function(result){
+                result.list.forEach(element => {
+                    that.resultList.push(element);
+                });
+                that.lastPage = result.lastPage;
+                that.loading = false;
+            },function(){
+
+            },{jsrq:this.dateSearch,pageIndex:++this.dropNumber},that);
+            },500);
         }
+    },
+    created(){
+        this.queryData(1);
+    },
+    mounted(){
+        
     }
 }
 </script>
@@ -288,6 +249,11 @@ div.borrow-ranking {
                 >li.new-book-name {
                     height: 55px;
                     >span:nth-of-type(1) {
+                        display: inline-block;
+                        width: 300px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                         font-size: 32px;
                         color: #333333;
                     }
@@ -295,17 +261,20 @@ div.borrow-ranking {
             }
         }
     }
-    div.borrowing-book-data:nth-of-type(3) {
+    
+}
+.infinite-scroll {
+    div.borrowing-book-data:nth-of-type(1) {
         >p {
             background: url('../../../static/ranking-number-one.png') no-repeat center;
         }
     }
-    div.borrowing-book-data:nth-of-type(4) {
+    div.borrowing-book-data:nth-of-type(2) {
         >p {
             background: url('../../../static/ranking-number-two.png') no-repeat center;
         }
     }
-    div.borrowing-book-data:nth-of-type(5) {
+    div.borrowing-book-data:nth-of-type(3) {
         >p {
             background: url('../../../static/ranking-number-three.png') no-repeat center;
         }

@@ -302,6 +302,13 @@ a.many-nav > i {
   text-indent: 30px;
   flex-grow: 1;
 }
+.many-show-text .date-component {
+  height: 50px;
+  line-height: 48px;
+  font-size: 30px;
+  text-indent: 30px;
+  flex-grow: 1;
+}
 
 .many-show-text > span {
   font-size: 30px;
@@ -566,6 +573,12 @@ div.borrow-book-list div.borrowing-book-data .book-bottom > li > span:nth-of-typ
 
 div.mint-spinner-fading-circle-circle {
   left: 360px;
+}
+
+div.noDataShow {
+  text-align: center;
+  font-size: 28px;
+  color: #ff0000;
 }
 
 /* 自定义  e-- */

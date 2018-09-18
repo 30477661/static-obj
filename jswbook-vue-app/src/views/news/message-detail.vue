@@ -2,9 +2,9 @@
     <div class="message-detail">
         <headerpage :title_page='title_page="消息详情"' :backBtn='backBtn=2' ></headerpage>
         <section class="">
-            <h4>预约取书</h4>
-            <h7>2018/07/29&nbsp;&nbsp;&nbsp;&nbsp;12：00</h7>
-            <p>您预约的《人性的弱点》已到馆，请于2018-08-20前携读者证前往图书馆前台取书。</p>
+            <h4>{{title}}</h4>
+            <h6>{{date}}&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+            <p>{{content}}</p>
         </section>
     </div>
 </template>
@@ -16,12 +16,21 @@ export default {
     },
     data(){
         return {
-            
+            title:'',
+            date:'',
+            content:''
         }
     },
     created(){
-        // this.serveList();
-       
+        this.title=this.$route.params.title;
+        this.date=this.$route.params.date;
+        this.content=this.$route.params.content;
+        this.myAjax.postData('wode/xtxx_read',
+        (result)=>{
+        
+        },()=>{
+
+        },{lsh:this.$route.params.lsh});
     },
     mounted(){
         
@@ -45,7 +54,7 @@ div.message-detail {
             font-size: 32px;
             color: rgb(51, 51, 51);
         }
-        h7 {
+        h6 {
             font-size: 20px;
             color: #999999;
             margin: 15px 0 25px;

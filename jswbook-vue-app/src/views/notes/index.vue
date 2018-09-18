@@ -13,6 +13,11 @@ export default {
     components:{
         footernav,
         headerpage
+    },
+    created(){
+        this.$messagebox.alert('敬请期待','暂未开放').then(()=>{
+            this.$router.go(-1);
+        });
     }
 }
 </script>

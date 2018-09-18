@@ -2,16 +2,16 @@
     <div class="index">
         <header class="clearfix">首页</header>
         <div class="top-search">
-            <img :src="indexNavImg.indexSearch_icon" alt=""><input type="text" placeholder="题名、著者、分类号、出版社、主题词">
+            <img :src="indexNavImg.indexSearch_icon" alt=""><input type="text" @focus="search" placeholder="题名、著者、分类号、出版社、主题词">
         </div>
         <div class="school-logo">
-            <div class="school-name"><img src="../../../static/school-logo.png" alt=""></div>
+            <div class="school-name"><router-link tag="span" to="/lib-system"><img src="../../../static/school-logo.png" alt=""></router-link></div>
         </div>
         <ul class="self-book-static">
-            <router-link to="/my-borrowing" tag="li"><span><img src="../../../static/self-book-static-1.png" alt=""><i>1</i></span><span>在借中</span></router-link>
-            <router-link to="/overdue-book" tag="li"><span><img src="../../../static/self-book-static-2.png" alt=""><i>2</i></span><span>超期未还</span></router-link>
-            <router-link to="/" tag="li"><span><img src="../../../static/self-book-static-3.png" alt=""><i>3</i></span><span>欠款情况</span></router-link>
-            
+            <router-link to="/my-borrowing" tag="li"><span><img src="../../../static/self-book-static-1.png" alt=""></span><span>在借中</span></router-link>
+            <router-link to="/overdue-book" tag="li"><span><img src="../../../static/self-book-static-2.png" alt=""></span><span>超期未还</span></router-link>
+            <!-- <router-link to="/" tag="li" ><span><img src="../../../static/self-book-static-3.png" alt=""><i>3</i></span><span>欠款情况</span></router-link> -->
+            <li @click="notOpen"><span><img src="../../../static/self-book-static-3.png" alt=""></span><span>欠款情况</span></li>
         </ul>
         <nav>
             <ul style="margin-bottom: 10px;">
@@ -22,50 +22,31 @@
                 
             </ul>
             <ul>
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_4" alt=""><span>数字资源</span></router-link>
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_5" alt=""><span>阅读活动</span></router-link>
+                
+                <!-- <router-link to="/" tag="lvi"><img :src="indexNavImg.indexNav_4" alt=""><span>数字资源</span></router-link> -->
+                <li @click="notOpen"><img :src="indexNavImg.indexNav_4" alt=""><span>数字资源</span></li>
+                <li @click="notOpen"><img :src="indexNavImg.indexNav_5" alt=""><span>阅读活动</span></li>
                 <router-link to="/my-miss-buylist" tag="li"><img :src="indexNavImg.indexNav_6" alt=""><span>图书荐购</span></router-link>
-                <!-- <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_7" alt=""><span>缴费记录</span></router-link> -->
-                <router-link to="/" tag="li"><img :src="indexNavImg.indexNav_8" alt=""><span>馆长信箱</span></router-link>
+                <li @click="notOpen"><img :src="indexNavImg.indexNav_8" alt=""><span>馆长信箱</span></li>
             </ul>
         </nav>
         <div class="bookli-top">
             <ul>
                 <li class="active"><span>图书<i></i></span></li>
-                <li><span>期刊<i></i></span></li>
+                <!-- <li><span>期刊<i></i></span></li> -->
             </ul>
         </div>
         <div class="bookli">
-            <ul>
+            <router-link tag="ul" :to="{name:'BookDetail',params:{lsh:item.lsh,ssh:item.ssh}}" v-for="(item,index) of resultList" :key="index">
                 <li>
                     <img src="../../../static/index-bookimg-1.png" alt="">
                     <div>
-                        <span>图书名称</span>
-                        <span>图书作者</span>
+                        <span>{{item.ztm}}</span>
+                        <span>{{item.Dyzrsm}}</span>
                     </div>
-                    <button class="btn-primary">预借</button>
                 </li>
-            </ul>
-            <ul>
-                <li>
-                    <img src="../../../static/index-bookimg-1.png" alt="">
-                    <div>
-                        <span>图书名称</span>
-                        <span>图书作者</span>
-                    </div>
-                    <button class="btn-primary">预借</button>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <img src="../../../static/index-bookimg-1.png" alt="">
-                    <div>
-                        <span>图书名称</span>
-                        <span>图书作者</span>
-                    </div>
-                    <button class="btn-primary">预借</button>
-                </li>
-            </ul>
+            </router-link>
+            
         </div>
         <footernav :imgActive='imgActive=1'></footernav>
     </div>
@@ -81,6 +62,7 @@ export default {
     data(){
         return{
             isNowPage: true,
+            resultList:[],
             indexNavImg:{
                 indexSearch_icon:require('../../../static/index-search-icon.png'),
                 indexNav_1:require('../../../static/index-nav-1.png'),
@@ -96,25 +78,26 @@ export default {
         }
     },
     created(){
-        let that = this;
-        // this.myAjax.postData('jieyue/my_list',
-        // function(result){
-        //     that.resultData = result.resMsg;
-        //     let resultList = result.resMsg.list;
-        //     resultList.forEach(element => {
-        //         that.blackData.push(element);
-        //     });
-        //     console.log(that.blackData,55);
+        this.myAjax.postData('tuijian/new_arrivals',
+        (result)=>{
+            for(let i=0; i<3; i++){
+                this.resultList.push(result.list[i]);
+            }
+        },()=>{
 
-        // },function(){
-
-        // },{id:1002},that)
+        },{});
+        
     },
     mounted(){
-        // this.$refs.footernav.imgUrlChange();
+        
     },
     methods:{
-        
+        search(){
+            this.$router.push('/search');
+        },
+        notOpen(){
+            this.$messagebox.alert('敬请期待','暂未开放');
+        }
     }
 }
 </script>
@@ -169,7 +152,7 @@ export default {
                 display: flex;
                 align-items:center;
                 justify-content:center;
-                >img {
+                img {
                     width: 124px;
                     transform: rotatez(-45deg);
                 }

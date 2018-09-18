@@ -6,11 +6,15 @@ import MintUI from 'mint-ui'
 import App from './App'
 import router from './router'
 import myAjax from './assets/js/api/my-api'
+import Common from './assets/js/common'
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
 
 Vue.use(MintUI);
+Vue.use(Common);
+// Vue.prototype.MintUI = MintUI;
 Vue.prototype.myAjax = myAjax;
+
 // Vue.use(VueAxios, axios)
 
 
@@ -23,5 +27,10 @@ export default new Vue({
     el: '#app',
     router,
     components: { App },
-    template: '<App/>'
+    template: '<App/>',
+    methods: {
+        link(to) {
+            this.$router.push(to);
+        }
+    }
 });

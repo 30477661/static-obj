@@ -1,36 +1,97 @@
 <template>
     <div class="news-index">
         <header class="clearfix">系统消息</header>
-        <div class="bookli">
-            <router-link to="/message-detail" tag="ul">
+        <div class="bookli" v-infinite-scroll="loadMore"
+            infinite-scroll-disabled="loading"
+            infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
+            <router-link :to='{name:"MessageDetail",params:{title:item.title,date:item.date,content:item.content,lsh:item.lsh}}' tag="ul" v-for="(item,index) of resultList" :key="index">
                 <li>
-                    <p>预约取书</p>
-                    <i></i>
+                    <p>{{item.title}}</p>
+                    <i v-show="!+item.isyd"></i>
                     <div>
-                        您预约的《人性的弱点》已到馆，请于2018-08-20，您预约的《人性的弱点》已到馆《人性的弱点》已到馆《人性的弱点》已到馆
+                        {{item.content}}
                     </div>
-                    <span>2018/07/20</span>
+                    <span>{{item.date}}</span>
                 </li>
             </router-link>
+            <mt-spinner :type="3" v-show="loadingImg"></mt-spinner>
+            <div v-show="noneData" class="noDataShow">全部数据已加载</div>
         </div>
-
         <footernav :imgActive='imgActive=3'></footernav>
     </div>
     
 </template>
 <script>
 import footernav from '../../components/footer'
-// import headerpage from '../../components/header'
+import headerpage from '../../components/header'
 export default {
     components:{
-        footernav,
+        headerpage,
+        footernav
+    },
+    data(){
+        return {
+            setShow:null,
+            dropNumber:1,
+            lastPage:'',    
+            loadingImg:null,
+            noneData:'',
+            loading:null,
+            resultList:[],
+            totalRow:''
+        }
+    },
+    created(){
+        this.myAjax.postData('wode/xtxx',
+        (result)=>{
+            this.totalRow = result.totalRow;
+            this.lastPage = result.lastPage;
+            this.resultList = result.list;
+            if(this.lastPage){
+                this.noneData = true;
+                this.loadingImg = false;
+            } else {
+                this.noneData = false;
+                this.loadingImg = true;
+            }
+        },()=>{
+
+        },{});
+       
+    },
+    mounted(){
         
+    },
+    methods:{
+        loadMore(){
+            if(this.lastPage){
+                this.noneData = true;
+                this.loadingImg = false;
+                return;
+            } 
+            let that = this;
+            this.loadingImg = true;
+            this.loading = true;
+            setTimeout(() => {
+            this.myAjax.postData('wode/xtxx',
+            function(result){
+                result.list.forEach(element => {
+                    that.resultList.push(element);
+                });
+                that.lastPage = result.lastPage;
+                that.loading = false;
+            },function(){
+
+            },{fsrq:this.dateSearch,title:this.inputText,pageIndex:++this.dropNumber},that);
+            },500);
+        }
     }
 }
 </script>
 
 <style lang="scss">
     div.news-index {
+        padding-bottom: 100px;
         header {
             height: 80px;
             line-height: 80px;

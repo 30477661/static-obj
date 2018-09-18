@@ -45,10 +45,10 @@ export default {
         }
     },
     created(){
-
+        console.log(this.$route.params);
+        
     },
     mounted(){
-        console.log(this.$route.params);
     },
     methods:{
         starChange(index){
@@ -63,10 +63,21 @@ export default {
         },
         starSubmit(){
             if(!this.starValue) return this.$toast('请选择星级');
-            this.$toast('评论成功，5秒后返回上级页面...');
-            setTimeout(()=>{
-                this.$router.go(-1);
-            },2000);
+            let that = this;
+            this.myAjax.postData('jieyue/my_evaluate',
+            function(result){
+                that.$toast('评论成功，5秒后返回上级页面...');
+                setTimeout(()=>{
+                that.$router.go(-1);
+                },2000);
+            },function(){
+
+            },{ssh:this.$route.params.ssh
+            ,pfs:this.starValue
+            ,pjnr:this.evaluationValue},that);
+
+
+            
         }
 
     },

@@ -7,19 +7,19 @@
                 <span>读者证丢失怎么办？</span>
                 <div class="line"></div>
             </router-link>
-            <router-link tag="li" to="/" class="many-show-text">
+            <router-link tag="li" to="/help-description" class="many-show-text">
                 <span>如何续借？</span>
                 <div class="line"></div>
             </router-link>
-            <router-link tag="li" to="/" class="many-show-text">
+            <router-link tag="li" to="/help-description" class="many-show-text">
                 <span>借阅的书已超过还书日期怎么处</span>
                 <div class="line"></div>
             </router-link>
-            <router-link tag="li" to="/" class="many-show-text">
+            <router-link tag="li" to="/help-description" class="many-show-text">
                 <span>怎么取消已做预约</span>
                 <div class="line"></div>
             </router-link>
-            <router-link tag="li" to="/" class="many-show-text">
+            <router-link tag="li" to="/help-description" class="many-show-text">
                 <span>罚款费用怎么缴？</span>
                 <div class="line"></div>
             </router-link>

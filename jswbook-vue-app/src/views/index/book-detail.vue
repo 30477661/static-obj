@@ -1,63 +1,61 @@
 <template>
     <div class="book-detail">
-        <headerpage :title_page='title_page' :backBtn='backBtn=2' :rgUrl="rgUrl" v-on:headerRg="headerRgClick"></headerpage>
-        <p>推荐指数：<span><img src="../../../static/red-star.png" alt="" v-for="item in arr" :key="item"></span></p>
-        <p>推荐理由：<span>卡耐基的书总是给在逆境中的人们以力量和激情，这本《人性的弱点》也一样！</span></p>
+        <headerpage :title_page='result.Ztm' :backBtn='backBtn=2' :rgUrl="rgUrl" v-on:headerRg="headerRgClick"></headerpage>
+        <p>推荐指数：{{result.pfs}}<span><img src="../../../static/red-star.png" alt="" v-for="item in arr" :key="item"></span></p>
+        <p>推荐理由：<span>{{result.nrjj || '暂无'}}</span></p>
         <div class="detail-img-div" style="padding: 24px 0 32px;">
             <img src="" alt="">
             <ul>
-                <li>{{bookContent.title}}</li>
-                <li>著者：{{bookContent.author}}</li>
-                <li>出版社：{{bookContent.source}}</li>
-                <li>出版日期：{{bookContent.serveDate}}</li>
-                <li>文献类型：图书</li>
-                <li>索书号：{{bookContent.categoryNumber}}</li>
+                <li>{{result.Ztm}}</li>
+                <li>著者：{{result.Dyzrsm}}</li>
+                <li>出版社：{{result.Cbsm}}</li>
+                <li>出版日期：{{result.Cbny}}</li>
+                <li>文献类型：{{result.wxlx}}</li>
+                <li>索书号：{{result.Ssh}}</li>
             </ul>
         </div>
         <ul class="tab-switch" style="border-bottom: 1px solid #dddddd;">
             <li :class="{active:tabSwitch==1}" @click="tabSwitch=1"><span>馆藏信息</span><i></i></li>
             <li :class="{active:tabSwitch==2}" @click="tabSwitch=2"><span>内容简介</span><i></i></li>
             <li :class="{active:tabSwitch==3}" @click="tabSwitch=3"><span>著者简介</span><i></i></li>
-            <li :class="{active:tabSwitch==4}" @click="tabSwitch=4"><span>读者评论(30)</span><i></i></li>
+            <li :class="{active:tabSwitch==4}" @click="tabSwitch=4"><span>读者评论({{commetResult.totalRow || "暂无"}})</span><i></i></li>
         </ul>
         <div v-show="tabSwitch==1" class="book-lib-table">
             <table>
-                <tr>
-                    <th style="width:40%;">馆藏地</th>
-                    <th style="width:40%;">条码号</th>
-                    <th style="width:20%;">状态</th>
-                </tr>
-                <tr>
-                    <td>一楼藏书室</td>
-                    <td>0000001</td>
-                    <td>借出</td>
-                </tr>
-                <tr>
-                    <td>二楼藏书室</td>
-                    <td>0000001</td>
-                    <td>在馆</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th style="width:40%;">馆藏地</th>
+                        <th style="width:40%;">条码号</th>
+                        <th style="width:20%;">状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) of result.gcdlist" :key="index">
+                        <td  style="width:40%;">{{item.gcd}}</td>
+                        <td  style="width:40%;">{{item.txm}}</td>
+                        <td  style="width:20%;">{{item.sfjy?'借出':'在馆'}}</td>
+                    </tr>
+                </tbody>
             </table>
             <div style="margin-top:20px;text-align: center;">
-                <button class="one-row-btn">预 &nbsp;&nbsp; 约</button>
+                <button class="one-row-btn" @click="bookBorrow(result.sfyy)">{{result.sfyy?"预约":"预借"}}</button>
             </div>
         </div>
         <div v-show="tabSwitch==2" class="book-lib-table">
-            <p>该书汇集了卡耐基的思想精华和最激动人心的内容，是著者最成功的励志经典。该书汇集了卡耐基的思想精华和最激动人心的内容，是著者最成功的励志经典。........该书汇集了卡耐基的思想精华和最激动人心的内容，是著者最成功的励志经典。........该书汇集了卡耐基的思想精华和最激动人心的内容，是著者最成功的励志经典。</p>
+            <p>{{result.nrjj || "暂无"}}</p>
         </div>
         <div v-show="tabSwitch==3" class="book-lib-table">
-            <p>卡耐基被誉为“成人教育之父”，著名心理学家，人际关系学家，20世纪最伟大的人生导师之一。卡耐基被誉为“成人教育之父”，著名心理学家，人际关系学家，20世纪最伟大的人生导师之一。卡耐基被誉为“成人教育之父”，著名心理学家，人际关系学家，20世纪最伟大的人生导师之一。卡耐基被誉为“成人教育之父”，著名心理学家，人际关系学家，20世纪最伟大的人生导师之一。</p>
+            <p>{{result.zzjj || "暂无"}}</p>
         </div>
         <div v-show="tabSwitch==4">
-            <ul class="reader-comment-list">
+            <ul class="reader-comment-list" v-for="(item,index) of commetResult.list" :key="index">
                 <li>
                     <div>
                         <img src="../../../static/comment-header.png" alt="">
-                        <font>小李</font>
-                        <span>2018-08-20</span>
+                        <font>{{item.Xm || "暂无"}}</font>
+                        <span>{{item.pjrq || "暂无"}}}</span>
                     </div>
-                    <p>这本书再次燃起了我对生活的激情，大家都笑对困
-难吧！值得一看哟！</p>
+                    <p>{{item.pjnr}}</p>
                 </li>
             </ul>
         </div>
@@ -75,25 +73,61 @@ export default {
             title_page:'',
             arr:[],
             tabSwitch:1,
-            rgUrl:require('../../../static/collection-btn.png')
+            rgUrl:require('../../../static/collection-btn.png'),
+            result:{},
+            commetResult:{}
+        }
+    },
+    methods:{
+        headerRgClick(){
+            this.myAjax.postData('tuijian/collect',
+            (result)=>{
+                this.$toast(result);
+            },()=>{
+
+            },{lsh:this.$route.params.lsh,ssh:this.$route.params.ssh});
+        },
+        bookBorrow(bookStatic){
+            let borrowData = {lsh:this.result.Lsh,ssh:this.result.Ssh};
+            let borrowPort = '';
+            if(bookStatic){
+                borrowPort = 'yuyue/subscribe';
+                borrowData.sfyy = 1;
+            }else {
+                borrowPort = 'yujie/preloan';
+                borrowData.sfyj = 1;
+            }
+            let that = this;
+            this.myAjax.postData(borrowPort,
+            function(result){
+                // console.log(result);
+                that.$toast({message:result});
+            },function(){
+
+            },borrowData,that);
         }
     },
     created(){
-        // this.myAjax.getData('my.json',(data)=>{
-        //     this.bookContent = data.data[0];
-        //     this.title_page = this.bookContent.title;
-        //     this.arr.length = +this.bookContent.remainDay;
-        // });
+            let that = this;
+            this.myAjax.postData('tuijian/new_arrivals_comment',
+            (result)=>{
+                that.result = result;
+            },()=>{
+
+            },{lsh:this.$route.params.lsh},that);
+
+            //评论
+            this.myAjax.postData('tuijian/new_arrivals_comment_Readers',
+            function(result){
+                that.commetResult = result;
+            },function(){
+
+            },{ssh:this.$route.params.ssh},that);
         
     },
     mounted(){
         if(this.$route.params.tabSwitch){
             this.tabSwitch = this.$route.params.tabSwitch;
-        }
-    },
-    methods:{
-        headerRgClick(){
-            this.$toast('收藏成功');
         }
     }
 }
@@ -126,11 +160,18 @@ div.book-detail {
         height: 280px;
         background-color: #7c7c7c;
         margin: 0 40px 0 64px;
+        align-self: center;
+        
     }
     >ul {
         font-size: 24px;
         color: #333333;
         >li:nth-of-type(1) {
+            // white-space: nowrap;
+            // text-overflow: ellipsis;
+            // display: inline-block;
+            // width: 400px;
+            // overflow: hidden;
             font-size: 32px;
         }
         >li {
@@ -144,11 +185,11 @@ div.book-detail {
     table {
         width: 100%;
         tr {
+            display: table;
             width: 100%;
+            table-layout: fixed;
             >td,
             >th {
-                // flex-grow: 1;
-                // justify-content: center;
                 text-align: center;
                 color: #333;
             }
@@ -162,6 +203,12 @@ div.book-detail {
         }
         th, td {
             padding: 15px 0;
+        }
+        tbody {
+            display: block;
+            max-height: 62px*6;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
     }
     p {
@@ -196,7 +243,6 @@ div.book-detail {
             padding: 6px 0 6px 71px;
             font-size: 28px;
             color:#333333;
-            // height: 40px;
             line-height: 40px;
         }
     }

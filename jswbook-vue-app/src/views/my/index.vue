@@ -7,8 +7,8 @@
                     <img src="../../../static/oneself-header.png" alt="">
                 </div>
                 <div>
-                    <p>姓名</p>
-                    <p>借书证号</p>
+                    <p>{{result.xm}}</p>
+                    <p>{{result.jszh}}</p>
                 </div>
             </div>
             <router-link tag="a" to="/self-data" class="avater-btn"><button><img src="../../../static/pencil.png" alt=""> 个人资料</button></router-link>
@@ -26,23 +26,23 @@
                 <img src="../../../static/mycenter-icon-2.png" alt=""><span>我的预借</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            <router-link tag="a" to="/my-collect" class="many-nav">
                 <img src="../../../static/mycenter-icon-3.png" alt=""><span>我的收藏</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            <a @click="notOpen" class="many-nav">
                 <img src="../../../static/mycenter-icon-4.png" alt=""><span>读书笔记</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
-            </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            </a>
+            <a @click="notOpen" class="many-nav">
                 <img src="../../../static/mycenter-icon-11.png" alt=""><span>我参加的活动</span><img src="../../../static/rg-arrow.png" alt="">
                 <i></i>
                 <div class="line"></div>
-            </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            </a>
+            <a @click="notOpen" class="many-nav">
                 <img src="../../../static/mycenter-icon-5.png" alt=""><span>缴费相关</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
-            </router-link>
+            </a>
             <router-link tag="a" to="/reader-loss" class="many-nav">
                 <img src="../../../static/mycenter-icon-6.png" alt=""><span>读者证挂失</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
@@ -51,20 +51,20 @@
                 <img src="../../../static/mycenter-icon-7.png" alt=""><span>我的荐购</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            <a @click="notOpen" class="many-nav">
                 <img src="../../../static/mycenter-icon-8.png" alt=""><span>我的资源</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
-            </router-link>
-            <router-link tag="a" to="" class="many-nav">
+            </a>
+            <a @click="notOpen" class="many-nav">
                 <img src="../../../static/mycenter-icon-9.png" alt=""><span>我的留言</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
-            </router-link>
+            </a>
             <router-link tag="a" to="/help" class="many-nav">
                 <img src="../../../static/mycenter-icon-10.png" alt=""><span>帮助</span><img src="../../../static/rg-arrow.png" alt="">
                 <div class="line"></div>
             </router-link>
         </ul>
-        <router-link to="/login" tag="div" class="exit" style="margin: 24px 0;">退出登录</router-link>
+        <div class="exit" @click="exitLogin" style="margin: 24px 0;">退出登录</div>
         <footernav :imgActive='imgActive=5'></footernav>
     </div>
 </template>
@@ -79,8 +79,26 @@ export default {
     },
     data(){
         return {
-            
+            result:''
         }
+    },
+    methods:{
+        notOpen(){
+            this.$messagebox.alert('敬请期待','暂未开放');
+            return false;            
+        },
+        exitLogin(){
+            localStorage.token = '';
+            this.$router.push('/login');
+        }
+    },
+    created(){
+        this.myAjax.postData('wode/personal_data',
+        (result)=>{
+            this.result = result;
+        },()=>{
+
+        },{mm:this.passWord});
     }
 }
 </script>

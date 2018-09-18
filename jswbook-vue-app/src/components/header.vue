@@ -2,7 +2,7 @@
     <div>
         <header class="clearfix" :class="{whiteTitle:backBtn===2}">
             <img v-show='backBtn' @click="backImg" :src="backBtn===2?imgIconSrc_1:imgIconSrc">
-            {{title_page}} 
+            <span>{{title_page}}</span>
             <img v-show="rgUrl" :src="rgUrl" @click="headerRgClick">
         </header>
     </div>    
@@ -46,6 +46,13 @@ export default {
             margin-left: 34px;
             width: 24px;
             margin-top: 18px;
+        }
+        span {
+            width: 500px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: inline-block;
         }
         img:nth-of-type(2) {
             float: right;

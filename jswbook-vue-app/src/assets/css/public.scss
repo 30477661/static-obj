@@ -305,6 +305,13 @@ a.many-nav>i {
         text-indent: 30px;
         flex-grow: 1;
     }
+    .date-component {
+        height: 50px;
+        line-height: 48px;
+        font-size: 30px;
+        text-indent: 30px;
+        flex-grow: 1;
+    }
 }
 
 .many-show-text>span {
@@ -533,6 +540,12 @@ div.borrow-book-list {
 
 div.mint-spinner-fading-circle-circle {
     left: 360px;
+}
+
+div.noDataShow {
+    text-align: center;
+    font-size: 28px;
+    color: #ff0000;
 }
 
 

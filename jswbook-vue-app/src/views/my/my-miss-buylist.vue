@@ -1,37 +1,40 @@
 <template>
     <div class="my-miss-buy">
         <headerpage style="margin-bottom: 16px;" :title_page='title_page="我的荐购"' :backBtn='backBtn=true' :rgUrl="rgUrl" v-on:headerRg="headerRgClick"></headerpage>
-        <div>
-            <ul class="borrowing-book" v-for="item in inForce" :key="item.id">
+        <div v-infinite-scroll="loadMore"
+            infinite-scroll-disabled="loading"
+            infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
+            <ul class="borrowing-book" v-for="item in resultList" :key="item.id">
                 <li class="clearfix">
                     <span>题名：</span>
-                    <span>{{item.title}}</span>
+                    <span>{{item.sm}}</span>
                 </li>
                 <li>
                     <span>著者：</span>
-                    <span>{{item.author}}</span>
+                    <span>{{item.zz}}</span>
                 </li>
                 <li>
                     <span>出版：</span>
-                    <span>{{item.source}}</span>
+                    <span>{{item.cbs}}</span>
                 </li>
                 <li>
                     <span>ISBN：</span>
-                    <span>{{item.barCode}}</span>
+                    <span>{{item.isbn}}</span>
                     
                 </li>
                 <li>
                     <span>分类号：</span>
-                    <span>{{item.categoryNumber}}</span>
+                    <span>{{item.flh}}</span>
                 </li>
                 <li>
                     <span>价格：</span>
-                    <span>{{item.bookPrice}}元</span>
-                    <span>{{item.missBuyData}}</span>
+                    <span>{{item.jg}}元</span>
+                    <span>{{item.createtime}}</span>
                 </li>
             </ul>
+            <mt-spinner :type="3" v-show="loadingImg"></mt-spinner>
+            <div v-show="noneData" class="noDataShow">全部数据已加载</div>
         </div>
-        
     </div>
 </template>
 <script>
@@ -42,17 +45,34 @@ export default {
     },
     data(){
         return {
-            inForce:'',
-            rgUrl:require('../../../static/header-rg-add.png')
+            rgUrl:require('../../../static/header-rg-add.png'),
+            setShow:null,
+            dropNumber:1,
+            lastPage:'',    
+            loadingImg:null,
+            noneData:'',
+            loading:null,
+            resultList:[],
+            totalRow:''
         }
     },
     created(){
-        // this.serveList();
-        this.myAjax.testGet('my.json'
-        ,(data)=>{
-                this.inForce = data.data;
-        }
-        ,()=>{});
+        let that = this;
+        this.myAjax.postData('jiangou/my_recommend',
+        (result)=>{
+            that.totalRow = result.totalRow;
+            that.lastPage = result.lastPage;
+            that.resultList = result.list;
+            if(that.lastPage){
+                that.noneData = true;
+                that.loadingImg = false;
+            } else {
+                that.noneData = false;
+                that.loadingImg = true;
+            }
+        },()=>{
+
+        },{},that);
     },
     mounted(){
         
@@ -73,6 +93,28 @@ export default {
                 }).then(()=>{
                     this.$router.push('/my-miss-buy');
                 });
+        },
+        loadMore(){
+            if(this.lastPage){
+                this.noneData = true;
+                this.loadingImg = false;
+                return;
+            } 
+            let that = this;
+            this.loadingImg = true;
+            this.loading = true;
+            setTimeout(() => {
+            this.myAjax.postData('jiangou/my_recommend',
+            function(result){
+                result.list.forEach(element => {
+                    that.resultList.push(element);
+                });
+                that.lastPage = result.lastPage;
+                that.loading = false;
+            },function(){
+
+            },{pageIndex:++this.dropNumber},that);
+            },500);
         }
     }
 }
